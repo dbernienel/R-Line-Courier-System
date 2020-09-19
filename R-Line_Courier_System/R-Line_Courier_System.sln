@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R-Line_Courier_System", "R-Line_Courier_System\R-Line_Courier_System.csproj", "{5E9355A0-8BFA-4D0D-AA2A-F76ECCE6D971}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E9355A0-8BFA-4D0D-AA2A-F76ECCE6D971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9355A0-8BFA-4D0D-AA2A-F76ECCE6D971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9355A0-8BFA-4D0D-AA2A-F76ECCE6D971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9355A0-8BFA-4D0D-AA2A-F76ECCE6D971}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5848A7E-EA0A-4F05-8256-F1A6890A32D8}
+	EndGlobalSection
+EndGlobal
