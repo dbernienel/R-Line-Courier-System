@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace R_Line_Courier_System
 {
@@ -32,12 +33,39 @@ namespace R_Line_Courier_System
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)
         {
-            //to do: remove selected entry from parcel db
+            MessageBox.Show(dgvParcels.SelectedCells[0].Value.ToString());
+
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
+            SqlConnection con = new SqlConnection(conString);
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID="+ dgvParcels.SelectedCells[0].Value.ToString(), con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
 
         private void btnMoreDetailsParcel_Click(object sender, EventArgs e)
         {
             //to do: show more complete view of data in parcel db
+        }
+
+        private void frmMaintainParcels_Load(object sender, EventArgs e)
+        {
+            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
+            SqlConnection con = new SqlConnection(conString);
+
+            con.Open();
+            SqlDataAdapter sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
+            DataSet ds = new DataSet();
+            sd.Fill(ds, "PARCELS");
+            dgvParcels.DataSource = ds.Tables[0];
+            con.Close();
+        }
+
+        private void dgvParcels_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
