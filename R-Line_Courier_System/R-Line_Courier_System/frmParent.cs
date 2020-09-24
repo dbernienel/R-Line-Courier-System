@@ -30,5 +30,26 @@ namespace R_Line_Courier_System
         {
             this.Close();
         }
+
+        private void parcelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmParcelDetails details = new frmParcelDetails();
+            frmParent parent = this;
+            details.MdiParent = parent;
+            details.Show();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainParcels parcel = new frmMaintainParcels();
+            frmParent parent = this;
+            parcel.MdiParent = parent;
+            parcel.Show();
+        }
     }
 }

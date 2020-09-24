@@ -61,6 +61,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmMaintainUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainUsers.designer.cs">
+      <DependentUpon>frmMaintainUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintainVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainVehicles.designer.cs">
+      <DependentUpon>frmMaintainVehicles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParcelDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParcelDetails.Designer.cs">
+      <DependentUpon>frmParcelDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmParent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +91,24 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMaintainParcels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainParcels.Designer.cs">
+      <DependentUpon>frmMaintainParcels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchUser.designer.cs">
+      <DependentUpon>frmSearchUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchVehicles.designer.cs">
+      <DependentUpon>frmSearchVehicles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RLine_DatabaseDataSet.Designer.cs">
@@ -80,11 +116,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RLine_DatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmMaintainUsers.resx">
+      <DependentUpon>frmMaintainUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainVehicles.resx">
+      <DependentUpon>frmMaintainVehicles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParcelDetails.resx">
+      <DependentUpon>frmParcelDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmParent.resx">
       <DependentUpon>frmParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainParcels.resx">
+      <DependentUpon>frmMaintainParcels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchUser.resx">
+      <DependentUpon>frmSearchUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchVehicles.resx">
+      <DependentUpon>frmSearchVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
