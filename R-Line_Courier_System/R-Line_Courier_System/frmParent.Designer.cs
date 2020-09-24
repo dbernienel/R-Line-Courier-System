@@ -36,12 +36,14 @@
             this.maintainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allocateParcelsToVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliverParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.parcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +112,16 @@
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.usersToolStripMenuItem.Text = "Users";
             // 
+            // parcelsToolStripMenuItem
+            // 
+            this.parcelsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.parcelsToolStripMenuItem.Name = "parcelsToolStripMenuItem";
+            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.parcelsToolStripMenuItem.Text = "Parcels";
+            this.parcelsToolStripMenuItem.Click += new System.EventHandler(this.parcelsToolStripMenuItem_Click);
+            // 
             // rToolStripMenuItem
             // 
             this.rToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -145,12 +157,19 @@
             this.reportingToolStripMenuItem1.Size = new System.Drawing.Size(167, 26);
             this.reportingToolStripMenuItem1.Text = "Reporting...";
             // 
-            // parcelsToolStripMenuItem
+            // addToolStripMenuItem
             // 
-            this.parcelsToolStripMenuItem.Name = "parcelsToolStripMenuItem";
-            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.parcelsToolStripMenuItem.Text = "Parcels";
-            this.parcelsToolStripMenuItem.Click += new System.EventHandler(this.parcelsToolStripMenuItem_Click);
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteToolStripMenuItem.Text = "View  & Maintain";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmParent
             // 
@@ -160,7 +179,7 @@
             this.ClientSize = new System.Drawing.Size(1479, 727);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmParent";
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -188,6 +207,8 @@
         private System.Windows.Forms.ToolStripMenuItem reportingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportingToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem parcelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
 

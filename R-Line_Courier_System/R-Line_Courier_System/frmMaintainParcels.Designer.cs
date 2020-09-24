@@ -41,13 +41,13 @@
             this.lvParcels.HideSelection = false;
             this.lvParcels.Location = new System.Drawing.Point(69, 77);
             this.lvParcels.Name = "lvParcels";
-            this.lvParcels.Size = new System.Drawing.Size(226, 280);
+            this.lvParcels.Size = new System.Drawing.Size(1154, 533);
             this.lvParcels.TabIndex = 0;
             this.lvParcels.UseCompatibleStateImageBehavior = false;
             // 
             // btnUpdateParcel
             // 
-            this.btnUpdateParcel.Location = new System.Drawing.Point(320, 124);
+            this.btnUpdateParcel.Location = new System.Drawing.Point(835, 622);
             this.btnUpdateParcel.Name = "btnUpdateParcel";
             this.btnUpdateParcel.Size = new System.Drawing.Size(118, 29);
             this.btnUpdateParcel.TabIndex = 2;
@@ -57,7 +57,7 @@
             // 
             // btnDeleteParcel
             // 
-            this.btnDeleteParcel.Location = new System.Drawing.Point(320, 328);
+            this.btnDeleteParcel.Location = new System.Drawing.Point(959, 622);
             this.btnDeleteParcel.Name = "btnDeleteParcel";
             this.btnDeleteParcel.Size = new System.Drawing.Size(118, 29);
             this.btnDeleteParcel.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // btnMoreDetailsParcel
             // 
-            this.btnMoreDetailsParcel.Location = new System.Drawing.Point(69, 364);
+            this.btnMoreDetailsParcel.Location = new System.Drawing.Point(69, 616);
             this.btnMoreDetailsParcel.Name = "btnMoreDetailsParcel";
             this.btnMoreDetailsParcel.Size = new System.Drawing.Size(85, 43);
             this.btnMoreDetailsParcel.TabIndex = 5;
@@ -86,7 +86,7 @@
             // 
             // btnAddNewParcel
             // 
-            this.btnAddNewParcel.Location = new System.Drawing.Point(320, 77);
+            this.btnAddNewParcel.Location = new System.Drawing.Point(711, 624);
             this.btnAddNewParcel.Name = "btnAddNewParcel";
             this.btnAddNewParcel.Size = new System.Drawing.Size(118, 27);
             this.btnAddNewParcel.TabIndex = 6;
@@ -98,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 419);
+            this.ClientSize = new System.Drawing.Size(1311, 733);
             this.Controls.Add(this.btnAddNewParcel);
             this.Controls.Add(this.btnMoreDetailsParcel);
             this.Controls.Add(this.label1);
