@@ -61,6 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmClientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientDetails.Designer.cs">
+      <DependentUpon>frmClientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintainClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainClient.Designer.cs">
+      <DependentUpon>frmMaintainClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMaintainUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RLine_DatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmClientDetails.resx">
+      <DependentUpon>frmClientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainClient.resx">
+      <DependentUpon>frmMaintainClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMaintainUsers.resx">
       <DependentUpon>frmMaintainUsers.cs</DependentUpon>
     </EmbeddedResource>
