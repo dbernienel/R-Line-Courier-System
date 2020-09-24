@@ -196,6 +196,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Name = "frmMaintainUsers";
             this.Text = "frmMaintainUsers";
+            this.Load += new System.EventHandler(this.FrmMaintainUsers_Load);
             this.gbMaintainUsers.ResumeLayout(false);
             this.gbMaintainUsers.PerformLayout();
             this.ResumeLayout(false);

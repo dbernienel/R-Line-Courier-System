@@ -25,6 +25,14 @@ namespace R_Line_Courier_System
             TrySearch("", "");
 
         }
+
+
+        private int _userID;
+        public int userID
+        {
+            get { return _userID; }
+            set { _userID = value; }
+        }
         private void TrySearch(String field, String value)
         {
             cnn = new SqlConnection(connectionString);
@@ -101,7 +109,36 @@ namespace R_Line_Courier_System
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (this.userID > -1)
+                {
+                    string delete_query = "DELETE FROM USERS WHERE User_ID = '" + this.userID + "'";
+                    cnn.Open();
+                    cmd = new SqlCommand(delete_query, cnn);
 
+                    //dialog are you sure
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    MessageBox.Show(this.userID.ToString() + " has been successfully deleted!");
+                    gbSearchUser.Refresh();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void DgViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow dgvRow = dgViewUsers.Rows[e.RowIndex];
+                this.userID = Int32.Parse(dgvRow.Cells[0].Value.ToString());
+
+            }
         }
     }
 }

@@ -124,6 +124,7 @@
             this.dgViewUsers.Name = "dgViewUsers";
             this.dgViewUsers.Size = new System.Drawing.Size(624, 150);
             this.dgViewUsers.TabIndex = 7;
+            this.dgViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgViewUsers_CellClick);
             // 
             // btnUpdate
             // 

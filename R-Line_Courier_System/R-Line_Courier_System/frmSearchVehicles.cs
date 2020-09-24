@@ -21,11 +21,23 @@ namespace R_Line_Courier_System
         public SqlDataReader dataReader;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
+
+        
+        
+
         public frmSearchVehicles()
         {
             InitializeComponent();
             TrySearch("", "");
         }
+
+
+        private int _vehicleID;
+        public int vehicleID
+        {
+            get { return _vehicleID;}
+            set {_vehicleID = value; }
+         }
 
         private void TrySearch(String field, String value)
         {
@@ -33,11 +45,11 @@ namespace R_Line_Courier_System
             var sql = "";
             if ((field == "") || (value == ""))
             {
-                sql = @"Select * FROM VEHiCLES";
+                sql = @"Select * FROM VEHICLES";
             }
             else
             {
-                sql = @"Select * FROM Vehciles WHERE " + field + " LIKE '%" + value + "%'";
+                sql = @"Select * FROM VEHICLES WHERE " + field + " LIKE '%" + value + "%'";
             }
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
@@ -61,6 +73,7 @@ namespace R_Line_Courier_System
                 cnn.Open();
         }
 
+        
         private String GetField()
         {
             if (rbVehicleID.Checked)
@@ -81,15 +94,62 @@ namespace R_Line_Courier_System
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            frmMaintainVehicles Vehcicles = new frmMaintainVehicles();
+            frmMaintainVehicles Vehicles = new frmMaintainVehicles();
             //  frmParent frmParent = Users;
             // Users.MdiParent = frmParent;
-            Vehcicles.ShowDialog();
+            Vehicles.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+              if (this.vehicleID > -1)
+                {
+                    string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + this.vehicleID + "'";
+                    cnn.Open();
+                    cmd = new SqlCommand(delete_query, cnn);
+
+                    //dialog are you sure
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    MessageBox.Show(this.vehicleID.ToString() + " has been successfully deleted!");
+                    gbSearchUser.Refresh();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
             
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setVehicleID(int VehicleID)
+        {
+
+        }
+
+        private void DgVehicles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex !=-1)
+            {
+                DataGridViewRow dgvRow = dgVehicles.Rows[e.RowIndex];
+                this.vehicleID = Int32.Parse(dgvRow.Cells[0].Value.ToString());
+
+                
+            }
+            
+        }
+
+        private void DgVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

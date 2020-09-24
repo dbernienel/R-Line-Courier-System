@@ -91,6 +91,7 @@
             this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "button1";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // btnClear
             // 
@@ -111,6 +112,7 @@
             this.Controls.Add(this.gbMaintainVehicles);
             this.Name = "frmMaintainVehicles";
             this.Text = "frmMaintainVehicles";
+            this.Activated += new System.EventHandler(this.FrmMaintainVehicles_Activated);
             this.gbMaintainVehicles.ResumeLayout(false);
             this.gbMaintainVehicles.PerformLayout();
             this.ResumeLayout(false);

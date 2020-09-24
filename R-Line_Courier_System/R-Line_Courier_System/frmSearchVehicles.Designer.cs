@@ -69,6 +69,7 @@
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // dgVehicles
             // 
@@ -77,6 +78,8 @@
             this.dgVehicles.Name = "dgVehicles";
             this.dgVehicles.Size = new System.Drawing.Size(624, 150);
             this.dgVehicles.TabIndex = 14;
+            this.dgVehicles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_CellClick);
+            this.dgVehicles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_CellContentClick);
             // 
             // lblSearchUser
             // 
