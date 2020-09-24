@@ -89,7 +89,7 @@ namespace R_Line_Courier_System
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            dgVehicles.
+            
         }
     }
 }
