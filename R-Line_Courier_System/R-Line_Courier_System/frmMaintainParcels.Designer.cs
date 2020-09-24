@@ -28,26 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvParcels = new System.Windows.Forms.ListView();
             this.btnUpdateParcel = new System.Windows.Forms.Button();
             this.btnDeleteParcel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMoreDetailsParcel = new System.Windows.Forms.Button();
             this.btnAddNewParcel = new System.Windows.Forms.Button();
+            this.dgvParcels = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParcels)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lvParcels
-            // 
-            this.lvParcels.HideSelection = false;
-            this.lvParcels.Location = new System.Drawing.Point(69, 77);
-            this.lvParcels.Name = "lvParcels";
-            this.lvParcels.Size = new System.Drawing.Size(1154, 533);
-            this.lvParcels.TabIndex = 0;
-            this.lvParcels.UseCompatibleStateImageBehavior = false;
             // 
             // btnUpdateParcel
             // 
-            this.btnUpdateParcel.Location = new System.Drawing.Point(835, 622);
+            this.btnUpdateParcel.Location = new System.Drawing.Point(781, 606);
             this.btnUpdateParcel.Name = "btnUpdateParcel";
             this.btnUpdateParcel.Size = new System.Drawing.Size(118, 29);
             this.btnUpdateParcel.TabIndex = 2;
@@ -57,7 +49,7 @@
             // 
             // btnDeleteParcel
             // 
-            this.btnDeleteParcel.Location = new System.Drawing.Point(959, 622);
+            this.btnDeleteParcel.Location = new System.Drawing.Point(905, 606);
             this.btnDeleteParcel.Name = "btnDeleteParcel";
             this.btnDeleteParcel.Size = new System.Drawing.Size(118, 29);
             this.btnDeleteParcel.TabIndex = 3;
@@ -68,15 +60,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 54);
+            this.label1.Location = new System.Drawing.Point(12, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Parcels";
             // 
             // btnMoreDetailsParcel
             // 
-            this.btnMoreDetailsParcel.Location = new System.Drawing.Point(69, 616);
+            this.btnMoreDetailsParcel.Location = new System.Drawing.Point(58, 608);
             this.btnMoreDetailsParcel.Name = "btnMoreDetailsParcel";
             this.btnMoreDetailsParcel.Size = new System.Drawing.Size(85, 43);
             this.btnMoreDetailsParcel.TabIndex = 5;
@@ -86,7 +78,7 @@
             // 
             // btnAddNewParcel
             // 
-            this.btnAddNewParcel.Location = new System.Drawing.Point(711, 624);
+            this.btnAddNewParcel.Location = new System.Drawing.Point(657, 608);
             this.btnAddNewParcel.Name = "btnAddNewParcel";
             this.btnAddNewParcel.Size = new System.Drawing.Size(118, 27);
             this.btnAddNewParcel.TabIndex = 6;
@@ -94,31 +86,43 @@
             this.btnAddNewParcel.UseVisualStyleBackColor = true;
             this.btnAddNewParcel.Click += new System.EventHandler(this.btnAddNewParcel_Click);
             // 
+            // dgvParcels
+            // 
+            this.dgvParcels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParcels.Location = new System.Drawing.Point(12, 73);
+            this.dgvParcels.Name = "dgvParcels";
+            this.dgvParcels.RowTemplate.Height = 24;
+            this.dgvParcels.Size = new System.Drawing.Size(1017, 507);
+            this.dgvParcels.TabIndex = 7;
+            this.dgvParcels.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParcels_CellContentClick);
+            this.dgvParcels.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParcels_CellContentClick);
+            // 
             // frmMaintainParcels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1311, 733);
+            this.ClientSize = new System.Drawing.Size(1039, 657);
+            this.Controls.Add(this.dgvParcels);
             this.Controls.Add(this.btnAddNewParcel);
             this.Controls.Add(this.btnMoreDetailsParcel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteParcel);
             this.Controls.Add(this.btnUpdateParcel);
-            this.Controls.Add(this.lvParcels);
             this.Name = "frmMaintainParcels";
             this.Text = "Maintain Parcel";
+            this.Load += new System.EventHandler(this.frmMaintainParcels_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParcels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvParcels;
         private System.Windows.Forms.Button btnUpdateParcel;
         private System.Windows.Forms.Button btnDeleteParcel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMoreDetailsParcel;
         private System.Windows.Forms.Button btnAddNewParcel;
+        private System.Windows.Forms.DataGridView dgvParcels;
     }
 }
