@@ -59,31 +59,32 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnApply = new System.Windows.Forms.Button();
+            this.btnAddRecord = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ttDueDate = new System.Windows.Forms.ToolTip(this.components);
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.nudLenght = new System.Windows.Forms.NumericUpDown();
+            this.nudWidth = new System.Windows.Forms.NumericUpDown();
+            this.nudHeight = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.nudWeight = new System.Windows.Forms.NumericUpDown();
+            this.ttDueDate = new System.Windows.Forms.ToolTip(this.components);
             this.label22 = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.gbClientInfo.SuspendLayout();
             this.gbDeliveryInfo.SuspendLayout();
             this.gbDeliveryAdress.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
             this.SuspendLayout();
             // 
             // gbClientInfo
@@ -97,9 +98,9 @@
             this.gbClientInfo.Controls.Add(this.label1);
             this.gbClientInfo.Controls.Add(this.cbCompanyName);
             this.gbClientInfo.Location = new System.Drawing.Point(347, 71);
-            this.gbClientInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbClientInfo.Name = "gbClientInfo";
-            this.gbClientInfo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbClientInfo.Padding = new System.Windows.Forms.Padding(2);
             this.gbClientInfo.Size = new System.Drawing.Size(378, 190);
             this.gbClientInfo.TabIndex = 2;
             this.gbClientInfo.TabStop = false;
@@ -108,7 +109,7 @@
             // tbxClientContactNr
             // 
             this.tbxClientContactNr.Location = new System.Drawing.Point(128, 99);
-            this.tbxClientContactNr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxClientContactNr.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientContactNr.Mask = "(999) 000-0000";
             this.tbxClientContactNr.Name = "tbxClientContactNr";
             this.tbxClientContactNr.Size = new System.Drawing.Size(117, 20);
@@ -117,7 +118,7 @@
             // tbxClientSurname
             // 
             this.tbxClientSurname.Location = new System.Drawing.Point(225, 67);
-            this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientSurname.Name = "tbxClientSurname";
             this.tbxClientSurname.Size = new System.Drawing.Size(140, 20);
             this.tbxClientSurname.TabIndex = 8;
@@ -125,7 +126,7 @@
             // tbxClientName
             // 
             this.tbxClientName.Location = new System.Drawing.Point(82, 67);
-            this.tbxClientName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxClientName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientName.Name = "tbxClientName";
             this.tbxClientName.Size = new System.Drawing.Size(76, 20);
             this.tbxClientName.TabIndex = 7;
@@ -172,9 +173,10 @@
             // 
             // cbCompanyName
             // 
+            this.cbCompanyName.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbCompanyName.FormattingEnabled = true;
             this.cbCompanyName.Location = new System.Drawing.Point(100, 36);
-            this.cbCompanyName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCompanyName.Margin = new System.Windows.Forms.Padding(2);
             this.cbCompanyName.Name = "cbCompanyName";
             this.cbCompanyName.Size = new System.Drawing.Size(202, 21);
             this.cbCompanyName.TabIndex = 6;
@@ -194,9 +196,9 @@
             this.gbDeliveryInfo.Controls.Add(this.label2);
             this.gbDeliveryInfo.Controls.Add(this.label7);
             this.gbDeliveryInfo.Location = new System.Drawing.Point(21, 71);
-            this.gbDeliveryInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbDeliveryInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbDeliveryInfo.Name = "gbDeliveryInfo";
-            this.gbDeliveryInfo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbDeliveryInfo.Padding = new System.Windows.Forms.Padding(2);
             this.gbDeliveryInfo.Size = new System.Drawing.Size(322, 190);
             this.gbDeliveryInfo.TabIndex = 1;
             this.gbDeliveryInfo.TabStop = false;
@@ -204,12 +206,15 @@
             // 
             // cbDeliveryStatus
             // 
+            this.cbDeliveryStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbDeliveryStatus.FormattingEnabled = true;
             this.cbDeliveryStatus.Location = new System.Drawing.Point(95, 162);
-            this.cbDeliveryStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDeliveryStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbDeliveryStatus.Name = "cbDeliveryStatus";
             this.cbDeliveryStatus.Size = new System.Drawing.Size(92, 21);
             this.cbDeliveryStatus.TabIndex = 5;
+            this.cbDeliveryStatus.Text = "--Select--";
+            this.cbDeliveryStatus.SelectedIndexChanged += new System.EventHandler(this.cbDeliveryStatus_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -224,7 +229,7 @@
             // tbxRecipientAltContactNr
             // 
             this.tbxRecipientAltContactNr.Location = new System.Drawing.Point(149, 131);
-            this.tbxRecipientAltContactNr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRecipientAltContactNr.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRecipientAltContactNr.Mask = "(999) 000-0000";
             this.tbxRecipientAltContactNr.Name = "tbxRecipientAltContactNr";
             this.tbxRecipientAltContactNr.Size = new System.Drawing.Size(111, 20);
@@ -244,7 +249,7 @@
             // dateDueDelivery
             // 
             this.dateDueDelivery.Location = new System.Drawing.Point(106, 33);
-            this.dateDueDelivery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateDueDelivery.Margin = new System.Windows.Forms.Padding(2);
             this.dateDueDelivery.Name = "dateDueDelivery";
             this.dateDueDelivery.Size = new System.Drawing.Size(200, 20);
             this.dateDueDelivery.TabIndex = 1;
@@ -263,7 +268,7 @@
             // tbxRecipientContactNr
             // 
             this.tbxRecipientContactNr.Location = new System.Drawing.Point(149, 102);
-            this.tbxRecipientContactNr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRecipientContactNr.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRecipientContactNr.Mask = "(999) 000-0000";
             this.tbxRecipientContactNr.Name = "tbxRecipientContactNr";
             this.tbxRecipientContactNr.Size = new System.Drawing.Size(111, 20);
@@ -273,7 +278,7 @@
             // tbxRecepientName
             // 
             this.tbxRecepientName.Location = new System.Drawing.Point(106, 64);
-            this.tbxRecepientName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxRecepientName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxRecepientName.Name = "tbxRecepientName";
             this.tbxRecepientName.Size = new System.Drawing.Size(76, 20);
             this.tbxRecepientName.TabIndex = 2;
@@ -310,9 +315,9 @@
             this.gbDeliveryAdress.Controls.Add(this.label10);
             this.gbDeliveryAdress.Controls.Add(this.label8);
             this.gbDeliveryAdress.Location = new System.Drawing.Point(21, 265);
-            this.gbDeliveryAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbDeliveryAdress.Margin = new System.Windows.Forms.Padding(2);
             this.gbDeliveryAdress.Name = "gbDeliveryAdress";
-            this.gbDeliveryAdress.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbDeliveryAdress.Padding = new System.Windows.Forms.Padding(2);
             this.gbDeliveryAdress.Size = new System.Drawing.Size(322, 124);
             this.gbDeliveryAdress.TabIndex = 3;
             this.gbDeliveryAdress.TabStop = false;
@@ -321,7 +326,7 @@
             // tbxStreetNumber
             // 
             this.tbxStreetNumber.Location = new System.Drawing.Point(18, 50);
-            this.tbxStreetNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxStreetNumber.Margin = new System.Windows.Forms.Padding(2);
             this.tbxStreetNumber.Name = "tbxStreetNumber";
             this.tbxStreetNumber.Size = new System.Drawing.Size(40, 20);
             this.tbxStreetNumber.TabIndex = 10;
@@ -330,7 +335,7 @@
             // tbxStreetName
             // 
             this.tbxStreetName.Location = new System.Drawing.Point(106, 49);
-            this.tbxStreetName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxStreetName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxStreetName.Name = "tbxStreetName";
             this.tbxStreetName.Size = new System.Drawing.Size(76, 20);
             this.tbxStreetName.TabIndex = 11;
@@ -339,7 +344,7 @@
             // tbxBuildingName
             // 
             this.tbxBuildingName.Location = new System.Drawing.Point(16, 94);
-            this.tbxBuildingName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxBuildingName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxBuildingName.Name = "tbxBuildingName";
             this.tbxBuildingName.Size = new System.Drawing.Size(76, 20);
             this.tbxBuildingName.TabIndex = 13;
@@ -359,7 +364,7 @@
             // 
             this.cbPostalCode.FormattingEnabled = true;
             this.cbPostalCode.Location = new System.Drawing.Point(202, 47);
-            this.cbPostalCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPostalCode.Margin = new System.Windows.Forms.Padding(2);
             this.cbPostalCode.Name = "cbPostalCode";
             this.cbPostalCode.Size = new System.Drawing.Size(92, 21);
             this.cbPostalCode.TabIndex = 12;
@@ -398,7 +403,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(645, 402);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 31);
             this.btnCancel.TabIndex = 21;
@@ -406,21 +411,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnApply
+            // btnAddRecord
             // 
-            this.btnApply.Location = new System.Drawing.Point(453, 402);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(68, 31);
-            this.btnApply.TabIndex = 18;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.btnAddRecord.Location = new System.Drawing.Point(357, 402);
+            this.btnAddRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddRecord.Name = "btnAddRecord";
+            this.btnAddRecord.Size = new System.Drawing.Size(68, 31);
+            this.btnAddRecord.TabIndex = 18;
+            this.btnAddRecord.Text = "Add record";
+            this.btnAddRecord.UseVisualStyleBackColor = true;
+            this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
             // 
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(550, 402);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(68, 31);
             this.btnClear.TabIndex = 19;
@@ -436,18 +441,139 @@
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.numericUpDown4);
-            this.groupBox1.Controls.Add(this.numericUpDown3);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.nudLenght);
+            this.groupBox1.Controls.Add(this.nudWidth);
+            this.groupBox1.Controls.Add(this.nudHeight);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nudWeight);
             this.groupBox1.Location = new System.Drawing.Point(348, 266);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(377, 123);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parcel dimentions";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(132, 92);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(23, 13);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "mm";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(300, 51);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(23, 13);
+            this.label20.TabIndex = 10;
+            this.label20.Text = "mm";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(300, 92);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(23, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "mm";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 70);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(69, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Parcel length";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(174, 25);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(66, 13);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "Oracel width";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(174, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 13);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Parcel height";
+            // 
+            // nudLenght
+            // 
+            this.nudLenght.Location = new System.Drawing.Point(6, 85);
+            this.nudLenght.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudLenght.Name = "nudLenght";
+            this.nudLenght.Size = new System.Drawing.Size(120, 20);
+            this.nudLenght.TabIndex = 16;
+            // 
+            // nudWidth
+            // 
+            this.nudWidth.Location = new System.Drawing.Point(174, 41);
+            this.nudWidth.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudWidth.Name = "nudWidth";
+            this.nudWidth.Size = new System.Drawing.Size(120, 20);
+            this.nudWidth.TabIndex = 15;
+            // 
+            // nudHeight
+            // 
+            this.nudHeight.Location = new System.Drawing.Point(174, 85);
+            this.nudHeight.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudHeight.Name = "nudHeight";
+            this.nudHeight.Size = new System.Drawing.Size(120, 20);
+            this.nudHeight.TabIndex = 17;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(132, 48);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(19, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "kg";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 13);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Parcel weight";
+            // 
+            // nudWeight
+            // 
+            this.nudWeight.DecimalPlaces = 4;
+            this.nudWeight.Location = new System.Drawing.Point(6, 41);
+            this.nudWeight.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudWeight.Name = "nudWeight";
+            this.nudWeight.Size = new System.Drawing.Size(120, 20);
+            this.nudWeight.TabIndex = 14;
             // 
             // ttDueDate
             // 
@@ -460,127 +586,6 @@
             this.ttDueDate.UseFading = false;
             this.ttDueDate.Popup += new System.Windows.Forms.PopupEventHandler(this.ttDueDate_Popup);
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 41);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 14;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 25);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Parcel weight";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(132, 48);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(13, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "g";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(174, 85);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 17;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(174, 41);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 15;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Location = new System.Drawing.Point(6, 85);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 16;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(174, 71);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 13);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "Parcel height";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(174, 25);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 13);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "Oracel width";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 70);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 13);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Parcel length";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(300, 92);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(23, 13);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "mm";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(300, 51);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(23, 13);
-            this.label20.TabIndex = 10;
-            this.label20.Text = "mm";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(132, 92);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(23, 13);
-            this.label21.TabIndex = 11;
-            this.label21.Text = "mm";
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -590,20 +595,31 @@
             this.label22.TabIndex = 22;
             this.label22.Text = "Required fields are marked with *";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(447, 402);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 31);
+            this.btnUpdate.TabIndex = 23;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmParcelDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 445);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.btnAddRecord);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbDeliveryInfo);
             this.Controls.Add(this.gbClientInfo);
             this.Controls.Add(this.gbDeliveryAdress);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmParcelDetails";
             this.Text = "Parcel Details";
             this.Load += new System.EventHandler(this.frmParcelDetails_Load);
@@ -615,10 +631,10 @@
             this.gbDeliveryAdress.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,23 +671,24 @@
         private System.Windows.Forms.ComboBox cbDeliveryStatus;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.Button btnAddRecord;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox tbxStreetNumber;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolTip ttDueDate;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudWeight;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nudLenght;
+        private System.Windows.Forms.NumericUpDown nudWidth;
+        private System.Windows.Forms.NumericUpDown nudHeight;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

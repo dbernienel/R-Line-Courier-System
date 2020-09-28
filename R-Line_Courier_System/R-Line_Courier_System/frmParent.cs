@@ -39,6 +39,7 @@ namespace R_Line_Courier_System
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmParcelDetails details = new frmParcelDetails();
+            details.disableButton(true);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
@@ -52,36 +53,9 @@ namespace R_Line_Courier_System
             parcel.Show();
         }
 
-        private void MaintainVehicleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frmParent_Load(object sender, EventArgs e)
         {
-            frmSearchVehicles searchVehicle = new frmSearchVehicles();
-            frmParent parent = this;
-            searchVehicle.MdiParent = parent;
-            searchVehicle.Show();
-        }
 
-        private void AddNewVehicleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMaintainVehicles vehicle = new frmMaintainVehicles();
-            frmParent parent = this;
-            vehicle.MdiParent = parent;
-            vehicle.Show();
-        }
-
-        private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMaintainUsers users = new frmMaintainUsers();
-            frmParent parent = this;
-            users.MdiParent = parent;
-            users.Show();
-        }
-
-        private void MaintainUserToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSearchUser searchUsers = new frmSearchUser();
-            frmParent parent = this;
-            searchUsers.MdiParent = parent;
-            searchUsers.Show();
         }
     }
 }

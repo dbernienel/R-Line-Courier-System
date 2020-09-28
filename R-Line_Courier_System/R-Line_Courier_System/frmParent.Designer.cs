@@ -44,11 +44,6 @@
             this.deliverParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maintainUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maintainVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,8 +96,7 @@
             this.maintainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientsToolStripMenuItem,
             this.usersToolStripMenuItem,
-            this.parcelsToolStripMenuItem,
-            this.vehiclesToolStripMenuItem});
+            this.parcelsToolStripMenuItem});
             this.maintainToolStripMenuItem.Name = "maintainToolStripMenuItem";
             this.maintainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.maintainToolStripMenuItem.Text = "Maintain";
@@ -110,16 +104,13 @@
             // clientsToolStripMenuItem
             // 
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
-            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.clientsToolStripMenuItem.Text = "Clients";
             // 
             // usersToolStripMenuItem
             // 
-            this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewUserToolStripMenuItem,
-            this.maintainUserToolStripMenuItem});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // parcelsToolStripMenuItem
@@ -128,21 +119,21 @@
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.parcelsToolStripMenuItem.Name = "parcelsToolStripMenuItem";
-            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.parcelsToolStripMenuItem.Text = "Parcels";
             this.parcelsToolStripMenuItem.Click += new System.EventHandler(this.parcelsToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteToolStripMenuItem.Text = "View  & Maintain";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -181,43 +172,6 @@
             this.reportingToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.reportingToolStripMenuItem1.Text = "Reporting...";
             // 
-            // addNewUserToolStripMenuItem
-            // 
-            this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
-            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addNewUserToolStripMenuItem.Text = "Add new user";
-            this.addNewUserToolStripMenuItem.Click += new System.EventHandler(this.AddNewUserToolStripMenuItem_Click);
-            // 
-            // maintainUserToolStripMenuItem
-            // 
-            this.maintainUserToolStripMenuItem.Name = "maintainUserToolStripMenuItem";
-            this.maintainUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.maintainUserToolStripMenuItem.Text = "Maintain user";
-            this.maintainUserToolStripMenuItem.Click += new System.EventHandler(this.MaintainUserToolStripMenuItem_Click);
-            // 
-            // vehiclesToolStripMenuItem
-            // 
-            this.vehiclesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewVehicleToolStripMenuItem,
-            this.maintainVehicleToolStripMenuItem});
-            this.vehiclesToolStripMenuItem.Name = "vehiclesToolStripMenuItem";
-            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.vehiclesToolStripMenuItem.Text = "Vehicles";
-            // 
-            // addNewVehicleToolStripMenuItem
-            // 
-            this.addNewVehicleToolStripMenuItem.Name = "addNewVehicleToolStripMenuItem";
-            this.addNewVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addNewVehicleToolStripMenuItem.Text = "Add new vehicle";
-            this.addNewVehicleToolStripMenuItem.Click += new System.EventHandler(this.AddNewVehicleToolStripMenuItem_Click);
-            // 
-            // maintainVehicleToolStripMenuItem
-            // 
-            this.maintainVehicleToolStripMenuItem.Name = "maintainVehicleToolStripMenuItem";
-            this.maintainVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.maintainVehicleToolStripMenuItem.Text = "Maintain vehicle";
-            this.maintainVehicleToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehicleToolStripMenuItem_Click);
-            // 
             // frmParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +184,7 @@
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.FrmParent_Activated);
+            this.Load += new System.EventHandler(this.frmParent_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -255,11 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem parcelsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem maintainUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vehiclesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewVehicleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem maintainVehicleToolStripMenuItem;
     }
 }
 
