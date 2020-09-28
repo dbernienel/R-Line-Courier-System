@@ -118,6 +118,10 @@ namespace R_Line_Courier_System
 
             con.Open();
             cmd.ExecuteNonQuery();
+
+            frmMaintainParcels maintain = new frmMaintainParcels();
+            maintain.refreshDGV();
+
             con.Close();
         }
 
@@ -222,6 +226,9 @@ namespace R_Line_Courier_System
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+
+            
+            //maintain.refreshDGV();
 
             btnAddRecord.Enabled = true;
             btnUpdate.Enabled = false;

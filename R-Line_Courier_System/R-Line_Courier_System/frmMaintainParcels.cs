@@ -30,7 +30,9 @@ namespace R_Line_Courier_System
         {
             frmParcelDetails details = new frmParcelDetails();
             details.disableButton(true);
-            details.ShowDialog();
+            details.Show();
+
+            con.Close();
         }
 
         private void btnUpdateParcel_Click(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace R_Line_Courier_System
             details.Show();
 
             //to do: fill frmParcelDetails fields with selected data entry
-            
+
         }
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)
@@ -54,10 +56,7 @@ namespace R_Line_Courier_System
             SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID="+ dgvParcels.SelectedCells[0].Value.ToString(), con);
             cmd.ExecuteNonQuery();
 
-            sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
-            ds = new DataSet();
-            sd.Fill(ds, "PARCELS");
-            dgvParcels.DataSource = ds.Tables[0];
+            refreshDGV();
 
             con.Close();
 
@@ -70,19 +69,21 @@ namespace R_Line_Courier_System
 
         private void frmMaintainParcels_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(conString);
-
-            con.Open();
-            sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
-            ds = new DataSet();
-            sd.Fill(ds, "PARCELS");
-            dgvParcels.DataSource = ds.Tables[0];
-            con.Close();
+            refreshDGV();
         }
 
         private void dgvParcels_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void refreshDGV() {
+            con = new SqlConnection(conString);
+            con.Open();
+            sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
+            ds = new DataSet();
+            sd.Fill(ds, "PARCELS");
+            dgvParcels.DataSource = ds.Tables[0];
         }
     }
 }

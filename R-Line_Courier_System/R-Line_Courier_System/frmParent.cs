@@ -52,5 +52,10 @@ namespace R_Line_Courier_System
             parcel.MdiParent = parent;
             parcel.Show();
         }
+
+        private void frmParent_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
