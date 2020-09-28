@@ -39,6 +39,7 @@ namespace R_Line_Courier_System
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmParcelDetails details = new frmParcelDetails();
+            details.disableButton(true);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();

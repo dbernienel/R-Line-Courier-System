@@ -17,6 +17,9 @@ namespace R_Line_Courier_System
         public SqlConnection con;
         public SqlDataAdapter sd;
         public DataSet ds;
+        public DataTable dt;
+        private String conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
+
 
         public frmMaintainParcels()
         {
@@ -26,21 +29,25 @@ namespace R_Line_Courier_System
         private void btnAddNewParcel_Click(object sender, EventArgs e)
         {
             frmParcelDetails details = new frmParcelDetails();
+            details.disableButton(true);
             details.ShowDialog();
         }
 
         private void btnUpdateParcel_Click(object sender, EventArgs e)
         {
             frmParcelDetails details = new frmParcelDetails();
-            details.ShowDialog();
+            details.setParcelID(dgvParcels.SelectedCells[0].Value.ToString());
+            details.autoFillForm();
+            details.disableButton(false);
+            details.Show();
+
             //to do: fill frmParcelDetails fields with selected data entry
+            
         }
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dgvParcels.SelectedCells[0].Value.ToString());
 
-            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
             con = new SqlConnection(conString);
 
             con.Open();
@@ -63,7 +70,6 @@ namespace R_Line_Courier_System
 
         private void frmMaintainParcels_Load(object sender, EventArgs e)
         {
-            string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
             con = new SqlConnection(conString);
 
             con.Open();
