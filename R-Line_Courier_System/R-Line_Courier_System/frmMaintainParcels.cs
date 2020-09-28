@@ -13,6 +13,11 @@ namespace R_Line_Courier_System
 {
     public partial class frmMaintainParcels : Form
     {
+
+        public SqlConnection con;
+        public SqlDataAdapter sd;
+        public DataSet ds;
+
         public frmMaintainParcels()
         {
             InitializeComponent();
@@ -36,11 +41,17 @@ namespace R_Line_Courier_System
             MessageBox.Show(dgvParcels.SelectedCells[0].Value.ToString());
 
             string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(conString);
+            con = new SqlConnection(conString);
 
             con.Open();
             SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID="+ dgvParcels.SelectedCells[0].Value.ToString(), con);
             cmd.ExecuteNonQuery();
+
+            sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
+            ds = new DataSet();
+            sd.Fill(ds, "PARCELS");
+            dgvParcels.DataSource = ds.Tables[0];
+
             con.Close();
 
         }
@@ -53,11 +64,11 @@ namespace R_Line_Courier_System
         private void frmMaintainParcels_Load(object sender, EventArgs e)
         {
             string conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
-            SqlConnection con = new SqlConnection(conString);
+            con = new SqlConnection(conString);
 
             con.Open();
-            SqlDataAdapter sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
-            DataSet ds = new DataSet();
+            sd = new SqlDataAdapter("SELECT * FROM PARCELS", con);
+            ds = new DataSet();
             sd.Fill(ds, "PARCELS");
             dgvParcels.DataSource = ds.Tables[0];
             con.Close();
