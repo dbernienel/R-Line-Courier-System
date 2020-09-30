@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace R_Line_Courier_System
 {
@@ -15,10 +9,12 @@ namespace R_Line_Courier_System
     {
         private String conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
         private String parcelID;
+        private frmMaintainParcels maintain;
 
-        public frmParcelDetails()
+        public frmParcelDetails(frmMaintainParcels maintain)
         {
             InitializeComponent();
+            this.maintain = maintain;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -119,8 +115,7 @@ namespace R_Line_Courier_System
             con.Open();
             cmd.ExecuteNonQuery();
 
-            frmMaintainParcels maintain = new frmMaintainParcels();
-            maintain.refreshDGV();
+            maintain.dateCheck();
 
             con.Close();
         }
@@ -158,12 +153,18 @@ namespace R_Line_Courier_System
                 tbxStreetNumber.Text = dr.GetValue(7).ToString();
                 tbxStreetName.Text = dr.GetValue(8).ToString();
                 tbxBuildingName.Text = dr.GetValue(9).ToString();
-                //postal code
+                cbPostalCode.SelectedItem = dr.GetValue(10);
+                cbDeliveryStatus.SelectedItem = dr.GetValue(1);
                 tbxRecepientName.Text = dr.GetValue(15).ToString();
                 tbxRecipientContactNr.Text = dr.GetValue(11).ToString();
                 tbxRecipientAltContactNr.Text = dr.GetValue(12).ToString();
-                //Company name
-                //weight
+                cbCompanyName.SelectedItem = dr.GetValue(17);
+                nudWeight.Value = int.Parse(dr.GetValue(3).ToString());
+                nudLenght.Value = int.Parse(dr.GetValue(4).ToString());
+                nudWidth.Value = int.Parse(dr.GetValue(5).ToString());
+                nudHeight.Value = int.Parse(dr.GetValue(6).ToString());
+                dateDueDelivery.Value = (DateTime)dr.GetValue(13);
+                //tbDelivered.SelectedItem = dr.GetValue(14);
             }
             con.Close();
         }
@@ -227,13 +228,13 @@ namespace R_Line_Courier_System
             cmd.ExecuteNonQuery();
             con.Close();
 
-            
-            //maintain.refreshDGV();
+            maintain.dateCheck();
 
             btnAddRecord.Enabled = true;
             btnUpdate.Enabled = false;
+            this.Close();
 
-            ClearForm();
+            //ClearForm();
 
         }
 
@@ -241,5 +242,6 @@ namespace R_Line_Courier_System
         {
             cbDeliveryStatus.ForeColor = System.Drawing.Color.Black;
         }
+
     }
 }

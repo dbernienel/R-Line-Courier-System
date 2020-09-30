@@ -12,6 +12,8 @@ namespace R_Line_Courier_System
 {
     public partial class frmParent : Form
     {
+        private frmMaintainParcels maintain;
+
         public frmParent()
         {
             InitializeComponent();
@@ -38,19 +40,20 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmParcelDetails details = new frmParcelDetails();
-            details.disableButton(true);
+            maintain = new frmMaintainParcels();
             frmParent parent = this;
+            frmParcelDetails details = new frmParcelDetails(maintain);
+            details.disableButton(true);
             details.MdiParent = parent;
             details.Show();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainParcels parcel = new frmMaintainParcels();
+            maintain = new frmMaintainParcels();
             frmParent parent = this;
-            parcel.MdiParent = parent;
-            parcel.Show();
+            maintain.MdiParent = parent;
+            maintain.Show();
         }
 
         private void frmParent_Load(object sender, EventArgs e)
