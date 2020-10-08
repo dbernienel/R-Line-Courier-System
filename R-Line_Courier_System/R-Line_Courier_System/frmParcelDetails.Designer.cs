@@ -173,14 +173,13 @@
             // 
             // cbCompanyName
             // 
-            this.cbCompanyName.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.cbCompanyName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbCompanyName.FormattingEnabled = true;
             this.cbCompanyName.Location = new System.Drawing.Point(100, 36);
             this.cbCompanyName.Margin = new System.Windows.Forms.Padding(2);
             this.cbCompanyName.Name = "cbCompanyName";
             this.cbCompanyName.Size = new System.Drawing.Size(202, 21);
             this.cbCompanyName.TabIndex = 6;
-            this.cbCompanyName.Text = "--Select--";
             this.cbCompanyName.SelectedIndexChanged += new System.EventHandler(this.cbCompanyName_SelectedIndexChanged);
             // 
             // gbDeliveryInfo

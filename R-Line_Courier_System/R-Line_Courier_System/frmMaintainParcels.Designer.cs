@@ -131,6 +131,7 @@
             this.dateTo.Name = "dateTo";
             this.dateTo.Size = new System.Drawing.Size(200, 20);
             this.dateTo.TabIndex = 7;
+            this.dateTo.Value = new System.DateTime(2021, 12, 31, 0, 0, 0, 0);
             this.dateTo.ValueChanged += new System.EventHandler(this.dateTo_ValueChanged);
             // 
             // label2
