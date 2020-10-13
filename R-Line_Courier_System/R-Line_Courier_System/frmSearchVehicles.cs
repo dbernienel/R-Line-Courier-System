@@ -23,8 +23,8 @@ namespace R_Line_Courier_System
         public SqlCommand cmd;
         int rowIndex;
 
-        
-        
+
+
 
         public frmSearchVehicles()
         {
@@ -69,7 +69,7 @@ namespace R_Line_Courier_System
                 cnn.Open();
         }
 
-        
+
         private String GetField()
         {
             if (rbVehicleID.Checked)
@@ -102,7 +102,7 @@ namespace R_Line_Courier_System
             int vehicleID = Int32.Parse(dgVehicles.Rows[rowIndex].Cells[0].Value.ToString());
             try
             {
-              if (vehicleID > -1)
+                if (vehicleID > -1)
                 {
                     string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
                     cnn.Open();
@@ -120,7 +120,7 @@ namespace R_Line_Courier_System
             {
                 MessageBox.Show(err.Message);
             }
-            
+
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -142,14 +142,14 @@ namespace R_Line_Courier_System
 
         private void DgVehicles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex !=-1)
+            if (e.RowIndex != -1)
             {
                 DataGridViewRow dgvRow = dgVehicles.Rows[e.RowIndex];
-               
 
-                
+
+
             }
-            
+
         }
 
         private void DgVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)

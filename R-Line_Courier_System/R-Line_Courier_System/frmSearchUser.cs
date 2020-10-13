@@ -37,9 +37,9 @@ namespace R_Line_Courier_System
             {
                 sql = @"Select * FROM USERS";
             }
-            else 
+            else
             {
-                sql = @"Select * FROM USERS WHERE "+ field +" LIKE '%"+ value+ "%'";
+                sql = @"Select * FROM USERS WHERE " + field + " LIKE '%" + value + "%'";
             }
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
@@ -67,10 +67,10 @@ namespace R_Line_Courier_System
         private void BtnSelectUser_Click(object sender, EventArgs e)
         {
             frmMaintainUsers maintainUsers = new frmMaintainUsers();
-           
+
             maintainUsers.setUserID(dgViewUsers.Rows[rowIndex].Cells[0].Value.ToString());
             maintainUsers.setMode("update");
-         // MessageBox.Show((dgViewUsers.Rows[rowIndex].Cells[3].Value.ToString()));
+            // MessageBox.Show((dgViewUsers.Rows[rowIndex].Cells[3].Value.ToString()));
             maintainUsers.setName(dgViewUsers.Rows[rowIndex].Cells[1].Value.ToString());
             maintainUsers.setSurname(dgViewUsers.Rows[rowIndex].Cells[2].Value.ToString());
             maintainUsers.setUsername(dgViewUsers.Rows[rowIndex].Cells[4].Value.ToString());
@@ -109,8 +109,8 @@ namespace R_Line_Courier_System
         {
             frmMaintainUsers users = new frmMaintainUsers();
             users.setMode("add");
-          //  frmParent frmParent = Users;
-           // Users.MdiParent = frmParent;
+            //  frmParent frmParent = Users;
+            // Users.MdiParent = frmParent;
             users.ShowDialog();
         }
 
@@ -139,7 +139,7 @@ namespace R_Line_Courier_System
             {
                 MessageBox.Show(err.Message);
             }
-            TrySearch("","");
+            TrySearch("", "");
         }
 
         private void DgViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -147,7 +147,7 @@ namespace R_Line_Courier_System
             if (e.RowIndex != -1)
             {
                 DataGridViewRow dgvRow = dgViewUsers.Rows[e.RowIndex];
-                
+
 
             }
         }
@@ -155,6 +155,11 @@ namespace R_Line_Courier_System
         private void DgViewUsers_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             rowIndex = e.RowIndex;
+        }
+
+        private void DgViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

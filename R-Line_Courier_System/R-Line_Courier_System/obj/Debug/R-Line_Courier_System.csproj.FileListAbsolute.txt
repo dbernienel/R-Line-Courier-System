@@ -19,3 +19,24 @@ C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Li
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csprojAssemblyReference.cache
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmClientDetails.resources
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainClient.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csprojAssemblyReference.cache
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmClientDetails.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainClient.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainUsers.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainVehicles.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmParcelDetails.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmParent.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmLogin.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainParcels.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmSearchUser.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmSearchVehicles.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.Properties.Resources.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csproj.GenerateResource.cache
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csproj.CoreCompileInputs.cache
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.exe
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.pdb
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\bin\Debug\RLine_Database.mdf
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\bin\Debug\RLine_Database_log.ldf
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\bin\Debug\R-Line_Courier_System.exe.config
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\bin\Debug\R-Line_Courier_System.exe
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\bin\Debug\R-Line_Courier_System.pdb

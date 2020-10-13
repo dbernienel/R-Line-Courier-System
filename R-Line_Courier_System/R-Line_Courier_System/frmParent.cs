@@ -38,7 +38,8 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmParcelDetails details = new frmParcelDetails();
+            frmMaintainParcels parcels = new frmMaintainParcels();
+            frmParcelDetails details = new frmParcelDetails(parcels);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
@@ -86,6 +87,46 @@ namespace R_Line_Courier_System
             frmParent parent = this;
             searchUsers.MdiParent = parent;
             searchUsers.Show();
+        }
+
+        private void AddToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //add new user
+            frmMaintainUsers users = new frmMaintainUsers();
+            frmParent parent = this;
+            users.setMode("add");
+            users.clearForm();
+            users.MdiParent = parent;
+            users.Show();
+        }
+
+        private void MaintainToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //maintain user
+            frmSearchUser searchUsers = new frmSearchUser();
+            frmParent parent = this;
+            searchUsers.MdiParent = parent;
+            searchUsers.Show();
+        }
+
+        private void AddVehicleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //add vehicle
+            frmMaintainVehicles vehicle = new frmMaintainVehicles();
+            frmParent parent = this;
+            vehicle.setMode("add");
+            vehicle.clearForm();
+            vehicle.MdiParent = parent;
+            vehicle.Show();
+        }
+
+        private void MaintainVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                        //maintain vehicle
+            frmSearchVehicles searchVehicle = new frmSearchVehicles();
+            frmParent parent = this;
+            searchVehicle.MdiParent = parent;
+            searchVehicle.Show();
         }
     }
 }

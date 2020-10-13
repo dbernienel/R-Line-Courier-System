@@ -14,7 +14,7 @@ namespace R_Line_Courier_System
     public partial class frmMaintainVehicles : Form
     {
 
-                //public variables
+        //public variables
         public SqlConnection cnn;
         public SqlDataReader dataReader;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
@@ -110,13 +110,13 @@ namespace R_Line_Courier_System
                 cmd.Dispose();
                 cnn.Close();
             }
-       }
+        }
 
 
         private void FrmMaintainVehicles_Activated(object sender, EventArgs e)
         {
-           // txtID.Clear();
-           // txtRegNo.Clear();
+            // txtID.Clear();
+            // txtRegNo.Clear();
             //update mode
             if (mode == "update")
             {
@@ -124,8 +124,8 @@ namespace R_Line_Courier_System
                 txtID.Enabled = false;
                 lblVehicleID.Show();
                 txtID.Show();
-               
-             }
+
+            }
 
             if (mode == "add")
             {

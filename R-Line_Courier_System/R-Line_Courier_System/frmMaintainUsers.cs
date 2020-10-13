@@ -99,8 +99,8 @@ namespace R_Line_Courier_System
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             frmSearchUser SearchUser = new frmSearchUser();
-           // frmParent frmParent = this;
-           // SearchUser.MdiParent = frmParent;
+            // frmParent frmParent = this;
+            // SearchUser.MdiParent = frmParent;
             SearchUser.ShowDialog();
         }
 
@@ -140,7 +140,7 @@ namespace R_Line_Courier_System
                 try
                 {
                     int Id = Int32.Parse(txtUserID.Text);
-                    string sql = "UPDATE USERS SET User_Name ='" +txtUser_Name.Text + "' , User_Surname = '" +   txtUser_Surname.Text +  "' , Username ='"+ txtUserName.Text + "', Password ='"+ txtPassword.Text + "', Admin_Privileges ="+ admin + " WHERE User_ID= "+Id;
+                    string sql = "UPDATE USERS SET User_Name ='" + txtUser_Name.Text + "' , User_Surname = '" + txtUser_Surname.Text + "' , Username ='" + txtUserName.Text + "', Password ='" + txtPassword.Text + "', Admin_Privileges =" + admin + " WHERE User_ID= " + Id;
                     MessageBox.Show(sql);
                     cnn = new SqlConnection(connectionString);
                     cnn.Open();
@@ -167,26 +167,26 @@ namespace R_Line_Courier_System
 
         private void FrmMaintainUsers_Load(object sender, EventArgs e)
         {
-            
-            
-                 //update mode
-                if (mode == "update")
-                {
 
-                    txtUserID.Enabled = false;
-                    lblUserID.Show();
-                    txtUserID.Show();
-                    
-                }
 
-                if (mode == "add")
-                {
-                    lblUserID.Hide();
-                    txtUserID.Hide();
-                }
+            //update mode
+            if (mode == "update")
+            {
 
+                txtUserID.Enabled = false;
+                lblUserID.Show();
+                txtUserID.Show();
 
             }
+
+            if (mode == "add")
+            {
+                lblUserID.Hide();
+                txtUserID.Hide();
+            }
+
+
+        }
 
         private void CbUserAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
