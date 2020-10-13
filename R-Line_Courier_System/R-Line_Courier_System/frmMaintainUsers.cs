@@ -32,6 +32,69 @@ namespace R_Line_Courier_System
             if (cnn != null && cnn.State == ConnectionState.Closed)
                 cnn.Open();
         }
+        public void setMode(string smode)
+        {
+            mode = smode;
+            if (mode == "update")
+            {
+                btnSubmit.Text = "Update";
+            }
+            else
+            {
+                btnSubmit.Text = "Submit";
+            }
+
+        }
+        public void setUserID(string ID)
+        {
+            txtUserID.Text = ID;
+        }
+        public void setName(string name)
+        {
+            txtUser_Name.Text = name;
+        }
+
+        public void setSurname(string surname)
+        {
+            txtUser_Surname.Text = surname;
+        }
+
+        public void setUsername(string username)
+        {
+            txtUserName.Text = username;
+        }
+
+        public void setPassword(string password)
+        {
+            txtPassword.Text = password;
+        }
+
+        public void setAdminP(string admin)
+        {
+            if (admin == "False")
+            {
+                cbUserAdmin.SelectedIndex = 0;
+                cbUserAdmin.SelectedItem = 0;
+            }
+            else
+            {
+                cbUserAdmin.SelectedItem = 1;
+                cbUserAdmin.SelectedItem = 1;
+            }
+        }
+
+        public void clearForm()
+        {
+            txtPassword.Clear();
+            txtUserID.Clear();
+            txtUserName.Clear();
+            txtUser_Name.Clear();
+            txtUser_Surname.Clear();
+            cbUserAdmin.SelectedIndex = -1;
+
+        }
+
+
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
@@ -43,14 +106,11 @@ namespace R_Line_Courier_System
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (mode == "new")
+            if (mode == "add")
             {
                 int admin = 0;
                 if (cbUserAdmin.SelectedIndex != -1)
                     admin = cbUserAdmin.SelectedIndex;
-
-                //  var sql = "INSERT INTO USERS (User_Name, User_Surname, Username, Password, Admin_Privileges) VALUES ('"+txtUser_Name.Text+"' , '"+ txtUser_Surname.Text + "' , '"+ txtUserName.Text + "' , '"+ txtUser_Surname.Text + "' ," +admin+ ")";
-                //  OpenConnection();
 
                 try
                 {
@@ -58,16 +118,37 @@ namespace R_Line_Courier_System
                     cnn = new SqlConnection(connectionString);
                     cnn.Open();
                     cmd = new SqlCommand(sql, cnn);
-                    //  cmd.Parameters.AddWithValue("@User_Name", txtUser_Name.Text);
-                    //  cmd.Parameters.AddWithValue("@User_Surname", txtUser_Surname.Text);
-                    //   cmd.Parameters.AddWithValue("@Username", txtUserName.Text);
-                    //   cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                    //   cmd.Parameters.AddWithValue("@Admin_Privileges", admin);
-
                     cmd.ExecuteNonQuery();
                     cnn.Close();
+                    MessageBox.Show("User successfully added");
+                    clearForm();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
 
+                cmd.Dispose();
+                cnn.Close();
+            }
+            else if (mode == "update")
+            {
+                int admin = 0;
+                if (cbUserAdmin.SelectedIndex != -1)
+                    admin = cbUserAdmin.SelectedIndex;
 
+                try
+                {
+                    int Id = Int32.Parse(txtUserID.Text);
+                    string sql = "UPDATE USERS SET User_Name ='" +txtUser_Name.Text + "' , User_Surname = '" +   txtUser_Surname.Text +  "' , Username ='"+ txtUserName.Text + "', Password ='"+ txtPassword.Text + "', Admin_Privileges ="+ admin + " WHERE User_ID= "+Id;
+                    MessageBox.Show(sql);
+                    cnn = new SqlConnection(connectionString);
+                    cnn.Open();
+                    cmd = new SqlCommand(sql, cnn);
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    MessageBox.Show("User Successfully updated");
+                    clearForm();
                 }
                 catch (Exception err)
                 {
@@ -86,7 +167,7 @@ namespace R_Line_Courier_System
 
         private void FrmMaintainUsers_Load(object sender, EventArgs e)
         {
-            mode = "add";
+            
             
                  //update mode
                 if (mode == "update")
@@ -95,23 +176,10 @@ namespace R_Line_Courier_System
                     txtUserID.Enabled = false;
                     lblUserID.Show();
                     txtUserID.Show();
-                    int userID = SearchUser.userID;
-
-
-                    cnn = new SqlConnection(connectionString);
-                    cnn.Open();
-                    sql = @"Select * FROM Users WHERE User_ID = '" + userID + "'";
-
-                    cmd = new SqlCommand(sql, cnn);
-                    dataReader = cmd.ExecuteReader();
-
-                    txtUserID.Text = userID.ToString();
-                    //txtRegNo.Text = dataReader.GetValue(1).ToString();
-                    //fill in all other fields
-                    cnn.Close();
+                    
                 }
 
-                if (mode == "new")
+                if (mode == "add")
                 {
                     lblUserID.Hide();
                     txtUserID.Hide();
@@ -119,5 +187,22 @@ namespace R_Line_Courier_System
 
 
             }
+
+        private void CbUserAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            if (mode == "add")
+            {
+                clearForm();
+            }
+            else
+            {
+                MessageBox.Show("Cannot clear while updating");
+            }
+        }
+    }
 }

@@ -64,6 +64,8 @@ namespace R_Line_Courier_System
         {
             frmMaintainVehicles vehicle = new frmMaintainVehicles();
             frmParent parent = this;
+            vehicle.setMode("add");
+            vehicle.clearForm();
             vehicle.MdiParent = parent;
             vehicle.Show();
         }
@@ -72,6 +74,8 @@ namespace R_Line_Courier_System
         {
             frmMaintainUsers users = new frmMaintainUsers();
             frmParent parent = this;
+            users.setMode("add");
+            users.clearForm();
             users.MdiParent = parent;
             users.Show();
         }
