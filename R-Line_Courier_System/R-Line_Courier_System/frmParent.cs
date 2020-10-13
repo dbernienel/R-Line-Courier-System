@@ -76,5 +76,11 @@ namespace R_Line_Courier_System
             maintain.MdiParent = parent;
             maintain.Show();
         }
+
+        private void maintainVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSearchVehicles vehicles = new frmSearchVehicles();
+            vehicles.Show();
+        }
     }
 }
