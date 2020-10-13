@@ -136,6 +136,7 @@
             this.cbUserAdmin.Name = "cbUserAdmin";
             this.cbUserAdmin.Size = new System.Drawing.Size(121, 21);
             this.cbUserAdmin.TabIndex = 28;
+            this.cbUserAdmin.SelectedIndexChanged += new System.EventHandler(this.CbUserAdmin_SelectedIndexChanged);
             // 
             // lblUserAdmin
             // 
@@ -164,6 +165,7 @@
             this.btnClear.TabIndex = 31;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // gbMaintainUsers
             // 

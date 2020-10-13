@@ -21,6 +21,7 @@ namespace R_Line_Courier_System
         public SqlDataReader dataReader;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
+        int rowIndex;
 
         
         
@@ -32,12 +33,7 @@ namespace R_Line_Courier_System
         }
 
 
-        private int _vehicleID;
-        public int vehicleID
-        {
-            get { return _vehicleID;}
-            set {_vehicleID = value; }
-         }
+
 
         private void TrySearch(String field, String value)
         {
@@ -102,11 +98,13 @@ namespace R_Line_Courier_System
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+
+            int vehicleID = Int32.Parse(dgVehicles.Rows[rowIndex].Cells[0].Value.ToString());
             try
             {
-              if (this.vehicleID > -1)
+              if (vehicleID > -1)
                 {
-                    string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + this.vehicleID + "'";
+                    string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
                     cnn.Open();
                     cmd = new SqlCommand(delete_query, cnn);
 
@@ -114,7 +112,7 @@ namespace R_Line_Courier_System
                     cmd.ExecuteNonQuery();
                     cnn.Close();
 
-                    MessageBox.Show(this.vehicleID.ToString() + " has been successfully deleted!");
+                    MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
                     gbSearchUser.Refresh();
                 }
             }
@@ -127,7 +125,14 @@ namespace R_Line_Courier_System
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
+            frmMaintainVehicles maintainVehicles = new frmMaintainVehicles();
 
+            maintainVehicles.setMode("update");
+            maintainVehicles.clearForm();
+            maintainVehicles.setRegNo(dgVehicles.Rows[rowIndex].Cells[1].Value.ToString());
+            maintainVehicles.setVehicleID(dgVehicles.Rows[rowIndex].Cells[2].Value.ToString());
+
+            maintainVehicles.Show();
         }
 
         private void setVehicleID(int VehicleID)
@@ -140,7 +145,7 @@ namespace R_Line_Courier_System
             if (e.RowIndex !=-1)
             {
                 DataGridViewRow dgvRow = dgVehicles.Rows[e.RowIndex];
-                this.vehicleID = Int32.Parse(dgvRow.Cells[0].Value.ToString());
+               
 
                 
             }
@@ -150,6 +155,11 @@ namespace R_Line_Courier_System
         private void DgVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void DgVehicles_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            rowIndex = e.RowIndex;
         }
     }
 }

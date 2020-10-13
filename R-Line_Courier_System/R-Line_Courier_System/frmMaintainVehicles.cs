@@ -31,15 +31,63 @@ namespace R_Line_Courier_System
             InitializeComponent();
         }
 
+        public void setVehicleID(string ID)
+        {
+            txtID.Text = ID;
+            txtID.Enabled = false;
+        }
+        public void setMode(string smode)
+        {
+            mode = smode;
+            if (mode == "update")
+            {
+                btnSubmit.Text = "Update";
+            }
+            else
+            {
+                btnSubmit.Text = "Submit";
+            }
+        }
+
+        public void clearForm()
+        {
+            txtID.Clear();
+            txtRegNo.Clear();
+        }
+
+        public void setRegNo(String RegNo)
+        {
+            txtRegNo.Text = RegNo;
+        }
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             if (mode == "update")
             {
+                try
+                {
+                    int Id = Int32.Parse(txtID.Text);
+                    string sql = "UPDATE VEHICLES SET Reg_No ='" + txtRegNo.Text + " WHERE Vehicle_ID= " + Id;
+                    MessageBox.Show(sql);
+                    cnn = new SqlConnection(connectionString);
+                    cnn.Open();
+                    cmd = new SqlCommand(sql, cnn);
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    MessageBox.Show("Vehicle Successfully updated");
+                    clearForm();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
 
+                cmd.Dispose();
+                cnn.Close();
             }
 
 
-            if (mode == "new")
+            if (mode == "add")
             {
 
                 //run validation tests
@@ -52,6 +100,7 @@ namespace R_Line_Courier_System
                     cmd.ExecuteNonQuery();
                     cnn.Close();
                     MessageBox.Show("Vehicle with registration number " + txtRegNo.Text + " has been successfully added!");
+                    clearForm();
                 }
                 catch (Exception err)
                 {
@@ -66,8 +115,8 @@ namespace R_Line_Courier_System
 
         private void FrmMaintainVehicles_Activated(object sender, EventArgs e)
         {
-            txtID.Clear();
-            txtRegNo.Clear();
+           // txtID.Clear();
+           // txtRegNo.Clear();
             //update mode
             if (mode == "update")
             {
@@ -75,29 +124,28 @@ namespace R_Line_Courier_System
                 txtID.Enabled = false;
                 lblVehicleID.Show();
                 txtID.Show();
-                int vehicleID = SearchVehicles.vehicleID;
+               
+             }
 
-
-                cnn = new SqlConnection(connectionString);
-                cnn.Open();
-                sql = @"Select * FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
-
-                cmd = new SqlCommand(sql, cnn);
-                dataReader = cmd.ExecuteReader();
-
-                txtID.Text = vehicleID.ToString();
-                txtRegNo.Text = dataReader.GetValue(1).ToString();
-
-                cnn.Close();
-            }
-
-            if (mode == "new")
+            if (mode == "add")
             {
                 lblVehicleID.Hide();
                 txtID.Hide();
             }
 
 
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            if (mode == "add")
+            {
+                clearForm();
+            }
+            else
+            {
+                MessageBox.Show("Cannot clear while updating");
+            }
         }
     }
 }
