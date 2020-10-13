@@ -132,7 +132,7 @@ namespace R_Line_Courier_System
         private String searchQuery() {
             int search;
             String stringSearch;
-            String myQuery;
+            myQuery = "";
             String contactNumber = tbxSearch.Text;
 
             if (contactNumber.Length < 10)
