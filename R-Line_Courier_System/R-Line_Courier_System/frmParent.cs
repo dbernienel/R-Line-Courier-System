@@ -83,5 +83,11 @@ namespace R_Line_Courier_System
             frmSearchVehicles vehicles = new frmSearchVehicles();
             vehicles.Show();
         }
+
+        private void maintainRegionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainRegions regions = new frmMaintainRegions();
+            regions.Show();
+        }
     }
 }

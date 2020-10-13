@@ -21,7 +21,7 @@ namespace R_Line_Courier_System
         public frmClientDetails(frmMaintainClient maintain)
         {
             InitializeComponent();
-            conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
+            conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
             this.maintain = maintain;
         }
 

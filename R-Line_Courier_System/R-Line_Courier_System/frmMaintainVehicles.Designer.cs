@@ -113,6 +113,7 @@
             this.Name = "frmMaintainVehicles";
             this.Text = "frmMaintainVehicles";
             this.Activated += new System.EventHandler(this.FrmMaintainVehicles_Activated);
+            this.Load += new System.EventHandler(this.frmMaintainVehicles_Load);
             this.gbMaintainVehicles.ResumeLayout(false);
             this.gbMaintainVehicles.PerformLayout();
             this.ResumeLayout(false);

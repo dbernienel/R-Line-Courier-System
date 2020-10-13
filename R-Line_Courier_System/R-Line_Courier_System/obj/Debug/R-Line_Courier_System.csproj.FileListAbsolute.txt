@@ -19,3 +19,4 @@ C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Li
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csprojAssemblyReference.cache
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmClientDetails.resources
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainClient.resources
+C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainRegions.resources

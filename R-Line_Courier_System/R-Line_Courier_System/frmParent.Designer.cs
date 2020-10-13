@@ -41,14 +41,17 @@
             this.parcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maintainVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allocateParcelsToVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliverParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maintainVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCitypostalCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maintainRegionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +65,8 @@
             this.reportingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1479, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,7 +105,8 @@
             this.clientsToolStripMenuItem,
             this.usersToolStripMenuItem,
             this.parcelsToolStripMenuItem,
-            this.vehiclesToolStripMenuItem});
+            this.vehiclesToolStripMenuItem,
+            this.regionsToolStripMenuItem});
             this.maintainToolStripMenuItem.Name = "maintainToolStripMenuItem";
             this.maintainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.maintainToolStripMenuItem.Text = "Maintain";
@@ -159,6 +164,28 @@
             this.deleteToolStripMenuItem.Text = "View  & Maintain";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // vehiclesToolStripMenuItem
+            // 
+            this.vehiclesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addVehicleToolStripMenuItem,
+            this.maintainVehiclesToolStripMenuItem});
+            this.vehiclesToolStripMenuItem.Name = "vehiclesToolStripMenuItem";
+            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vehiclesToolStripMenuItem.Text = "Vehicles";
+            // 
+            // addVehicleToolStripMenuItem
+            // 
+            this.addVehicleToolStripMenuItem.Name = "addVehicleToolStripMenuItem";
+            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.addVehicleToolStripMenuItem.Text = "Add vehicle";
+            // 
+            // maintainVehiclesToolStripMenuItem
+            // 
+            this.maintainVehiclesToolStripMenuItem.Name = "maintainVehiclesToolStripMenuItem";
+            this.maintainVehiclesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.maintainVehiclesToolStripMenuItem.Text = "Maintain vehicles";
+            this.maintainVehiclesToolStripMenuItem.Click += new System.EventHandler(this.maintainVehiclesToolStripMenuItem_Click);
+            // 
             // rToolStripMenuItem
             // 
             this.rToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -194,37 +221,36 @@
             this.reportingToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.reportingToolStripMenuItem1.Text = "Reporting...";
             // 
-            // vehiclesToolStripMenuItem
+            // regionsToolStripMenuItem
             // 
-            this.vehiclesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addVehicleToolStripMenuItem,
-            this.maintainVehiclesToolStripMenuItem});
-            this.vehiclesToolStripMenuItem.Name = "vehiclesToolStripMenuItem";
-            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.vehiclesToolStripMenuItem.Text = "Vehicles";
+            this.regionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCitypostalCodeToolStripMenuItem,
+            this.maintainRegionsToolStripMenuItem});
+            this.regionsToolStripMenuItem.Name = "regionsToolStripMenuItem";
+            this.regionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.regionsToolStripMenuItem.Text = "Regions";
             // 
-            // addVehicleToolStripMenuItem
+            // addCitypostalCodeToolStripMenuItem
             // 
-            this.addVehicleToolStripMenuItem.Name = "addVehicleToolStripMenuItem";
-            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addVehicleToolStripMenuItem.Text = "Add vehicle";
+            this.addCitypostalCodeToolStripMenuItem.Name = "addCitypostalCodeToolStripMenuItem";
+            this.addCitypostalCodeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.addCitypostalCodeToolStripMenuItem.Text = "Add city/postal code";
             // 
-            // maintainVehiclesToolStripMenuItem
+            // maintainRegionsToolStripMenuItem
             // 
-            this.maintainVehiclesToolStripMenuItem.Name = "maintainVehiclesToolStripMenuItem";
-            this.maintainVehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.maintainVehiclesToolStripMenuItem.Text = "Maintain vehicles";
-            this.maintainVehiclesToolStripMenuItem.Click += new System.EventHandler(this.maintainVehiclesToolStripMenuItem_Click);
+            this.maintainRegionsToolStripMenuItem.Name = "maintainRegionsToolStripMenuItem";
+            this.maintainRegionsToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.maintainRegionsToolStripMenuItem.Text = "Maintain regions";
+            this.maintainRegionsToolStripMenuItem.Click += new System.EventHandler(this.maintainRegionsToolStripMenuItem_Click);
             // 
             // frmParent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1479, 727);
+            this.ClientSize = new System.Drawing.Size(1109, 591);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmParent";
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -259,6 +285,9 @@
         private System.Windows.Forms.ToolStripMenuItem vehiclesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addVehicleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maintainVehiclesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCitypostalCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maintainRegionsToolStripMenuItem;
     }
 }
 
