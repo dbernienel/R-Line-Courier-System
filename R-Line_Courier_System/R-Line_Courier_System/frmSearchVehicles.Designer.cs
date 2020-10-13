@@ -80,6 +80,7 @@
             this.dgVehicles.TabIndex = 14;
             this.dgVehicles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_CellClick);
             this.dgVehicles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_CellContentClick);
+            this.dgVehicles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_RowEnter);
             // 
             // lblSearchUser
             // 

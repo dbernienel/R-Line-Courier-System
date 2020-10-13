@@ -12,8 +12,6 @@ namespace R_Line_Courier_System
 {
     public partial class frmParent : Form
     {
-        private frmMaintainParcels maintain;
-
         public frmParent()
         {
             InitializeComponent();
@@ -40,41 +38,54 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            maintain = new frmMaintainParcels();
+            frmParcelDetails details = new frmParcelDetails();
             frmParent parent = this;
-            frmParcelDetails details = new frmParcelDetails(maintain);
-            details.disableButton(true);
             details.MdiParent = parent;
             details.Show();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            maintain = new frmMaintainParcels();
+            frmMaintainParcels parcel = new frmMaintainParcels();
             frmParent parent = this;
-            maintain.MdiParent = parent;
-            maintain.Show();
+            parcel.MdiParent = parent;
+            parcel.Show();
         }
 
-        private void frmParent_Load(object sender, EventArgs e)
+        private void MaintainVehicleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmSearchVehicles searchVehicle = new frmSearchVehicles();
+            frmParent parent = this;
+            searchVehicle.MdiParent = parent;
+            searchVehicle.Show();
         }
 
-        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void AddNewVehicleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClientDetails details = new frmClientDetails();
+            frmMaintainVehicles vehicle = new frmMaintainVehicles();
             frmParent parent = this;
-            details.MdiParent = parent;
-            details.Show();
+            vehicle.setMode("add");
+            vehicle.clearForm();
+            vehicle.MdiParent = parent;
+            vehicle.Show();
         }
 
-        private void viewMaintainToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainClient maintain = new frmMaintainClient();
+            frmMaintainUsers users = new frmMaintainUsers();
             frmParent parent = this;
-            maintain.MdiParent = parent;
-            maintain.Show();
+            users.setMode("add");
+            users.clearForm();
+            users.MdiParent = parent;
+            users.Show();
+        }
+
+        private void MaintainUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSearchUser searchUsers = new frmSearchUser();
+            frmParent parent = this;
+            searchUsers.MdiParent = parent;
+            searchUsers.Show();
         }
     }
 }
