@@ -17,23 +17,25 @@ namespace R_Line_Courier_System
         public SqlDataAdapter sd;
         private String conString;
         private String myQuery;
+        private frmMaintainClient maintain;
+        private frmClientDetails client;
 
         public frmMaintainClient()
         {
             InitializeComponent();
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
+            maintain = this;
         }
 
         private void btnAddNewParcel_Click(object sender, EventArgs e)
         {
-            frmClientDetails details = new frmClientDetails();
-            details.ShowDialog();
+            client = new frmClientDetails(maintain);
+            client.ShowDialog();
         }
 
         private void frmMaintainClient_Load(object sender, EventArgs e)
         {
-            myQuery = "SELECT Client_ID, Company_Name, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS";
-            RefreshDGV();
+            dataChange();
         }
 
         private void RefreshDGV()
@@ -46,6 +48,11 @@ namespace R_Line_Courier_System
             sd.Fill(dt);
             dgvClients.DataSource = dt;
             con.Close();
+        }
+
+        public void dataChange() { 
+            myQuery = "SELECT Client_ID, Company_Name, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS";
+            RefreshDGV();
         }
 
         private void tbxSearch_TextChanged(object sender, EventArgs e)
@@ -78,6 +85,27 @@ namespace R_Line_Courier_System
                 "OR Contact_No LIKE '(%" + contactNumber.Substring(0, 3) + "%) %" + contactNumber.Substring(3, 3) + "%-%" + contactNumber.Substring(6) + "%')";
 
             RefreshDGV();
+        }
+
+        private void btnUpdateParcel_Click(object sender, EventArgs e)
+        {
+            client = new frmClientDetails(maintain);
+            client.setClientID(dgvClients.SelectedCells[0].Value.ToString());
+            client.autoFillForm();
+            client.Show();
+        }
+
+        private void btnDeleteParcel_Click(object sender, EventArgs e)
+        {
+            con = new SqlConnection(conString);
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
+            cmd.ExecuteNonQuery();
+
+            dataChange();
+
+            con.Close();
         }
     }
 }

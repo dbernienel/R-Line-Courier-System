@@ -63,7 +63,8 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmClientDetails details = new frmClientDetails();
+            frmMaintainClient client = new frmMaintainClient();
+            frmClientDetails details = new frmClientDetails(client);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
