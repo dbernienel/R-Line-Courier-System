@@ -128,5 +128,17 @@ namespace R_Line_Courier_System
             searchVehicle.MdiParent = parent;
             searchVehicle.Show();
         }
+
+        private void maintainRegionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainRegions regions = new frmMaintainRegions();
+            regions.Show();
+        }
+
+        private void addCitypostalCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegionDetails regions = new frmRegionDetails();
+            regions.Show();
+        }
     }
 }
