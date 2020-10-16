@@ -89,5 +89,11 @@ namespace R_Line_Courier_System
             frmMaintainRegions regions = new frmMaintainRegions();
             regions.Show();
         }
+
+        private void addCitypostalCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegionDetails regions = new frmRegionDetails();
+            regions.Show();
+        }
     }
 }
