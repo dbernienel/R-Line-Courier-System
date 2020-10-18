@@ -140,5 +140,29 @@ namespace R_Line_Courier_System
             frmRegionDetails regions = new frmRegionDetails();
             regions.Show();
         }
+
+        private void RegionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegionDetails regionDetails = new frmRegionDetails();
+            frmParent parent = this;
+            regionDetails.MdiParent = parent;
+            regionDetails.Show();
+        }
+
+        private void ViewMaintainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainClient maintainClient = new frmMaintainClient();
+            frmParent parent = this;
+            maintainClient.MdiParent = parent;
+            maintainClient.Show();
+        }
+
+        private void ReportingToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmDeliveryReport deliveryReport = new frmDeliveryReport();
+            frmParent parent = this;
+            deliveryReport.MdiParent = parent;
+            deliveryReport.Show();
+        }
     }
 }
