@@ -62,53 +62,65 @@ namespace R_Line_Courier_System
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (mode == "update")
+
+            if (txtRegNo.Text != null)
             {
-                try
+               
+                if (mode == "update")
                 {
-                    int Id = Int32.Parse(txtID.Text);
-                    string sql = "UPDATE VEHICLES SET Reg_No ='" + txtRegNo.Text + " WHERE Vehicle_ID= " + Id;
-                    MessageBox.Show(sql);
-                    cnn = new SqlConnection(connectionString);
-                    cnn.Open();
-                    cmd = new SqlCommand(sql, cnn);
-                    cmd.ExecuteNonQuery();
+
+
+                    try
+                    {
+                        int Id = Int32.Parse(txtID.Text);
+                        string sql = "UPDATE VEHICLES SET Reg_No ='" + txtRegNo.Text + " WHERE Vehicle_ID= " + Id;
+                        MessageBox.Show(sql);
+                        cnn = new SqlConnection(connectionString);
+                        cnn.Open();
+                        cmd = new SqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
+                        MessageBox.Show("Vehicle Successfully updated");
+                        clearForm();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
+
+                    cmd.Dispose();
                     cnn.Close();
-                    MessageBox.Show("Vehicle Successfully updated");
-                    clearForm();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
                 }
 
-                cmd.Dispose();
-                cnn.Close();
+
+                if (mode == "add")
+                {
+
+
+                    //run validation tests
+                    try
+                    {
+                        string sql = "INSERT INTO VEHICLES (Reg_No) VALUES ('" + txtRegNo.Text + "')";
+                        cnn = new SqlConnection(connectionString);
+                        cnn.Open();
+                        cmd = new SqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
+                        MessageBox.Show("Vehicle with registration number " + txtRegNo.Text + " has been successfully added!");
+                        clearForm();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
+
+                    cmd.Dispose();
+                    cnn.Close();
+                }
             }
-
-
-            if (mode == "add")
+            else
             {
-
-                //run validation tests
-                try
-                {
-                    string sql = "INSERT INTO VEHICLES (Reg_No) VALUES ('" + txtRegNo.Text + "')";
-                    cnn = new SqlConnection(connectionString);
-                    cnn.Open();
-                    cmd = new SqlCommand(sql, cnn);
-                    cmd.ExecuteNonQuery();
-                    cnn.Close();
-                    MessageBox.Show("Vehicle with registration number " + txtRegNo.Text + " has been successfully added!");
-                    clearForm();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
-                }
-
-                cmd.Dispose();
-                cnn.Close();
+                MessageBox.Show("Please enter a registration number");
             }
         }
 

@@ -104,9 +104,58 @@ namespace R_Line_Courier_System
             SearchUser.ShowDialog();
         }
 
+        private bool VerifyPassword(String password)
+        {
+            //code to verify password - length and char
+            return true;
+        }
+
+        private bool VerifyUsername(String username)
+        {
+            //check if username exists - update/add nb
+            return true;
+        }
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (mode == "add")
+            bool validInput = true;
+                
+
+           
+                if (txtUser_Name.Text == "")
+                {
+                    MessageBox.Show("Please enter a name!");
+                    validInput = false;
+                }
+
+                if (txtUser_Surname.Text == "")
+                {
+                    MessageBox.Show("Please enter a surname!");
+                    validInput = false;
+                }
+                if (txtUserName.Text == "")
+                {
+                    MessageBox.Show("Please enter a username!");
+                    validInput = false;
+                }
+
+                if (txtPassword.Text == "")
+                {
+                    MessageBox.Show("Please enter a password!");
+                    validInput = false;
+                }
+                if (cbUserAdmin.SelectedIndex<0)
+                {
+                    MessageBox.Show("Please select admin privileges!");
+                    validInput = false;
+                }
+                if ((VerifyPassword(txtPassword.Text)== false) || (VerifyUsername(txtUserName.Text)== false))
+                {
+                    validInput = false;
+                }
+            
+
+            if ((mode == "add") && (validInput== true))
             {
                 int admin = 0;
                 if (cbUserAdmin.SelectedIndex != -1)
@@ -131,7 +180,7 @@ namespace R_Line_Courier_System
                 cmd.Dispose();
                 cnn.Close();
             }
-            else if (mode == "update")
+            else if ((mode == "update") && (validInput == true))
             {
                 int admin = 0;
                 if (cbUserAdmin.SelectedIndex != -1)
