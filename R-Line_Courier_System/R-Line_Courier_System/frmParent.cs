@@ -140,5 +140,11 @@ namespace R_Line_Courier_System
             frmRegionDetails regions = new frmRegionDetails();
             regions.Show();
         }
+
+        private void addupdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegionDetails region = new frmRegionDetails();
+            region.Show();
+        }
     }
 }
