@@ -46,12 +46,12 @@
             this.vehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintainVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allocateParcelsToVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliverParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.regionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historicalParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +118,7 @@
             this.addToolStripMenuItem1,
             this.viewMaintainToolStripMenuItem});
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
-            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientsToolStripMenuItem.Text = "Clients";
             // 
             // addToolStripMenuItem1
@@ -130,7 +130,7 @@
             // viewMaintainToolStripMenuItem
             // 
             this.viewMaintainToolStripMenuItem.Name = "viewMaintainToolStripMenuItem";
-            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewMaintainToolStripMenuItem.Text = "View & Maintain";
             this.viewMaintainToolStripMenuItem.Click += new System.EventHandler(this.ViewMaintainToolStripMenuItem_Click);
             // 
@@ -140,7 +140,7 @@
             this.addToolStripMenuItem2,
             this.maintainToolStripMenuItem1});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // addToolStripMenuItem2
@@ -163,7 +163,7 @@
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.parcelsToolStripMenuItem.Name = "parcelsToolStripMenuItem";
-            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.parcelsToolStripMenuItem.Text = "Parcels";
             this.parcelsToolStripMenuItem.Click += new System.EventHandler(this.parcelsToolStripMenuItem_Click);
             // 
@@ -187,7 +187,7 @@
             this.addVehicleToolStripMenuItem,
             this.maintainVehiclesToolStripMenuItem});
             this.vehiclesToolStripMenuItem.Name = "vehiclesToolStripMenuItem";
-            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.vehiclesToolStripMenuItem.Text = "Vehicles";
             // 
             // addVehicleToolStripMenuItem
@@ -204,6 +204,13 @@
             this.maintainVehiclesToolStripMenuItem.Text = "Maintain vehicles";
             this.maintainVehiclesToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehiclesToolStripMenuItem_Click);
             // 
+            // regionToolStripMenuItem
+            // 
+            this.regionToolStripMenuItem.Name = "regionToolStripMenuItem";
+            this.regionToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.regionToolStripMenuItem.Text = "Region";
+            this.regionToolStripMenuItem.Click += new System.EventHandler(this.RegionToolStripMenuItem_Click);
+            // 
             // rToolStripMenuItem
             // 
             this.rToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -218,12 +225,14 @@
             this.allocateParcelsToVehiclesToolStripMenuItem.Name = "allocateParcelsToVehiclesToolStripMenuItem";
             this.allocateParcelsToVehiclesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.allocateParcelsToVehiclesToolStripMenuItem.Text = "Allocate parcels to vehicles";
+            this.allocateParcelsToVehiclesToolStripMenuItem.Click += new System.EventHandler(this.allocateParcelsToVehiclesToolStripMenuItem_Click);
             // 
             // deliverParcelsToolStripMenuItem
             // 
             this.deliverParcelsToolStripMenuItem.Name = "deliverParcelsToolStripMenuItem";
             this.deliverParcelsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.deliverParcelsToolStripMenuItem.Text = "Deliver parcels";
+            this.deliverParcelsToolStripMenuItem.Click += new System.EventHandler(this.deliverParcelsToolStripMenuItem_Click);
             // 
             // reportingToolStripMenuItem
             // 
@@ -240,13 +249,6 @@
             this.reportingToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
             this.reportingToolStripMenuItem1.Text = "Parcels out for delivery";
             this.reportingToolStripMenuItem1.Click += new System.EventHandler(this.ReportingToolStripMenuItem1_Click);
-            // 
-            // regionToolStripMenuItem
-            // 
-            this.regionToolStripMenuItem.Name = "regionToolStripMenuItem";
-            this.regionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.regionToolStripMenuItem.Text = "Region";
-            this.regionToolStripMenuItem.Click += new System.EventHandler(this.RegionToolStripMenuItem_Click);
             // 
             // historicalParcelsToolStripMenuItem
             // 

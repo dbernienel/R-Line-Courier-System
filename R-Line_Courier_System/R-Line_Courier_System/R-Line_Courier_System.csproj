@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAssignParcels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssignParcels.Designer.cs">
+      <DependentUpon>frmAssignParcels.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClientDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RLine_DatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAssignParcels.resx">
+      <DependentUpon>frmAssignParcels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClientDetails.resx">
       <DependentUpon>frmClientDetails.cs</DependentUpon>
     </EmbeddedResource>

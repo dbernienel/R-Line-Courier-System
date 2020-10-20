@@ -164,5 +164,16 @@ namespace R_Line_Courier_System
             deliveryReport.MdiParent = parent;
             deliveryReport.Show();
         }
+
+        private void deliverParcelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAssignParcels assign = new frmAssignParcels();
+            assign.Show();
+        }
     }
 }
