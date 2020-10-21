@@ -77,6 +77,7 @@
             this.ttDueDate = new System.Windows.Forms.ToolTip(this.components);
             this.label22 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.tbDelivered = new System.Windows.Forms.CheckBox();
             this.gbClientInfo.SuspendLayout();
             this.gbDeliveryInfo.SuspendLayout();
             this.gbDeliveryAdress.SuspendLayout();
@@ -184,6 +185,7 @@
             // 
             // gbDeliveryInfo
             // 
+            this.gbDeliveryInfo.Controls.Add(this.tbDelivered);
             this.gbDeliveryInfo.Controls.Add(this.cbDeliveryStatus);
             this.gbDeliveryInfo.Controls.Add(this.label13);
             this.gbDeliveryInfo.Controls.Add(this.tbxRecipientAltContactNr);
@@ -604,6 +606,16 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // tbDelivered
+            // 
+            this.tbDelivered.AutoSize = true;
+            this.tbDelivered.Location = new System.Drawing.Point(213, 165);
+            this.tbDelivered.Name = "tbDelivered";
+            this.tbDelivered.Size = new System.Drawing.Size(71, 17);
+            this.tbDelivered.TabIndex = 18;
+            this.tbDelivered.Text = "Delivered";
+            this.tbDelivered.UseVisualStyleBackColor = true;
+            // 
             // frmParcelDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,5 +701,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.CheckBox tbDelivered;
     }
 }

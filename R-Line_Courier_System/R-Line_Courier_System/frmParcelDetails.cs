@@ -39,8 +39,18 @@ namespace R_Line_Courier_System
             
         private void cbCompanyName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //to do: auto fill all fields if value exist in Clients db else, add new client to Client db
-            //to do: disable controls in ControlBox after selection
+            //string query = "SELECT Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE Client_ID = " + cbCompanyName.SelectedValue.ToString() + "";
+            //SqlCommand cmd = new SqlCommand(query, con);
+
+            //con.Open();
+            //SqlDataReader dr = cmd.ExecuteReader();
+            //if (dr.Read())
+            //{
+            //    tbxClientName.Text = dr.GetValue(0).ToString();
+            //    tbxClientSurname.Text = dr.GetValue(1).ToString();
+            //    tbxClientContactNr.Text = dr.GetValue(2).ToString();
+            //}
+            //con.Close();
         }
 
         private void cbPostalCode_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +66,9 @@ namespace R_Line_Courier_System
         private void frmParcelDetails_Load(object sender, EventArgs e)
         {
             ttDueDate.SetToolTip(this.dateDueDelivery, "Set deadline for parcel delivery");
-
+            tbxClientName.Enabled = false;
+            tbxClientSurname.Enabled = false;
+            tbxClientContactNr.Enabled = false;
             
 
         }
@@ -194,7 +206,7 @@ namespace R_Line_Courier_System
             "Contact_No = '" + tbxRecipientContactNr.Text + "', " +
             "Alt_Contact_No = '" + tbxRecipientAltContactNr.Text + "', " +
             "Delivery_Due_Date = '" + dateDueDelivery.Value.ToShortDateString().ToString() + "', " +
-            //"Delivered = " + tbDelivered.ToString() + ", " +
+            "Delivered = " + tbDelivered.ToString() + ", " +
             "Recipient_Name = '" + tbxRecepientName.Text + "', " +
             "Client_ID = " + cbCompanyName.SelectedValue.ToString() +
             "WHERE Parcel_ID = " +parcelID, con);
