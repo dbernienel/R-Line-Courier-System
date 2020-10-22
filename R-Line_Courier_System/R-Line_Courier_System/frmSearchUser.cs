@@ -33,11 +33,8 @@ namespace R_Line_Courier_System
         {
             cnn = new SqlConnection(connectionString);
             var sql = "";
-            if ((stringSearch != "") || (search == -1))
+            if (txtSearchUser.Text != "")
             {
-                MessageBox.Show("Select * FROM USERS WHERE (User_Name LIKE '" + stringSearch + "%' " +
-                    "OR User_Surname LIKE '" + stringSearch + "%' " +
-                    "OR Username LIKE '" + stringSearch + "%')");
                 sql = @"Select * FROM USERS WHERE (User_Name LIKE '" + stringSearch + "%' " +
                     "OR User_Surname LIKE '" + stringSearch + "%' " +
                     "OR Username LIKE '" + stringSearch + "%')";
@@ -82,19 +79,6 @@ namespace R_Line_Courier_System
             maintainUsers.setPassword(dgViewUsers.Rows[rowIndex].Cells[5].Value.ToString());
             maintainUsers.setAdminP(dgViewUsers.Rows[rowIndex].Cells[3].Value.ToString());
             maintainUsers.ShowDialog();
-        }
-        private String GetField()
-        {
-            if (rbUserID.Checked)
-                return "User_ID";
-            else if (rbUserName.Checked)
-                return "Username";
-            else if (rbUser_Name.Checked)
-                return "User_Name";
-            else if (rbUserSurname.Checked)
-                return "User_Surname";
-            else
-                return "";
         }
 
         private void TxtSearchUser_TextChanged(object sender, EventArgs e)
@@ -175,7 +159,6 @@ namespace R_Line_Courier_System
                         cnn.Close();
 
                         MessageBox.Show(userID.ToString() + " has been successfully deleted!");
-                        gbSearchUser.Refresh();
                         TrySearch("", -1);
                     }
                 }
