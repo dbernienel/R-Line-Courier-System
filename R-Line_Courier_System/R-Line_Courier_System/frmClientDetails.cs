@@ -64,7 +64,8 @@ namespace R_Line_Courier_System
             "Contact_Surname = '" + tbxClientSurname.Text + "', " +
             "Contact_No = '" + tbxClientContactNr.Text + "' WHERE Client_ID = " + clientID, con);
             con.Open();
-            cmd.ExecuteNonQuery();
+            try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); }
+            
             maintain.dataChange();
             con.Close();
             ClearForm();
@@ -76,7 +77,9 @@ namespace R_Line_Courier_System
 
             SqlCommand cmd = new SqlCommand("INSERT INTO CLIENTS(Company_Name,Contact_Name,Contact_Surname,Contact_No) VALUES('" + tbxCompanyName.Text + "','" + tbxClientName.Text + "','" + tbxClientSurname.Text + "','" + tbxClientContactNr.Text + "')", con);
             con.Open();
-            cmd.ExecuteNonQuery();
+            try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message);
+                MessageBox.Show("Please ensure all fields are filled in corectly.");
+            }
             maintain.dataChange();
             con.Close();
             ClearForm();

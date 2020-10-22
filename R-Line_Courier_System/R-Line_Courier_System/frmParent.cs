@@ -273,8 +273,7 @@ namespace R_Line_Courier_System
             frmMaintainClient maintain = new frmMaintainClient();
             frmParent parent = this;
             maintain.MdiParent = parent;
-            maintain.Show();
-            frmClientDetails details = new frmClientDetails(maintain, false);
+            frmClientDetails details = new frmClientDetails(maintain, true);
             details.MdiParent = parent;
             details.Show();
         }
