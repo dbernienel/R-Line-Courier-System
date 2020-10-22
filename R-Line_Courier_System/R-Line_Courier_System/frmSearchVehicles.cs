@@ -41,9 +41,8 @@ namespace R_Line_Courier_System
             var sql = "";
             if (txtSearchVehicle.Text != "")
             {
-                MessageBox.Show("SELECT * FROM VEHICLES WHERE (Vehicle_ID LIKE " + searchID.ToString() + "% OR Reg_No LIKE '" + searchRegNo + "%')");
                 sql = @"SELECT * FROM VEHICLES WHERE (Vehicle_ID LIKE '" + searchID.ToString() + "%' " +
-                    "OR Reg_No LIKE '" + searchRegNo + "%'";
+                    "OR Reg_No LIKE '" + searchRegNo + "%')";
             }
             else
                 sql = @"SELECT * FROM VEHICLES";

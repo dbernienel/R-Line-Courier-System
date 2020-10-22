@@ -23,23 +23,28 @@ namespace R_Line_Courier_System
         public frmSearchUser()
         {
             InitializeComponent();
-            TrySearch("", "");
+            TrySearch("", -1);
 
         }
 
 
 
-        private void TrySearch(String field, String value)
+        private void TrySearch(String stringSearch, int search)
         {
             cnn = new SqlConnection(connectionString);
             var sql = "";
-            if ((field == "") || (value == ""))
+            if ((stringSearch != "") || (search == -1))
             {
-                sql = @"Select * FROM USERS";
+                MessageBox.Show("Select * FROM USERS WHERE (User_Name LIKE '" + stringSearch + "%' " +
+                    "OR User_Surname LIKE '" + stringSearch + "%' " +
+                    "OR Username LIKE '" + stringSearch + "%')");
+                sql = @"Select * FROM USERS WHERE (User_Name LIKE '" + stringSearch + "%' " +
+                    "OR User_Surname LIKE '" + stringSearch + "%' " +
+                    "OR Username LIKE '" + stringSearch + "%')";
             }
             else
             {
-                sql = @"Select * FROM USERS WHERE " + field + " LIKE '%" + value + "%'";
+                sql = @"Select * FROM USERS";
             }
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
@@ -94,9 +99,19 @@ namespace R_Line_Courier_System
 
         private void TxtSearchUser_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchUser.Text != null && GetField() != "")
+            if (txtSearchUser.Text != null)
             {
-                TrySearch(GetField(), txtSearchUser.Text);
+                String stringSearch;
+                if (int.TryParse(txtSearchUser.Text, out int search))
+                {
+                    stringSearch = search.ToString();
+                }
+                else
+                {
+                    search = -1;
+                    stringSearch = txtSearchUser.Text;
+                }
+                TrySearch(stringSearch, search);
             }
         }
 
@@ -161,18 +176,18 @@ namespace R_Line_Courier_System
 
                         MessageBox.Show(userID.ToString() + " has been successfully deleted!");
                         gbSearchUser.Refresh();
-                        TrySearch("", "");
+                        TrySearch("", -1);
                     }
                 }
 
-                    TrySearch("", "");
+                    TrySearch("", -1);
                 }
             
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
-            TrySearch("", "");
+            TrySearch("", -1);
         }
 
         private void DgViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
