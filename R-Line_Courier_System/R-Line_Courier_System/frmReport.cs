@@ -19,8 +19,7 @@ namespace R_Line_Courier_System
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
         public SqlDataAdapter adapter;
-        string mode;
-        string sql;
+
         public frmReport()
         {
             InitializeComponent();
@@ -28,31 +27,19 @@ namespace R_Line_Courier_System
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //to do - sit formatting in as delivery due date> delivery - rooi OR still undelivered(past due date)
-
-
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            // creating new WorkBook within Excel application  
             Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            // creating new Excelsheet in workbook  
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            // see the excel sheet behind the program  
-            app.Visible = true;
-            // get the reference of first sheet. By default its name is Sheet1.  
-            // store its reference to worksheet  
+            app.Visible = true;  
             worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-            // changing the name of active sheet  
+            worksheet = workbook.ActiveSheet; 
             worksheet.Name = "Deliveries";
-            // storing header part in Excel  
-
 
             Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
             myStyle1.Font.Name = "Verdana";
             myStyle1.Font.Size = 12;
             myStyle1.Font.Bold = true;
             myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
-            // myStyle1.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DimGray);
             myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
 
             Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
@@ -87,9 +74,6 @@ namespace R_Line_Courier_System
             formatRange.Style = "myStyle2";
             formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
 
-
-            //formatRange = worksheet.get_Range("a5", "h"+ dgvDeliveries.Columns.Count.ToString());
-
             formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
 
             worksheet.Columns[1].ColumnWidth = 15;
@@ -105,17 +89,7 @@ namespace R_Line_Courier_System
             worksheet.Columns[11].ColumnWidth = 35;
             worksheet.Columns[12].ColumnWidth = 20;
 
-
-
-            //columns will start at 4
             int counter = 4;
-
-
-
-
-
-
-
 
             for (int i = 1; i < dvgReport.Columns.Count + 1; i++)
             {
@@ -129,9 +103,6 @@ namespace R_Line_Courier_System
                     worksheet.Cells[i + 2 + counter, j + 1] = dvgReport.Rows[i].Cells[j].Value.ToString();
                 }
             }
-            // save the application  
-            workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            // Exit from the application  
             app.Quit();
         }
 

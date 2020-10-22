@@ -43,7 +43,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(58, 385);
+            this.btnExport.Location = new System.Drawing.Point(44, 367);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 0;
@@ -79,7 +79,7 @@
             // 
             this.gbDeliver.Controls.Add(this.rbDelivered);
             this.gbDeliver.Controls.Add(this.rbUndelivered);
-            this.gbDeliver.Location = new System.Drawing.Point(58, 36);
+            this.gbDeliver.Location = new System.Drawing.Point(44, 22);
             this.gbDeliver.Name = "gbDeliver";
             this.gbDeliver.Size = new System.Drawing.Size(200, 49);
             this.gbDeliver.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             // dateTimeTo
             // 
-            this.dateTimeTo.Location = new System.Drawing.Point(161, 149);
+            this.dateTimeTo.Location = new System.Drawing.Point(147, 135);
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(200, 20);
             this.dateTimeTo.TabIndex = 4;
@@ -96,7 +96,7 @@
             // 
             // dateTimeFrom
             // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(161, 104);
+            this.dateTimeFrom.Location = new System.Drawing.Point(147, 90);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(200, 20);
             this.dateTimeFrom.TabIndex = 5;
@@ -105,7 +105,7 @@
             // dvgReport
             // 
             this.dvgReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgReport.Location = new System.Drawing.Point(58, 204);
+            this.dvgReport.Location = new System.Drawing.Point(44, 179);
             this.dvgReport.Name = "dvgReport";
             this.dvgReport.Size = new System.Drawing.Size(485, 150);
             this.dvgReport.TabIndex = 6;
@@ -113,7 +113,7 @@
             // lblDateFrom
             // 
             this.lblDateFrom.AutoSize = true;
-            this.lblDateFrom.Location = new System.Drawing.Point(58, 110);
+            this.lblDateFrom.Location = new System.Drawing.Point(44, 96);
             this.lblDateFrom.Name = "lblDateFrom";
             this.lblDateFrom.Size = new System.Drawing.Size(59, 13);
             this.lblDateFrom.TabIndex = 7;
@@ -122,7 +122,7 @@
             // lblDateTo
             // 
             this.lblDateTo.AutoSize = true;
-            this.lblDateTo.Location = new System.Drawing.Point(58, 155);
+            this.lblDateTo.Location = new System.Drawing.Point(44, 141);
             this.lblDateTo.Name = "lblDateTo";
             this.lblDateTo.Size = new System.Drawing.Size(49, 13);
             this.lblDateTo.TabIndex = 8;
