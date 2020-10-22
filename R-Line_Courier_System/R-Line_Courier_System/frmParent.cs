@@ -25,11 +25,7 @@ namespace R_Line_Courier_System
 
         private void FrmParent_Activated(object sender, EventArgs e)
         {
-            //no user logged in on startup
-            setUser(-1, false, "");
-
-            //remove this line of code
-            setUser(1, true, "Bernie");
+            
         }
 
         public void setUser(int user_ID,bool admin, string user_Name)
@@ -44,6 +40,8 @@ namespace R_Line_Courier_System
                 }
             else
             {
+                userID = -1;
+                adminUser = false;
                 lblUserLogged.Text = "Please log in";
                 btnSignOut.Text = "Log in";
             }
@@ -246,10 +244,21 @@ namespace R_Line_Courier_System
             login.Show();
         }
 
+<<<<<<< Updated upstream
         private void frmParent_Load(object sender, EventArgs e)
         {
 
         }
 
+=======
+        private void FrmParent_Load(object sender, EventArgs e)
+        {
+            //no user logged in on startup
+            setUser(-1, false, "");
+
+            //remove this line of code
+            setUser(1, true, "Bernie");
+        }
+>>>>>>> Stashed changes
     }
 }
