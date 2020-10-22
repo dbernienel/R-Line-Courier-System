@@ -262,12 +262,37 @@ namespace R_Line_Courier_System
 
         private void AllocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmAssignParcels maintain = new frmAssignParcels(getUserID());
+            frmParent parent = this;
+            maintain.MdiParent = parent;
+            maintain.Show();
         }
 
         private void AddToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            frmMaintainClient maintain = new frmMaintainClient();
+            frmParent parent = this;
+            maintain.MdiParent = parent;
+            maintain.Show();
+            frmClientDetails details = new frmClientDetails(maintain, false);
+            details.MdiParent = parent;
+            details.Show();
+        }
 
+        private void DeliveriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainDeliveries maintain = new frmMaintainDeliveries(getUserID());
+            frmParent parent = this;
+            maintain.MdiParent = parent;
+            maintain.Show();
+        }
+
+        private void DeliverParcelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainDeliveries maintain = new frmMaintainDeliveries(getUserID());
+            frmParent parent = this;
+            maintain.MdiParent = parent;
+            maintain.Show();
         }
     }
 }
