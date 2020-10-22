@@ -305,11 +305,11 @@
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.FrmParent_Activated);
-<<<<<<< Updated upstream
+
             this.Load += new System.EventHandler(this.frmParent_Load);
-=======
+
             this.Load += new System.EventHandler(this.FrmParent_Load);
->>>>>>> Stashed changes
+
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlUser.ResumeLayout(false);

@@ -50,3 +50,5 @@ C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Li
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmMaintainRegions.resources
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmRegionDetails.resources
 C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmReport.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmAssignParcels.resources
+C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmReport.resources

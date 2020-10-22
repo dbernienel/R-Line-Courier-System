@@ -244,13 +244,13 @@ namespace R_Line_Courier_System
             login.Show();
         }
 
-<<<<<<< Updated upstream
+
         private void frmParent_Load(object sender, EventArgs e)
         {
 
         }
 
-=======
+
         private void FrmParent_Load(object sender, EventArgs e)
         {
             //no user logged in on startup
@@ -259,6 +259,6 @@ namespace R_Line_Courier_System
             //remove this line of code
             setUser(1, true, "Bernie");
         }
->>>>>>> Stashed changes
+
     }
 }
