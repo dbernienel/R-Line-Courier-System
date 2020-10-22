@@ -147,7 +147,6 @@ namespace R_Line_Courier_System
                         cnn.Close();
 
                         MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
-                        gbSearchUser.Refresh();
                         TrySearch(-1,"");
                     }
                 }
