@@ -86,6 +86,12 @@
     <Compile Include="frmMaintainClient.Designer.cs">
       <DependentUpon>frmMaintainClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMaintainDeliveries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainDeliveries.Designer.cs">
+      <DependentUpon>frmMaintainDeliveries.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMaintainRegions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMaintainClient.resx">
       <DependentUpon>frmMaintainClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainDeliveries.resx">
+      <DependentUpon>frmMaintainDeliveries.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMaintainRegions.resx">
       <DependentUpon>frmMaintainRegions.cs</DependentUpon>

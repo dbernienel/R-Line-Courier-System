@@ -56,6 +56,7 @@
             this.pnlUser = new System.Windows.Forms.Panel();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lblUserLogged = new System.Windows.Forms.Label();
+            this.deliveriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +113,8 @@
             this.usersToolStripMenuItem,
             this.parcelsToolStripMenuItem,
             this.vehiclesToolStripMenuItem,
-            this.regionToolStripMenuItem});
+            this.regionToolStripMenuItem,
+            this.deliveriesToolStripMenuItem});
             this.maintainToolStripMenuItem.Name = "maintainToolStripMenuItem";
             this.maintainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.maintainToolStripMenuItem.Text = "Maintain";
@@ -293,6 +295,13 @@
             this.lblUserLogged.Text = "Logged in as:";
             this.lblUserLogged.Click += new System.EventHandler(this.Label1_Click);
             // 
+            // deliveriesToolStripMenuItem
+            // 
+            this.deliveriesToolStripMenuItem.Name = "deliveriesToolStripMenuItem";
+            this.deliveriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deliveriesToolStripMenuItem.Text = "Deliveries";
+            this.deliveriesToolStripMenuItem.Click += new System.EventHandler(this.deliveriesToolStripMenuItem_Click);
+            // 
             // frmParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +355,7 @@
         private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.Label lblUserLogged;
         private System.Windows.Forms.Button btnSignOut;
+        private System.Windows.Forms.ToolStripMenuItem deliveriesToolStripMenuItem;
     }
 }
 
