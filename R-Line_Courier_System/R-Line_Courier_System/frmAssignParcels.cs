@@ -8,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
-namespace R_Line_Courier_System
-{
-    public partial class frmAssignParcels : Form
-    {
+namespace R_Line_Courier_System {
+    public partial class frmAssignParcels : Form {
         private SqlConnection con;
         private String myQuery;
         private String conString;
@@ -22,15 +21,13 @@ namespace R_Line_Courier_System
         private SqlCommand cmd;
         private int userID;
 
-        public frmAssignParcels(int iD)
-        {   
+        public frmAssignParcels(int iD) {   
             userID = iD;
             InitializeComponent();
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
         }
 
-        private void frmAssignParcels_Load(object sender, EventArgs e)
-        {
+        private void frmAssignParcels_Load(object sender, EventArgs e) {
             defaultQuery = "SELECT a.Parcel_ID, b.Postal_Code, c.City_Name, a.Delivery_Due_Date, d.Company_Name " +
                 "FROM PARCELS a " +
                 "LEFT JOIN POSTAL_CODE b ON a.Postal_Code_ID = b.Postal_Code_ID " +
@@ -42,80 +39,83 @@ namespace R_Line_Courier_System
             btnRemoveParcel.Enabled = false;
         }
 
-        private void RefreshDGV()
-        {
+        private void RefreshDGV() {
             dgvParcels.ClearSelection();
             con = new SqlConnection(conString);
             con.Open();
             sd = new SqlDataAdapter(myQuery, con);
             DataTable dt = new DataTable();
-            sd.Fill(dt);
+
+            try { sd.Fill(dt); } catch (SqlTypeException m) {
+                Console.WriteLine(m.Message); }
+
             dgvParcels.DataSource = dt;
             con.Close();
         }
 
-        public void dataChange()
-        {
+        public void dataChange() {
             myQuery = defaultQuery+ "WHERE a.Delivered = 'False' AND a.Delivery_ID IS NULL";
             RefreshDGV();
         }
 
-        private void populateComboBox()
-        {
+        private void populateComboBox() {
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM VEHICLES", con);
             DataSet ds = new DataSet();
 
             cbDeliveryVehicle.DisplayMember = "Reg_No";
             cbDeliveryVehicle.ValueMember = "Vehicle_ID";
-            da.Fill(ds);
-            cbDeliveryVehicle.DataSource = ds.Tables[0];
+
+            try { da.Fill(ds); } catch (SqlTypeException m) {
+                Console.WriteLine(m.Message); }
+
+            try { cbDeliveryVehicle.DataSource = ds.Tables[0]; } catch (IndexOutOfRangeException m) {
+                Console.WriteLine(m.Message); }
+           
             con.Close();
             cbDeliveryVehicle.SelectedItem = null;
         }
 
-        private void populateListbox()
-        {
+        private void populateListbox() {
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("SELECT a.Parcel_ID FROM PARCELS a LEFT JOIN DELIVERIES b ON a.Delivery_ID = b.Delivery_ID WHERE b.Vehicle_ID = " + cbDeliveryVehicle.SelectedValue + " AND b.Delivery_Date = '" + dateDeliveryDate.Value.ToShortDateString() + "'", con);
             ds = new DataSet();
 
             lbxParcels.DisplayMember = "Parcel_ID";
             lbxParcels.ValueMember = "Parcel_ID";
-            da.Fill(ds);
-            lbxParcels.DataSource = ds.Tables[0];
+
+            try { da.Fill(ds); } catch (SqlTypeException m) {
+                Console.WriteLine(m.Message); }
+
+            try { lbxParcels.DataSource = ds.Tables[0]; } catch (IndexOutOfRangeException m) { 
+                Console.WriteLine(m.Message); }
+
             con.Close();
         }
 
-        private void tbxSearchParcels_TextChanged(object sender, EventArgs e)
-        {
+        private void tbxSearchParcels_TextChanged(object sender, EventArgs e) {
             myQuery = "";
             con = new SqlConnection(conString);
 
 
-            if (tbxSearchParcels.Text != "")
-            {
+            if (tbxSearchParcels.Text != "") {
                 myQuery = searchQuery();
                 RefreshDGV();
             }
-            else
-            {
+            else {
                 dataChange();
             }
         }
 
-        private String searchQuery()
-        {
+        private String searchQuery() {
             int search;
             String stringSearch;
             myQuery = "";
 
-            if (int.TryParse(tbxSearchParcels.Text, out search))
-            {
+            if (int.TryParse(tbxSearchParcels.Text, out search)) {
                 stringSearch = search.ToString();
             }
-            else
-            {
+            else {
                 search = -1;
                 stringSearch = tbxSearchParcels.Text;
             }
@@ -130,11 +130,10 @@ namespace R_Line_Courier_System
             return myQuery;
         }
 
-        private void cbDeliveryVehicle_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void cbDeliveryVehicle_SelectedIndexChanged(object sender, EventArgs e) {
             if (con.State == ConnectionState.Closed && cbDeliveryVehicle.SelectedItem != null) {
                 populateListbox();
-                if (dateDeliveryDate.Value >= DateTime.Now.AddDays(-1)){
+                if (dateDeliveryDate.Value >= DateTime.Now.AddDays(-1)) {
                     btnAddParcel.Enabled = true;
                 }
                 else { btnAddParcel.Enabled = false; }
@@ -144,13 +143,9 @@ namespace R_Line_Courier_System
                 }
                 else { btnRemoveParcel.Enabled = true; }
             }
-            //if (lbxParcels.Items.Count == 0 && cbDeliveryVehicle.SelectedItem != null)
-            //    btnDeleteCity.Enabled = true;
-            //else { btnDeleteCity.Enabled = false; }
         }
 
-        private void btnAddParcel_Click(object sender, EventArgs e)
-        {
+        private void btnAddParcel_Click(object sender, EventArgs e) {
             if (lbxParcels.Items.Count == 0 && !compareRecords(cbDeliveryVehicle.SelectedValue.ToString(), dateDeliveryDate.Value.ToShortDateString()))
             {
                 addDelivery("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date,User_ID) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "',1)");
@@ -194,16 +189,18 @@ namespace R_Line_Courier_System
         }
 
         private String getDeliveryID() {
-            String deliveryID;
+            String deliveryID = "";
             con.Open();
             cmd = new SqlCommand("SELECT Delivery_ID FROM DELIVERIES WHERE Vehicle_ID = " + cbDeliveryVehicle.SelectedValue.ToString() + " AND Delivery_Date = '" + dateDeliveryDate.Value.ToShortDateString() + "'", con);
-            deliveryID = cmd.ExecuteScalar().ToString();
+
+            try { deliveryID = cmd.ExecuteScalar().ToString(); } catch (SqlTypeException m) { 
+                Console.WriteLine(m.Message); }
+
             con.Close();
             return deliveryID;
         }
 
-        private void dateDeliveryDate_ValueChanged(object sender, EventArgs e)
-        {
+        private void dateDeliveryDate_ValueChanged(object sender, EventArgs e) {
             if(cbDeliveryVehicle.SelectedValue != null)
                 populateListbox();
             if (dateDeliveryDate.Value >= DateTime.Now.AddDays(-1)) {
@@ -216,13 +213,11 @@ namespace R_Line_Courier_System
             else { btnRemoveParcel.Enabled = true; }
         }
 
-        private void btnRemoveParcel_Click(object sender, EventArgs e)
-        {
+        private void btnRemoveParcel_Click(object sender, EventArgs e) {
             updateParcels(lbxParcels.SelectedValue.ToString(), "NULL");
             dataChange();
             populateListbox();
-            if (lbxParcels.SelectedValue == null)
-            {
+            if (lbxParcels.SelectedValue == null) {
                 btnRemoveParcel.Enabled = false;
             }
         }

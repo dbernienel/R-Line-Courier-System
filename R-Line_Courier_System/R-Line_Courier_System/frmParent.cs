@@ -266,18 +266,20 @@ namespace R_Line_Courier_System
 
         private void FrmParent_Load(object sender, EventArgs e)
         {
-            //no user logged in on startup
             setUser(-1, false, "");
             openLoginForm();
-
-            //remove this line of code
-            //setUser(1, true, "Bernie");
         }
 
         private void allocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAssignParcels asprcl = new frmAssignParcels(userID);
             asprcl.Show();
+        }
+
+        private void deliveriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainDeliveries deliveries = new frmMaintainDeliveries(userID);
+            deliveries.Show();
         }
     }
 }

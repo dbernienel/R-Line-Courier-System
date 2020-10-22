@@ -52,13 +52,14 @@ namespace R_Line_Courier_System
             con.Close();
         }
 
-        private void btnUpdateParcel_Click(object sender, EventArgs e)
-        {
+        private void btnUpdateParcel_Click(object sender, EventArgs e) {
             frmMaintainParcels maintain = this;
-            frmParcelDetails details = new frmParcelDetails(maintain, false, userID);
-            details.setParcelID(dgvParcels.SelectedCells[0].Value.ToString());
-            details.autoFillForm();
-            details.Show();
+            if (Int32.TryParse(dgvParcels.SelectedCells[0].Value.ToString(), out int i)) {
+                frmParcelDetails details = new frmParcelDetails(maintain, false, userID);
+                details.setParcelID(dgvParcels.SelectedCells[0].Value.ToString());
+                details.autoFillForm();
+                details.Show();
+            }
         }
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)
