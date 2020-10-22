@@ -131,14 +131,14 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem1.Text = "Add new";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.AddToolStripMenuItem1_Click);
             // 
             // viewMaintainToolStripMenuItem
             // 
             this.viewMaintainToolStripMenuItem.Name = "viewMaintainToolStripMenuItem";
-            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewMaintainToolStripMenuItem.Text = "View & Maintain";
             this.viewMaintainToolStripMenuItem.Click += new System.EventHandler(this.ViewMaintainToolStripMenuItem_Click);
             // 
@@ -224,6 +224,7 @@
             this.deliveriesToolStripMenuItem.Name = "deliveriesToolStripMenuItem";
             this.deliveriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deliveriesToolStripMenuItem.Text = "Deliveries";
+            this.deliveriesToolStripMenuItem.Click += new System.EventHandler(this.DeliveriesToolStripMenuItem_Click);
             // 
             // rToolStripMenuItem
             // 
@@ -246,6 +247,7 @@
             this.deliverParcelsToolStripMenuItem.Name = "deliverParcelsToolStripMenuItem";
             this.deliverParcelsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.deliverParcelsToolStripMenuItem.Text = "Deliver parcels";
+            this.deliverParcelsToolStripMenuItem.Click += new System.EventHandler(this.DeliverParcelsToolStripMenuItem_Click);
             // 
             // reportingToolStripMenuItem
             // 

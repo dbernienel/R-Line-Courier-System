@@ -102,6 +102,7 @@ namespace R_Line_Courier_System
 
             con.Open();
             SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
+            MessageBox.Show("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString());
             cmd.ExecuteNonQuery();
 
             dataChange();
