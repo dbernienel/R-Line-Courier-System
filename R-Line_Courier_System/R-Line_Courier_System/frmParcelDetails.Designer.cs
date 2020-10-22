@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCompanyName = new System.Windows.Forms.ComboBox();
             this.gbDeliveryInfo = new System.Windows.Forms.GroupBox();
+            this.tbDelivered = new System.Windows.Forms.CheckBox();
             this.cbDeliveryStatus = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbxRecipientAltContactNr = new System.Windows.Forms.MaskedTextBox();
@@ -59,7 +60,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAddRecord = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -76,8 +77,13 @@
             this.nudWeight = new System.Windows.Forms.NumericUpDown();
             this.ttDueDate = new System.Windows.Forms.ToolTip(this.components);
             this.label22 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.tbDelivered = new System.Windows.Forms.CheckBox();
+            this.ttDeliveryStatus = new System.Windows.Forms.ToolTip(this.components);
+            this.ttDelivered = new System.Windows.Forms.ToolTip(this.components);
+            this.ttCompanyName = new System.Windows.Forms.ToolTip(this.components);
+            this.ttClear = new System.Windows.Forms.ToolTip(this.components);
+            this.ttBuildingName = new System.Windows.Forms.ToolTip(this.components);
+            this.ttContactNum = new System.Windows.Forms.ToolTip(this.components);
+            this.epRecipientName = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbClientInfo.SuspendLayout();
             this.gbDeliveryInfo.SuspendLayout();
             this.gbDeliveryAdress.SuspendLayout();
@@ -86,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epRecipientName)).BeginInit();
             this.SuspendLayout();
             // 
             // gbClientInfo
@@ -174,6 +181,8 @@
             // 
             // cbCompanyName
             // 
+            this.cbCompanyName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbCompanyName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCompanyName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbCompanyName.FormattingEnabled = true;
             this.cbCompanyName.Location = new System.Drawing.Point(100, 36);
@@ -181,6 +190,7 @@
             this.cbCompanyName.Name = "cbCompanyName";
             this.cbCompanyName.Size = new System.Drawing.Size(202, 21);
             this.cbCompanyName.TabIndex = 6;
+            this.ttCompanyName.SetToolTip(this.cbCompanyName, "Indicate which company initiated the delivery process");
             this.cbCompanyName.SelectedIndexChanged += new System.EventHandler(this.cbCompanyName_SelectedIndexChanged);
             // 
             // gbDeliveryInfo
@@ -205,16 +215,27 @@
             this.gbDeliveryInfo.TabStop = false;
             this.gbDeliveryInfo.Text = "Delivery info";
             // 
+            // tbDelivered
+            // 
+            this.tbDelivered.AutoSize = true;
+            this.tbDelivered.Location = new System.Drawing.Point(213, 165);
+            this.tbDelivered.Name = "tbDelivered";
+            this.tbDelivered.Size = new System.Drawing.Size(71, 17);
+            this.tbDelivered.TabIndex = 18;
+            this.tbDelivered.Text = "Delivered";
+            this.ttDelivered.SetToolTip(this.tbDelivered, "Indicate wether the parcel has been delivered to the recipient");
+            this.tbDelivered.UseVisualStyleBackColor = true;
+            // 
             // cbDeliveryStatus
             // 
-            this.cbDeliveryStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.cbDeliveryStatus.ForeColor = System.Drawing.Color.Black;
             this.cbDeliveryStatus.FormattingEnabled = true;
             this.cbDeliveryStatus.Location = new System.Drawing.Point(95, 162);
             this.cbDeliveryStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbDeliveryStatus.Name = "cbDeliveryStatus";
             this.cbDeliveryStatus.Size = new System.Drawing.Size(92, 21);
             this.cbDeliveryStatus.TabIndex = 5;
-            this.cbDeliveryStatus.Text = "--Select--";
+            this.ttDeliveryStatus.SetToolTip(this.cbDeliveryStatus, "Choose the current state of the parcel (i.e. In Warehouse)");
             this.cbDeliveryStatus.SelectedIndexChanged += new System.EventHandler(this.cbDeliveryStatus_SelectedIndexChanged);
             // 
             // label13
@@ -235,7 +256,6 @@
             this.tbxRecipientAltContactNr.Name = "tbxRecipientAltContactNr";
             this.tbxRecipientAltContactNr.Size = new System.Drawing.Size(111, 20);
             this.tbxRecipientAltContactNr.TabIndex = 4;
-            this.tbxRecipientAltContactNr.Text = "0000000000";
             // 
             // label9
             // 
@@ -274,7 +294,7 @@
             this.tbxRecipientContactNr.Name = "tbxRecipientContactNr";
             this.tbxRecipientContactNr.Size = new System.Drawing.Size(111, 20);
             this.tbxRecipientContactNr.TabIndex = 3;
-            this.tbxRecipientContactNr.Text = "0000000000";
+            this.ttContactNum.SetToolTip(this.tbxRecipientContactNr, "Indicate the number to use for cointacting the recipient");
             // 
             // tbxRecepientName
             // 
@@ -283,7 +303,6 @@
             this.tbxRecepientName.Name = "tbxRecepientName";
             this.tbxRecepientName.Size = new System.Drawing.Size(76, 20);
             this.tbxRecepientName.TabIndex = 2;
-            this.tbxRecepientName.Text = "John";
             // 
             // label2
             // 
@@ -331,7 +350,6 @@
             this.tbxStreetNumber.Name = "tbxStreetNumber";
             this.tbxStreetNumber.Size = new System.Drawing.Size(40, 20);
             this.tbxStreetNumber.TabIndex = 10;
-            this.tbxStreetNumber.Text = "00";
             // 
             // tbxStreetName
             // 
@@ -340,7 +358,6 @@
             this.tbxStreetName.Name = "tbxStreetName";
             this.tbxStreetName.Size = new System.Drawing.Size(76, 20);
             this.tbxStreetName.TabIndex = 11;
-            this.tbxStreetName.Text = "Null Ave";
             // 
             // tbxBuildingName
             // 
@@ -349,7 +366,7 @@
             this.tbxBuildingName.Name = "tbxBuildingName";
             this.tbxBuildingName.Size = new System.Drawing.Size(76, 20);
             this.tbxBuildingName.TabIndex = 13;
-            this.tbxBuildingName.Text = "Null Valley";
+            this.ttBuildingName.SetToolTip(this.tbxBuildingName, "Indicate the name of the delivery buidling or complex");
             // 
             // label12
             // 
@@ -412,16 +429,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnAddRecord
+            // btnApply
             // 
-            this.btnAddRecord.Location = new System.Drawing.Point(357, 402);
-            this.btnAddRecord.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddRecord.Name = "btnAddRecord";
-            this.btnAddRecord.Size = new System.Drawing.Size(68, 31);
-            this.btnAddRecord.TabIndex = 18;
-            this.btnAddRecord.Text = "Add record";
-            this.btnAddRecord.UseVisualStyleBackColor = true;
-            this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
+            this.btnApply.Location = new System.Drawing.Point(456, 402);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(68, 31);
+            this.btnApply.TabIndex = 18;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnClear
             // 
@@ -431,6 +448,7 @@
             this.btnClear.Size = new System.Drawing.Size(68, 31);
             this.btnClear.TabIndex = 19;
             this.btnClear.Text = "Clear";
+            this.ttClear.SetToolTip(this.btnClear, "Clear the entire form");
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -596,36 +614,79 @@
             this.label22.TabIndex = 22;
             this.label22.Text = "Required fields are marked with *";
             // 
-            // btnUpdate
+            // ttDeliveryStatus
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(447, 402);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 31);
-            this.btnUpdate.TabIndex = 23;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.ttDeliveryStatus.AutomaticDelay = 2;
+            this.ttDeliveryStatus.AutoPopDelay = 100000;
+            this.ttDeliveryStatus.InitialDelay = 2;
+            this.ttDeliveryStatus.ReshowDelay = 0;
+            this.ttDeliveryStatus.Tag = "Select date before which the parcel needs to be delivered";
+            this.ttDeliveryStatus.ToolTipTitle = "Delivery Status";
+            this.ttDeliveryStatus.UseFading = false;
             // 
-            // tbDelivered
+            // ttDelivered
             // 
-            this.tbDelivered.AutoSize = true;
-            this.tbDelivered.Location = new System.Drawing.Point(213, 165);
-            this.tbDelivered.Name = "tbDelivered";
-            this.tbDelivered.Size = new System.Drawing.Size(71, 17);
-            this.tbDelivered.TabIndex = 18;
-            this.tbDelivered.Text = "Delivered";
-            this.tbDelivered.UseVisualStyleBackColor = true;
+            this.ttDelivered.AutomaticDelay = 2;
+            this.ttDelivered.AutoPopDelay = 100000;
+            this.ttDelivered.InitialDelay = 2;
+            this.ttDelivered.ReshowDelay = 0;
+            this.ttDelivered.Tag = "";
+            this.ttDelivered.ToolTipTitle = "Delivered";
+            this.ttDelivered.UseFading = false;
+            // 
+            // ttCompanyName
+            // 
+            this.ttCompanyName.AutomaticDelay = 2;
+            this.ttCompanyName.AutoPopDelay = 100000;
+            this.ttCompanyName.InitialDelay = 2;
+            this.ttCompanyName.ReshowDelay = 0;
+            this.ttCompanyName.Tag = "Select date before which the parcel needs to be delivered";
+            this.ttCompanyName.ToolTipTitle = "Company Name";
+            this.ttCompanyName.UseFading = false;
+            // 
+            // ttClear
+            // 
+            this.ttClear.AutomaticDelay = 2;
+            this.ttClear.AutoPopDelay = 100000;
+            this.ttClear.InitialDelay = 2;
+            this.ttClear.ReshowDelay = 0;
+            this.ttClear.Tag = "Select date before which the parcel needs to be delivered";
+            this.ttClear.ToolTipTitle = "Clear all fields";
+            this.ttClear.UseFading = false;
+            // 
+            // ttBuildingName
+            // 
+            this.ttBuildingName.AutomaticDelay = 2;
+            this.ttBuildingName.AutoPopDelay = 100000;
+            this.ttBuildingName.InitialDelay = 2;
+            this.ttBuildingName.ReshowDelay = 0;
+            this.ttBuildingName.Tag = "Select date before which the parcel needs to be delivered";
+            this.ttBuildingName.ToolTipTitle = "Complex/Building";
+            this.ttBuildingName.UseFading = false;
+            // 
+            // ttContactNum
+            // 
+            this.ttContactNum.AutomaticDelay = 2;
+            this.ttContactNum.AutoPopDelay = 100000;
+            this.ttContactNum.InitialDelay = 2;
+            this.ttContactNum.ReshowDelay = 0;
+            this.ttContactNum.Tag = "Select date before which the parcel needs to be delivered";
+            this.ttContactNum.ToolTipTitle = "Recipient Contact Number";
+            this.ttContactNum.UseFading = false;
+            // 
+            // epRecipientName
+            // 
+            this.epRecipientName.ContainerControl = this;
             // 
             // frmParcelDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 445);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnAddRecord);
+            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbDeliveryInfo);
             this.Controls.Add(this.gbClientInfo);
@@ -646,6 +707,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epRecipientName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -682,7 +744,7 @@
         private System.Windows.Forms.ComboBox cbDeliveryStatus;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAddRecord;
+        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox tbxStreetNumber;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -700,7 +762,13 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.CheckBox tbDelivered;
+        private System.Windows.Forms.ToolTip ttDelivered;
+        private System.Windows.Forms.ToolTip ttDeliveryStatus;
+        private System.Windows.Forms.ToolTip ttContactNum;
+        private System.Windows.Forms.ToolTip ttBuildingName;
+        private System.Windows.Forms.ToolTip ttClear;
+        private System.Windows.Forms.ToolTip ttCompanyName;
+        private System.Windows.Forms.ErrorProvider epRecipientName;
     }
 }

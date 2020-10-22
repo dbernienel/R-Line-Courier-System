@@ -31,7 +31,6 @@
             this.btnUpdateParcel = new System.Windows.Forms.Button();
             this.btnDeleteParcel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnMoreDetailsParcel = new System.Windows.Forms.Button();
             this.btnAddNewParcel = new System.Windows.Forms.Button();
             this.dgvParcels = new System.Windows.Forms.DataGridView();
             this.tbxSearch = new System.Windows.Forms.TextBox();
@@ -73,17 +72,6 @@
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Search";
-            // 
-            // btnMoreDetailsParcel
-            // 
-            this.btnMoreDetailsParcel.Location = new System.Drawing.Point(44, 494);
-            this.btnMoreDetailsParcel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMoreDetailsParcel.Name = "btnMoreDetailsParcel";
-            this.btnMoreDetailsParcel.Size = new System.Drawing.Size(64, 35);
-            this.btnMoreDetailsParcel.TabIndex = 5;
-            this.btnMoreDetailsParcel.Text = "More Details";
-            this.btnMoreDetailsParcel.UseVisualStyleBackColor = true;
-            this.btnMoreDetailsParcel.Click += new System.EventHandler(this.btnMoreDetailsParcel_Click);
             // 
             // btnAddNewParcel
             // 
@@ -164,7 +152,6 @@
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.dgvParcels);
             this.Controls.Add(this.btnAddNewParcel);
-            this.Controls.Add(this.btnMoreDetailsParcel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteParcel);
             this.Controls.Add(this.btnUpdateParcel);
@@ -182,7 +169,6 @@
         private System.Windows.Forms.Button btnUpdateParcel;
         private System.Windows.Forms.Button btnDeleteParcel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnMoreDetailsParcel;
         private System.Windows.Forms.Button btnAddNewParcel;
         private System.Windows.Forms.DataGridView dgvParcels;
         private System.Windows.Forms.TextBox tbxSearch;

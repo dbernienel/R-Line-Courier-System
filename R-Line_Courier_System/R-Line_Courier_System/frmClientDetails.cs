@@ -17,23 +17,22 @@ namespace R_Line_Courier_System
         private SqlConnection con;
         private String conString;
         private String clientID;
+        private bool btnState;
 
-        public frmClientDetails(frmMaintainClient maintain)
+        public frmClientDetails(frmMaintainClient maintain, bool state)
         {
             InitializeComponent();
+            btnState = state;
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
             this.maintain = maintain;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection(conString);
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO CLIENTS(Company_Name,Contact_Name,Contact_Surname,Contact_No) VALUES('" + tbxCompanyName.Text + "','" + tbxClientName.Text + "','" + tbxClientSurname.Text + "','" + tbxClientContactNr.Text + "')", con);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            maintain.dataChange();
-            con.Close();
+            if (btnState)
+                dataAdd();
+            else
+                dataUpdate();
         }
 
         public void setClientID(String cID) {
@@ -58,8 +57,7 @@ namespace R_Line_Courier_System
             con.Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        private void dataUpdate() {
             con = new SqlConnection(conString);
             SqlCommand cmd = new SqlCommand("UPDATE CLIENTS SET Company_Name = '" + tbxCompanyName.Text + "', " +
             "Contact_Name = '" + tbxClientName.Text + "', " +
@@ -72,9 +70,24 @@ namespace R_Line_Courier_System
             this.Close();
         }
 
+        private void dataAdd() {
+            con = new SqlConnection(conString);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO CLIENTS(Company_Name,Contact_Name,Contact_Surname,Contact_No) VALUES('" + tbxCompanyName.Text + "','" + tbxClientName.Text + "','" + tbxClientSurname.Text + "','" + tbxClientContactNr.Text + "')", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            maintain.dataChange();
+            con.Close();
+        }
+
         private void BtnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmClientDetails_Load(object sender, EventArgs e)
+        {
+            epCompanyName.DataSource = tbxCompanyName;
         }
     }
 }

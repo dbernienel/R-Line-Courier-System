@@ -11,23 +11,26 @@ namespace R_Line_Courier_System
         private frmMaintainParcels maintain;
         private SqlConnection con;
         private SqlCommand cmd;
+        private bool flag;
+        private bool btnState;
 
-        public frmParcelDetails(frmMaintainParcels maintain)
+        public frmParcelDetails(frmMaintainParcels maintain, bool state)
         {
             InitializeComponent();
+            btnState = state;
+            flag = false;
             this.maintain = maintain;
             con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True");
 
             populateControls("SELECT Status_ID,Status_Description FROM PARCEL_STATUS GROUP BY Status_Description,Status_ID", "Status_Description", "Status_ID", cbDeliveryStatus);
             populateControls("SELECT Client_ID,Company_Name FROM CLIENTS group by Company_Name,Client_ID", "Company_Name", "Client_ID", cbCompanyName);
+            flag = true;
             populateControls("SELECT postal_Code_ID,Postal_Code FROM POSTAL_CODE GROUP BY Postal_Code,Postal_Code_ID", "Postal_Code", "Postal_Code_ID", cbPostalCode);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            //cbCompanyName.SelectedValue = 3;
-            autoFillForm();
+            this.Close();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -39,18 +42,26 @@ namespace R_Line_Courier_System
             
         private void cbCompanyName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //string query = "SELECT Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE Client_ID = " + cbCompanyName.SelectedValue.ToString() + "";
-            //SqlCommand cmd = new SqlCommand(query, con);
+            populateClient();
+        }
 
-            //con.Open();
-            //SqlDataReader dr = cmd.ExecuteReader();
-            //if (dr.Read())
-            //{
-            //    tbxClientName.Text = dr.GetValue(0).ToString();
-            //    tbxClientSurname.Text = dr.GetValue(1).ToString();
-            //    tbxClientContactNr.Text = dr.GetValue(2).ToString();
-            //}
-            //con.Close();
+        private void populateClient() {
+            if (cbCompanyName.SelectedValue != null && flag)
+            {
+                string cquery = "SELECT Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE Client_ID = " + cbCompanyName.SelectedValue.ToString() + "";
+                SqlCommand c = new SqlCommand(cquery, con);
+                if (con.State != ConnectionState.Open) { con.Open(); }
+                SqlDataReader dr = c.ExecuteReader();
+                if (dr.Read())
+                {
+                    tbxClientName.Text = dr.GetValue(0).ToString();
+                    tbxClientSurname.Text = dr.GetValue(1).ToString();
+                    tbxClientContactNr.Text = dr.GetValue(2).ToString();
+                }
+                con.Close();
+                dr.Close();
+                c.Dispose();
+            }
         }
 
         private void cbPostalCode_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,32 +95,14 @@ namespace R_Line_Courier_System
             da.Fill(ds);
             cb.DataSource = ds.Tables[0];
             con.Close();
+            cb.SelectedIndex = -1;
         }
 
-        private void btnAddRecord_Click(object sender, EventArgs e)
-        {
-            //to do: load all values to database
-            // TO DO: CHECK SQL INJECTION RISK
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO PARCELS(Status_ID, Postal_Code_ID, Client_ID, Parcel_Weight, Parcel_Length, Parcel_Width, Parcel_Height, Delivery_Street_Number, Delivery_Street_Name, Delivery_Complex_Building, Contact_No, Alt_Contact_No, Delivery_Due_Date, Recipient_Name) VALUES(" + cbDeliveryStatus.SelectedValue + "," + cbPostalCode.SelectedValue + "," + cbCompanyName.SelectedValue + "," + nudWeight.Value + "," + nudLenght.Value + "," + nudWidth.Value + "," + nudHeight.Value + ",'" + tbxStreetNumber.Text + "','" + tbxStreetName.Text + "','" + tbxBuildingName.Text + "','" + tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + tbxRecepientName.Text + "')", con);
-
-            con.Open();
-            cmd.ExecuteNonQuery();
-
-            maintain.dateCheck();
-
-            con.Close();
-        }
-
-        public void disableButton(bool btnIsPressed) {
-            if (btnIsPressed)
-                btnUpdate.Enabled = false;
-            else {
-                btnAddRecord.Enabled = false;
-                tbxClientName.Enabled = false;
-                tbxClientSurname.Enabled = false;
-                tbxClientContactNr.Enabled = false;
-            }
+        private void btnApply_Click(object sender, EventArgs e) {
+            if (btnState)
+                dataAdd();
+            else
+                dataUpdate();
         }
 
         public void setParcelID(String pID) {
@@ -119,14 +112,13 @@ namespace R_Line_Courier_System
         public void autoFillForm() {
 
             string query = maintain.getQueryAjustment() + " WHERE Parcel_ID =" + parcelID;
-            SqlCommand cmd = new SqlCommand(query, con);
-            //cbCompanyName.SelectedValue = 3;
+            cmd = new SqlCommand(query, con);
+            flag = false;
 
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                //MessageBox.Show(dr.GetString(18));
                 cbCompanyName.SelectedValue = dr.GetValue(18);
                 dateDueDelivery.Value = (DateTime)dr.GetValue(2);
                 cbDeliveryStatus.SelectedValue = dr.GetValue(19);
@@ -140,10 +132,14 @@ namespace R_Line_Courier_System
                 cbPostalCode.SelectedValue = dr.GetValue(20);
                 tbxRecipientContactNr.Text = dr.GetValue(12).ToString();
                 tbxRecipientAltContactNr.Text = dr.GetValue(13).ToString();
-                //tbDelivered.SelectedItem = dr.GetValue(14);
                 tbxRecepientName.Text = dr.GetValue(15).ToString();
+                if((bool)dr.GetValue(14))
+                    tbDelivered.CheckState = CheckState.Checked;
             }
             con.Close();
+            dr.Close();
+            flag = true;
+            populateClient();
         }
 
         private void ClearForm() {
@@ -152,7 +148,7 @@ namespace R_Line_Courier_System
                     controls.Text = string.Empty;
                 }
                 if (controls.GetType() == typeof(ComboBox)) {
-                    controls.Text = "--Select--";
+                    controls.Text = "";
                 }
                 if (controls.GetType() == typeof(DateTimePicker)) {
                     controls.ResetText();
@@ -166,7 +162,7 @@ namespace R_Line_Courier_System
                     controls.Text = string.Empty;
                 }
                 if (controls.GetType() == typeof(ComboBox)) {
-                    controls.Text = "--Select--";
+                    controls.Text = "";
                 }
                 if (controls.GetType() == typeof(DateTimePicker)) {
                     controls.ResetText();
@@ -180,7 +176,7 @@ namespace R_Line_Courier_System
                     controls.Text = string.Empty;
                 }
                 if (controls.GetType() == typeof(ComboBox)) {
-                    controls.Text = "--Select--";
+                    controls.Text = "";
                 }
                 if (controls.GetType() == typeof(DateTimePicker)) {
                     controls.ResetText();
@@ -192,8 +188,7 @@ namespace R_Line_Courier_System
 
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        private void dataUpdate() {
             SqlCommand cmd = new SqlCommand("UPDATE PARCELS SET Status_ID = " + cbDeliveryStatus.SelectedValue.ToString() + ", " +
             "Parcel_Weight = " + (nudWeight.Value).ToString() + ", " +
             "Parcel_Length = " + (nudLenght.Value).ToString() + ", " +
@@ -206,7 +201,7 @@ namespace R_Line_Courier_System
             "Contact_No = '" + tbxRecipientContactNr.Text + "', " +
             "Alt_Contact_No = '" + tbxRecipientAltContactNr.Text + "', " +
             "Delivery_Due_Date = '" + dateDueDelivery.Value.ToShortDateString().ToString() + "', " +
-            "Delivered = " + tbDelivered.ToString() + ", " +
+            "Delivered = '" + tbDelivered.Checked.ToString() + "', " +
             "Recipient_Name = '" + tbxRecepientName.Text + "', " +
             "Client_ID = " + cbCompanyName.SelectedValue.ToString() +
             "WHERE Parcel_ID = " +parcelID, con);
@@ -216,22 +211,26 @@ namespace R_Line_Courier_System
 
             maintain.dateCheck();
 
-            btnAddRecord.Enabled = true;
-            btnUpdate.Enabled = false;
+            btnApply.Enabled = true;
             this.Close();
 
             //ClearForm();
 
         }
 
+        private void dataAdd() {
+            SqlCommand cmd = new SqlCommand("INSERT INTO PARCELS(Status_ID, Postal_Code_ID, Client_ID, Parcel_Weight, Parcel_Length, Parcel_Width, Parcel_Height, Delivery_Street_Number, Delivery_Street_Name, Delivery_Complex_Building, Contact_No, Alt_Contact_No, Delivery_Due_Date, Delivered, Recipient_Name) " +
+                "VALUES(" + cbDeliveryStatus.SelectedValue + "," + cbPostalCode.SelectedValue + "," + cbCompanyName.SelectedValue + "," + nudWeight.Value + "," + nudLenght.Value + "," + nudWidth.Value + "," + nudHeight.Value + ",'" + tbxStreetNumber.Text + "','" + tbxStreetName.Text + "','" + tbxBuildingName.Text + "','" + tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + tbDelivered.Checked.ToString() + "','" + tbxRecepientName.Text + "')", con);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            maintain.dateCheck();
+            con.Close();
+        }
+
         private void cbDeliveryStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("Test CB Index Changed");
         }
     }
 }
