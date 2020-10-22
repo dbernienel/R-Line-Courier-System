@@ -46,14 +46,18 @@
             this.vehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addVehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintainVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allocateParcelsToVehiclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deliverParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.regionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historicalParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlUser = new System.Windows.Forms.Panel();
+            this.lblUserLogged = new System.Windows.Forms.Label();
+            this.btnSignOut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -70,6 +74,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -118,7 +123,7 @@
             this.addToolStripMenuItem1,
             this.viewMaintainToolStripMenuItem});
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
-            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientsToolStripMenuItem.Text = "Clients";
             // 
             // addToolStripMenuItem1
@@ -130,7 +135,7 @@
             // viewMaintainToolStripMenuItem
             // 
             this.viewMaintainToolStripMenuItem.Name = "viewMaintainToolStripMenuItem";
-            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewMaintainToolStripMenuItem.Text = "View & Maintain";
             this.viewMaintainToolStripMenuItem.Click += new System.EventHandler(this.ViewMaintainToolStripMenuItem_Click);
             // 
@@ -140,7 +145,7 @@
             this.addToolStripMenuItem2,
             this.maintainToolStripMenuItem1});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // addToolStripMenuItem2
@@ -163,7 +168,7 @@
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.parcelsToolStripMenuItem.Name = "parcelsToolStripMenuItem";
-            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parcelsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.parcelsToolStripMenuItem.Text = "Parcels";
             this.parcelsToolStripMenuItem.Click += new System.EventHandler(this.parcelsToolStripMenuItem_Click);
             // 
@@ -187,7 +192,7 @@
             this.addVehicleToolStripMenuItem,
             this.maintainVehiclesToolStripMenuItem});
             this.vehiclesToolStripMenuItem.Name = "vehiclesToolStripMenuItem";
-            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vehiclesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.vehiclesToolStripMenuItem.Text = "Vehicles";
             // 
             // addVehicleToolStripMenuItem
@@ -203,6 +208,13 @@
             this.maintainVehiclesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.maintainVehiclesToolStripMenuItem.Text = "Maintain vehicles";
             this.maintainVehiclesToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehiclesToolStripMenuItem_Click);
+            // 
+            // regionToolStripMenuItem
+            // 
+            this.regionToolStripMenuItem.Name = "regionToolStripMenuItem";
+            this.regionToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.regionToolStripMenuItem.Text = "Region";
+            this.regionToolStripMenuItem.Click += new System.EventHandler(this.RegionToolStripMenuItem_Click);
             // 
             // rToolStripMenuItem
             // 
@@ -233,6 +245,7 @@
             this.reportingToolStripMenuItem.Name = "reportingToolStripMenuItem";
             this.reportingToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.reportingToolStripMenuItem.Text = "Reporting";
+            this.reportingToolStripMenuItem.Click += new System.EventHandler(this.ReportingToolStripMenuItem_Click);
             // 
             // reportingToolStripMenuItem1
             // 
@@ -241,18 +254,43 @@
             this.reportingToolStripMenuItem1.Text = "Parcels out for delivery";
             this.reportingToolStripMenuItem1.Click += new System.EventHandler(this.ReportingToolStripMenuItem1_Click);
             // 
-            // regionToolStripMenuItem
-            // 
-            this.regionToolStripMenuItem.Name = "regionToolStripMenuItem";
-            this.regionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.regionToolStripMenuItem.Text = "Region";
-            this.regionToolStripMenuItem.Click += new System.EventHandler(this.RegionToolStripMenuItem_Click);
-            // 
             // historicalParcelsToolStripMenuItem
             // 
             this.historicalParcelsToolStripMenuItem.Name = "historicalParcelsToolStripMenuItem";
             this.historicalParcelsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.historicalParcelsToolStripMenuItem.Text = "Historical parcels";
+            this.historicalParcelsToolStripMenuItem.Click += new System.EventHandler(this.HistoricalParcelsToolStripMenuItem_Click);
+            // 
+            // pnlUser
+            // 
+            this.pnlUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlUser.Controls.Add(this.btnSignOut);
+            this.pnlUser.Controls.Add(this.lblUserLogged);
+            this.pnlUser.Location = new System.Drawing.Point(848, 0);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(261, 24);
+            this.pnlUser.TabIndex = 4;
+            // 
+            // lblUserLogged
+            // 
+            this.lblUserLogged.AutoSize = true;
+            this.lblUserLogged.Location = new System.Drawing.Point(6, 5);
+            this.lblUserLogged.Name = "lblUserLogged";
+            this.lblUserLogged.Size = new System.Drawing.Size(71, 13);
+            this.lblUserLogged.TabIndex = 0;
+            this.lblUserLogged.Text = "Logged in as:";
+            this.lblUserLogged.Click += new System.EventHandler(this.Label1_Click);
+            // 
+            // btnSignOut
+            // 
+            this.btnSignOut.Location = new System.Drawing.Point(183, 0);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Size = new System.Drawing.Size(75, 23);
+            this.btnSignOut.TabIndex = 1;
+            this.btnSignOut.Text = "Sign out";
+            this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.BtnSignOut_Click);
             // 
             // frmParent
             // 
@@ -260,6 +298,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1109, 591);
+            this.Controls.Add(this.pnlUser);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.Name = "frmParent";
@@ -268,6 +307,8 @@
             this.Activated += new System.EventHandler(this.FrmParent_Activated);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +341,9 @@
         private System.Windows.Forms.ToolStripMenuItem maintainToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem regionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historicalParcelsToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlUser;
+        private System.Windows.Forms.Label lblUserLogged;
+        private System.Windows.Forms.Button btnSignOut;
     }
 }
 

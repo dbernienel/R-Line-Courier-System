@@ -90,10 +90,12 @@ namespace R_Line_Courier_System
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            frmMaintainVehicles Vehicles = new frmMaintainVehicles();
+            frmMaintainVehicles vehicle = new frmMaintainVehicles();
             //  frmParent frmParent = Users;
             // Users.MdiParent = frmParent;
-            Vehicles.ShowDialog();
+            vehicle.setMode("add");
+            vehicle.clearForm();
+            vehicle.ShowDialog();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)

@@ -104,16 +104,90 @@ namespace R_Line_Courier_System
             SearchUser.ShowDialog();
         }
 
-        private bool VerifyPassword(String password)
+
+
+        private bool ValidatePassword(string password)
+
         {
-            //code to verify password - length and char
+
+            int validConditions = 0;
+
+            foreach (char c in password)
+
+            {
+                if (c >= 'a' && c <= 'z')
+                {
+                    validConditions++;
+                    break;
+                }
+
+            }
+
+            foreach (char c in password)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    validConditions++;
+                    break;
+                }
+            }
+
+            if (validConditions == 0) return false;
+
+            foreach (char c in password)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    validConditions++;
+                    break;
+                }
+            }
+
+            if (validConditions == 1) return false;
+
+            if (validConditions == 2)
+            {
+                char[] special = { '@', '#', '$', '%', '^', '&', '+', '=' }; // or whatever
+                validConditions++;
+
+                if (password.IndexOfAny(special) == -1) return false;
+                if (password.Length < 8) return false;
+                
+            }
+            
             return true;
+
         }
 
-        private bool VerifyUsername(String username)
+        private bool ValidUsername(String username)
         {
-            //check if username exists - update/add nb
+            cnn = new SqlConnection(connectionString);
+            var sql = @"Select * FROM Users WHERE Username = '" + username+"'";
+            OpenConnection();
+            cmd = new SqlCommand(sql, cnn);
+            cmd.ExecuteNonQuery();
+                
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if ((username == dataReader.GetValue(4).ToString()))
+                {
+                    //username exists
+                    cnn.Close();
+                    return false;
+                }
+                else
+                {
+                    //username doesnt exits
+                    cnn.Close();
+                    return true;
+                }
+
+            }
+
             return true;
+
         }
 
         private void BtnSubmit_Click(object sender, EventArgs e)
@@ -149,11 +223,21 @@ namespace R_Line_Courier_System
                     MessageBox.Show("Please select admin privileges!");
                     validInput = false;
                 }
-                if ((VerifyPassword(txtPassword.Text)== false) || (VerifyUsername(txtUserName.Text)== false))
+
+
+                if (ValidUsername(txtUserName.Text) == false)
                 {
+                MessageBox.Show("This username already exists!");
+                validInput = false;
+                }
+
+                if (ValidatePassword(txtPassword.Text) == false)
+                {
+                //sal hierop uitbrei om spesifieke errors te noem
+                    MessageBox.Show("Your password is not valid!");
                     validInput = false;
                 }
-            
+
 
             if ((mode == "add") && (validInput== true))
             {

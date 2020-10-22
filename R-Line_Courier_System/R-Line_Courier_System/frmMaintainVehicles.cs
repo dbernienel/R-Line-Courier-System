@@ -17,7 +17,8 @@ namespace R_Line_Courier_System
         //public variables
         public SqlConnection cnn;
         public SqlDataReader dataReader;
-        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
+       // public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
+        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bernie Nel\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf"";Integrated Security=True";
         public SqlCommand cmd;
         public SqlDataAdapter adapter;
         public DataSet ds;
@@ -63,7 +64,7 @@ namespace R_Line_Courier_System
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
 
-            if (txtRegNo.Text != null)
+            if (txtRegNo.Text != "")
             {
                
                 if (mode == "update")

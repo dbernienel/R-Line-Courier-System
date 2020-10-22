@@ -12,6 +12,8 @@ namespace R_Line_Courier_System
 {
     public partial class frmParent : Form
     {
+        bool adminUser;
+        int userID;
         public frmParent()
         {
             InitializeComponent();
@@ -23,7 +25,38 @@ namespace R_Line_Courier_System
 
         private void FrmParent_Activated(object sender, EventArgs e)
         {
+            //no user logged in on startup
+            setUser(-1, false, "");
 
+            //remove this line of code
+            setUser(1, true, "Bernie");
+        }
+
+        public void setUser(int user_ID,bool admin, string user_Name)
+        {
+
+            if (user_Name != "")
+                {
+                lblUserLogged.Text = "Logged in as " + user_Name;
+                userID = user_ID;
+                adminUser = admin;
+                btnSignOut.Text = "Log out";
+                }
+            else
+            {
+                lblUserLogged.Text = "Please log in";
+                btnSignOut.Text = "Log in";
+            }
+            }
+
+        public int getUserID()
+        {
+            return userID;
+        }
+
+        public bool getUserAdmin()
+        {
+            return adminUser;
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,22 +125,37 @@ namespace R_Line_Courier_System
         private void AddToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //add new user
-            frmMaintainUsers users = new frmMaintainUsers();
-            frmParent parent = this;
-            users.setMode("add");
-            users.clearForm();
-            users.MdiParent = parent;
-            users.Show();
+            if (getUserAdmin() == false)
+            {
+                MessageBox.Show("Access denied: Only admin users have access to this feature");
+            }
+            else
+            {
+                frmMaintainUsers users = new frmMaintainUsers();
+                frmParent parent = this;
+                users.setMode("add");
+                users.clearForm();
+                users.MdiParent = parent;
+                users.Show();
+            }
         }
 
         private void MaintainToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //maintain user
-            frmSearchUser searchUsers = new frmSearchUser();
-            frmParent parent = this;
-            searchUsers.MdiParent = parent;
-            searchUsers.Show();
+            if (getUserAdmin() == false)
+            {
+                MessageBox.Show("Access denied: Only admin users have access to this feature");
+            }
+            else
+            {
+                frmSearchUser searchUsers = new frmSearchUser();
+                frmParent parent = this;
+                searchUsers.MdiParent = parent;
+                searchUsers.Show();
+            }
         }
+
 
         private void AddVehicleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -163,6 +211,39 @@ namespace R_Line_Courier_System
             frmParent parent = this;
             deliveryReport.MdiParent = parent;
             deliveryReport.Show();
+        }
+
+        private void HistoricalParcelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport report = new frmReport();
+            frmParent parent = this;
+            report.MdiParent = parent;
+            report.Show();
+        }
+
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReportingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSignOut_Click(object sender, EventArgs e)
+        {
+
+            setUser(-1, false, "");
+            frmLogin login = new frmLogin();
+            frmParent parent = this;
+            login.MdiParent = parent;
+            login.Show();
         }
     }
 }

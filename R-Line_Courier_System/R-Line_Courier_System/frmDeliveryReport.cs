@@ -99,6 +99,7 @@ namespace R_Line_Courier_System
 
         private int getVehicleID(String RegNo)
         {
+            int id = -1;
             cnn = new SqlConnection(connectionString);
             var sql = @"Select * FROM VEHICLES WHERE Reg_No = '" + RegNo + "'";
             OpenConnection();
@@ -111,8 +112,9 @@ namespace R_Line_Courier_System
             {
                 if (RegNo == dataReader.GetValue(1).ToString()) 
                 {
+                    id = Int32.Parse(dataReader.GetValue(0).ToString());
                     cnn.Close();
-                    return Int32.Parse(dataReader.GetValue(0).ToString());
+                    return id;
                 }
                 else
                 {
@@ -121,7 +123,7 @@ namespace R_Line_Courier_System
                 }
             }
             cnn.Close();
-            return -1;
+            return id;
 
             
         }
@@ -130,11 +132,11 @@ namespace R_Line_Courier_System
         {
             String deliveryDate = dateTimeDeliver.Value.ToShortDateString();
             String vehicleRegNo = cbxRegNo.Text;
-            //  int vehicleID = getVehicleID(cbxRegNo.Text);
-            int vehicleID = 1;
+             int vehicleID = getVehicleID(cbxRegNo.Text);
+           // int vehicleID = 1;
             cnn = new SqlConnection(connectionString);
             var sql = "";
-            if (vehicleID == null) 
+            if (vehicleID == -1) 
             {
                 sql = @"Select * FROM DELIVERIES";
             }
@@ -142,8 +144,13 @@ namespace R_Line_Courier_System
             {
 
                 // Kobus - join sql
-                sql = @"Select * FROM DELIVERIES a RIGHT JOIN WHERE a.Vehicle_ID LIKE '%" + vehicleID + "%' AND Delivery_Date = '" + deliveryDate + "'"+
-                    "LEFT JOIN PARCELS ON DELIVERIES.Delivery_ID = PARCELS.Delivery_ID";
+
+                sql = @"SELECT a.Delivery_ID, a.Vehicle_ID, b.Delivery_Due_Date, a.Delivery_Date, b.Parcel_ID, b.Recipient_Name, b.Contact_No, B.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered   FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE a.Vehicle_ID" +
+                    " LIKE '%" + vehicleID + "%' AND a.Delivery_Date = '" + deliveryDate + "' ";
+                //  sql = @"Select Delivery_ID, Vehicle_ID,  Delivery_Date FROM DELIVERIES WHERE Vehicle_ID " +
+                //     " LIKE '%" + vehicleID + "%' AND Delivery_Date = '" + deliveryDate + "' ";
+
+                //MessageBox.Show(sql);
             }
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);

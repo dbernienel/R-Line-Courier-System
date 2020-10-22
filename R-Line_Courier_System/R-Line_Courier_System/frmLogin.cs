@@ -46,7 +46,11 @@ namespace R_Line_Courier_System
                 if ((Username == dataReader.GetValue(4).ToString()) && (Password == dataReader.GetValue(5).ToString()))
                 {
                     MessageBox.Show("Welcome " + dataReader.GetValue(1).ToString() + "!");
-                    this.Close();
+                    
+                    frmParent parent = (frmParent)this.Owner;
+                    //   parent.setUser(Int32.Parse(dataReader.GetValue(4).ToString()), Convert.ToBoolean(dataReader.GetValue(3).ToString()), dataReader.GetValue(1).ToString());
+                   // parent.setUser(-1, false, "");
+                   this.Close();
                 }
                 else
                 {

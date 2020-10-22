@@ -127,6 +127,12 @@
     <Compile Include="frmRegionDetails.Designer.cs">
       <DependentUpon>frmRegionDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSearchUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegionDetails.resx">
       <DependentUpon>frmRegionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchUser.resx">
       <DependentUpon>frmSearchUser.cs</DependentUpon>
