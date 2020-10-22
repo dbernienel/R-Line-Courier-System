@@ -19,12 +19,12 @@ namespace R_Line_Courier_System
         private String conString;
         private String myQuery;
         private String queryAjustment;
+        private int userID;
 
 
-        public frmMaintainParcels()
-        {
+        public frmMaintainParcels(int iD) {
             InitializeComponent();
-
+            userID = iD;
             setQueryAjustment();
 
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
@@ -46,7 +46,7 @@ namespace R_Line_Courier_System
         private void btnAddNewParcel_Click(object sender, EventArgs e)
         {
             frmMaintainParcels maintain = this;
-            frmParcelDetails details = new frmParcelDetails(maintain, true);
+            frmParcelDetails details = new frmParcelDetails(maintain, true, userID);
             details.Show();
 
             con.Close();
@@ -55,7 +55,7 @@ namespace R_Line_Courier_System
         private void btnUpdateParcel_Click(object sender, EventArgs e)
         {
             frmMaintainParcels maintain = this;
-            frmParcelDetails details = new frmParcelDetails(maintain, false);
+            frmParcelDetails details = new frmParcelDetails(maintain, false, userID);
             details.setParcelID(dgvParcels.SelectedCells[0].Value.ToString());
             details.autoFillForm();
             details.Show();
@@ -79,7 +79,7 @@ namespace R_Line_Courier_System
         private void btnMoreDetailsParcel_Click(object sender, EventArgs e)
         {
             //to do: show more complete view of data in parcel db
-            frmMaintainParcels maintain = new frmMaintainParcels();
+            frmMaintainParcels maintain = new frmMaintainParcels(userID);
             maintain.dateCheck();
         }
 

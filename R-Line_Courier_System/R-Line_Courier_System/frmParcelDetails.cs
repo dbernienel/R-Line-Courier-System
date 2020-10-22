@@ -13,10 +13,12 @@ namespace R_Line_Courier_System
         private SqlCommand cmd;
         private bool flag;
         private bool btnState;
+        private int userID;
 
-        public frmParcelDetails(frmMaintainParcels maintain, bool state)
+        public frmParcelDetails(frmMaintainParcels maintain, bool state, int userID)
         {
             InitializeComponent();
+            this.userID = userID;
             btnState = state;
             flag = false;
             this.maintain = maintain;
@@ -219,8 +221,13 @@ namespace R_Line_Courier_System
         }
 
         private void dataAdd() {
-            SqlCommand cmd = new SqlCommand("INSERT INTO PARCELS(Status_ID, Postal_Code_ID, Client_ID, Parcel_Weight, Parcel_Length, Parcel_Width, Parcel_Height, Delivery_Street_Number, Delivery_Street_Name, Delivery_Complex_Building, Contact_No, Alt_Contact_No, Delivery_Due_Date, Delivered, Recipient_Name) " +
-                "VALUES(" + cbDeliveryStatus.SelectedValue + "," + cbPostalCode.SelectedValue + "," + cbCompanyName.SelectedValue + "," + nudWeight.Value + "," + nudLenght.Value + "," + nudWidth.Value + "," + nudHeight.Value + ",'" + tbxStreetNumber.Text + "','" + tbxStreetName.Text + "','" + tbxBuildingName.Text + "','" + tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + tbDelivered.Checked.ToString() + "','" + tbxRecepientName.Text + "')", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO PARCELS(Status_ID, Postal_Code_ID, Client_ID, " +
+                "Parcel_Weight, Parcel_Length, Parcel_Width, Parcel_Height, Delivery_Street_Number, Delivery_Street_Name, Delivery_Complex_Building, " +
+                "Contact_No, Alt_Contact_No, Delivery_Due_Date, Delivered, Recipient_Name, User_ID) " +
+                "VALUES(" + cbDeliveryStatus.SelectedValue + "," + cbPostalCode.SelectedValue + "," + cbCompanyName.SelectedValue + "," + nudWeight.Value + "," + nudLenght.Value + "," +
+                nudWidth.Value + "," + nudHeight.Value + ",'" + tbxStreetNumber.Text + "','" + tbxStreetName.Text + "','" + tbxBuildingName.Text + "','" + 
+                tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + tbDelivered.Checked.ToString() + "','" + 
+                tbxRecepientName.Text + "'," + userID.ToString() + ")", con);
 
             con.Open();
             cmd.ExecuteNonQuery();

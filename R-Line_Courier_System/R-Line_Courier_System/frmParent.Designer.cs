@@ -135,7 +135,7 @@
             // viewMaintainToolStripMenuItem
             // 
             this.viewMaintainToolStripMenuItem.Name = "viewMaintainToolStripMenuItem";
-            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewMaintainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewMaintainToolStripMenuItem.Text = "View & Maintain";
             this.viewMaintainToolStripMenuItem.Click += new System.EventHandler(this.ViewMaintainToolStripMenuItem_Click);
             // 
@@ -175,14 +175,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add new";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "View  & Maintain";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -198,14 +198,14 @@
             // addVehicleToolStripMenuItem
             // 
             this.addVehicleToolStripMenuItem.Name = "addVehicleToolStripMenuItem";
-            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.addVehicleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addVehicleToolStripMenuItem.Text = "Add vehicle";
             this.addVehicleToolStripMenuItem.Click += new System.EventHandler(this.AddVehicleToolStripMenuItem_Click);
             // 
             // maintainVehiclesToolStripMenuItem
             // 
             this.maintainVehiclesToolStripMenuItem.Name = "maintainVehiclesToolStripMenuItem";
-            this.maintainVehiclesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.maintainVehiclesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.maintainVehiclesToolStripMenuItem.Text = "Maintain vehicles";
             this.maintainVehiclesToolStripMenuItem.Click += new System.EventHandler(this.MaintainVehiclesToolStripMenuItem_Click);
             // 
@@ -230,6 +230,7 @@
             this.allocateParcelsToVehiclesToolStripMenuItem.Name = "allocateParcelsToVehiclesToolStripMenuItem";
             this.allocateParcelsToVehiclesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.allocateParcelsToVehiclesToolStripMenuItem.Text = "Allocate parcels to vehicles";
+            this.allocateParcelsToVehiclesToolStripMenuItem.Click += new System.EventHandler(this.allocateParcelsToVehiclesToolStripMenuItem_Click);
             // 
             // deliverParcelsToolStripMenuItem
             // 
@@ -305,11 +306,7 @@
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.FrmParent_Activated);
-
-            this.Load += new System.EventHandler(this.frmParent_Load);
-
             this.Load += new System.EventHandler(this.FrmParent_Load);
-
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlUser.ResumeLayout(false);

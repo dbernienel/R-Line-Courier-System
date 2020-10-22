@@ -17,10 +17,21 @@ namespace R_Line_Courier_System
         public frmParent()
         {
             InitializeComponent();
-            frmLogin Login = new frmLogin();
-            Login.MdiParent = this;
-            Login.StartPosition = FormStartPosition.CenterScreen;
-            Login.Show();
+        }
+
+        private void openLoginForm() {
+            using (var login = new frmLogin())
+            {
+                var result = login.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    int UserID = login.userID;
+                    bool admin = login.adminP;
+                    string username = login.username;
+
+                    setUser(UserID, admin, username);
+                }
+            }
         }
 
         private void FrmParent_Activated(object sender, EventArgs e)
@@ -28,7 +39,7 @@ namespace R_Line_Courier_System
             
         }
 
-        public void setUser(int user_ID,bool admin, string user_Name)
+        public void setUser(int user_ID, bool admin, string user_Name)
         {
 
             if (user_Name != "")
@@ -69,8 +80,8 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainParcels parcels = new frmMaintainParcels();
-            frmParcelDetails details = new frmParcelDetails(parcels, true);
+            frmMaintainParcels parcels = new frmMaintainParcels(userID);
+            frmParcelDetails details = new frmParcelDetails(parcels, true, userID);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
@@ -78,7 +89,7 @@ namespace R_Line_Courier_System
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainParcels parcel = new frmMaintainParcels();
+            frmMaintainParcels parcel = new frmMaintainParcels(userID);
             frmParent parent = this;
             parcel.MdiParent = parent;
             parcel.Show();
@@ -238,10 +249,12 @@ namespace R_Line_Courier_System
         {
 
             setUser(-1, false, "");
-            frmLogin login = new frmLogin();
-            frmParent parent = this;
-            login.MdiParent = parent;
-            login.Show();
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "frmParent")
+                    Application.OpenForms[i].Close();
+            }
+            openLoginForm();
         }
 
 
@@ -255,10 +268,16 @@ namespace R_Line_Courier_System
         {
             //no user logged in on startup
             setUser(-1, false, "");
+            openLoginForm();
 
             //remove this line of code
-            setUser(1, true, "Bernie");
+            //setUser(1, true, "Bernie");
         }
 
+        private void allocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAssignParcels asprcl = new frmAssignParcels(userID);
+            asprcl.Show();
+        }
     }
 }

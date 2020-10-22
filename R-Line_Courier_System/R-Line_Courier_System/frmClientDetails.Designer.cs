@@ -65,6 +65,7 @@
             this.gbClientInfo.TabIndex = 3;
             this.gbClientInfo.TabStop = false;
             this.gbClientInfo.Text = "Client Info";
+            this.gbClientInfo.Enter += new System.EventHandler(this.gbClientInfo_Enter);
             // 
             // tbxCompanyName
             // 
