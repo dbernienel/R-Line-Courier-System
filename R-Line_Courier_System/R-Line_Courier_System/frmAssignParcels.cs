@@ -20,9 +20,11 @@ namespace R_Line_Courier_System
         private String defaultQuery;
         private DataSet ds;
         private SqlCommand cmd;
+        private int userID;
 
-        public frmAssignParcels()
-        {
+        public frmAssignParcels(int iD)
+        {   
+            userID = iD;
             InitializeComponent();
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
         }
@@ -151,7 +153,7 @@ namespace R_Line_Courier_System
         {
             if (lbxParcels.Items.Count == 0 && !compareRecords(cbDeliveryVehicle.SelectedValue.ToString(), dateDeliveryDate.Value.ToShortDateString()))
             {
-                addDelivery("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "')");
+                addDelivery("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date,User_ID) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "',1)");
                 updateParcels(dgvParcels.SelectedCells[0].Value.ToString(), getDeliveryID());
             }
             else {

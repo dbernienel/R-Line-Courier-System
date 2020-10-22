@@ -18,6 +18,9 @@ namespace R_Line_Courier_System
         public SqlDataReader dataReader;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
+        public int userID { get; set; }
+        public bool adminP { get; set; }
+        public string username { get; set; }
 
         public frmLogin()
         {
@@ -48,9 +51,11 @@ namespace R_Line_Courier_System
                     MessageBox.Show("Welcome " + dataReader.GetValue(1).ToString() + "!");
                     
                     frmParent parent = (frmParent)this.Owner;
-                    //   parent.setUser(Int32.Parse(dataReader.GetValue(4).ToString()), Convert.ToBoolean(dataReader.GetValue(3).ToString()), dataReader.GetValue(1).ToString());
-                   // parent.setUser(-1, false, "");
-                   this.Close();
+                    this.userID = Int32.Parse(dataReader.GetValue(0).ToString());
+                    this.adminP = Convert.ToBoolean(dataReader.GetValue(3));
+                    this.username = dataReader.GetValue(1).ToString();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
@@ -70,6 +75,11 @@ namespace R_Line_Courier_System
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
         {
 
         }

@@ -89,5 +89,10 @@ namespace R_Line_Courier_System
         {
             epCompanyName.DataSource = tbxCompanyName;
         }
+
+        private void gbClientInfo_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
