@@ -83,7 +83,6 @@
             this.ttClear = new System.Windows.Forms.ToolTip(this.components);
             this.ttBuildingName = new System.Windows.Forms.ToolTip(this.components);
             this.ttContactNum = new System.Windows.Forms.ToolTip(this.components);
-            this.epRecipientName = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbClientInfo.SuspendLayout();
             this.gbDeliveryInfo.SuspendLayout();
             this.gbDeliveryAdress.SuspendLayout();
@@ -92,7 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epRecipientName)).BeginInit();
             this.SuspendLayout();
             // 
             // gbClientInfo
@@ -674,10 +672,6 @@
             this.ttContactNum.ToolTipTitle = "Recipient Contact Number";
             this.ttContactNum.UseFading = false;
             // 
-            // epRecipientName
-            // 
-            this.epRecipientName.ContainerControl = this;
-            // 
             // frmParcelDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,7 +701,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epRecipientName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,6 +762,5 @@
         private System.Windows.Forms.ToolTip ttBuildingName;
         private System.Windows.Forms.ToolTip ttClear;
         private System.Windows.Forms.ToolTip ttCompanyName;
-        private System.Windows.Forms.ErrorProvider epRecipientName;
     }
 }

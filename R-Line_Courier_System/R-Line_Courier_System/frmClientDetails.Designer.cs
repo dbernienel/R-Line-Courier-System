@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gbClientInfo = new System.Windows.Forms.GroupBox();
             this.tbxCompanyName = new System.Windows.Forms.TextBox();
             this.tbxClientContactNr = new System.Windows.Forms.MaskedTextBox();
@@ -42,9 +41,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.epCompanyName = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbClientInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epCompanyName)).BeginInit();
             this.SuspendLayout();
             // 
             // gbClientInfo
@@ -182,10 +179,6 @@
             this.label22.TabIndex = 25;
             this.label22.Text = "Required fields are marked with *";
             // 
-            // epCompanyName
-            // 
-            this.epCompanyName.ContainerControl = this;
-            // 
             // frmClientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,10 +192,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClientDetails";
             this.Text = "Client Details";
-            this.Load += new System.EventHandler(this.frmClientDetails_Load);
             this.gbClientInfo.ResumeLayout(false);
             this.gbClientInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epCompanyName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +214,5 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbxCompanyName;
-        private System.Windows.Forms.ErrorProvider epCompanyName;
     }
 }
