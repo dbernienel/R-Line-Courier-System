@@ -34,7 +34,6 @@
             this.btnUpdateParcel = new System.Windows.Forms.Button();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,22 +100,11 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Search";
             // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(315, 319);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 12;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.Button1_Click);
-            // 
             // frmMaintainClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 354);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnAddNewParcel);
@@ -141,6 +129,5 @@
         private System.Windows.Forms.Button btnUpdateParcel;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnExport;
     }
 }

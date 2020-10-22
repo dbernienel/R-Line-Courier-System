@@ -67,6 +67,7 @@ namespace R_Line_Courier_System
             cmd.ExecuteNonQuery();
             maintain.dataChange();
             con.Close();
+            ClearForm();
             this.Close();
         }
 
@@ -78,21 +79,30 @@ namespace R_Line_Courier_System
             cmd.ExecuteNonQuery();
             maintain.dataChange();
             con.Close();
+            ClearForm();
+            this.Close();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void gbClientInfo_Enter(object sender, EventArgs e)
         {
 
         }
-
+        
+        private void ClearForm()
+        {
+            tbxClientContactNr.Clear();
+            tbxClientName.Clear();
+            tbxClientSurname.Clear();
+            tbxCompanyName.Clear();
+        }
         private void BtnClear_Click(object sender, EventArgs e)
         {
-
+            ClearForm();
         }
     }
 }
