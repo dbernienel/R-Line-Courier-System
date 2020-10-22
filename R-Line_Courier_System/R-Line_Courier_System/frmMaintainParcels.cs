@@ -46,8 +46,7 @@ namespace R_Line_Courier_System
         private void btnAddNewParcel_Click(object sender, EventArgs e)
         {
             frmMaintainParcels maintain = this;
-            frmParcelDetails details = new frmParcelDetails(maintain);
-            details.disableButton(true);
+            frmParcelDetails details = new frmParcelDetails(maintain, true);
             details.Show();
 
             con.Close();
@@ -56,14 +55,10 @@ namespace R_Line_Courier_System
         private void btnUpdateParcel_Click(object sender, EventArgs e)
         {
             frmMaintainParcels maintain = this;
-            frmParcelDetails details = new frmParcelDetails(maintain);
+            frmParcelDetails details = new frmParcelDetails(maintain, false);
             details.setParcelID(dgvParcels.SelectedCells[0].Value.ToString());
             details.autoFillForm();
-            details.disableButton(false);
             details.Show();
-
-            //to do: fill frmParcelDetails fields with selected data entry
-
         }
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)

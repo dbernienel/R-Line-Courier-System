@@ -219,6 +219,10 @@ namespace R_Line_Courier_System
             updateParcels(lbxParcels.SelectedValue.ToString(), "NULL");
             dataChange();
             populateListbox();
+            if (lbxParcels.SelectedValue == null)
+            {
+                btnRemoveParcel.Enabled = false;
+            }
         }
     }
 }

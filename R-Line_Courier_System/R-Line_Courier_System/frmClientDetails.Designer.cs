@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbClientInfo = new System.Windows.Forms.GroupBox();
             this.tbxCompanyName = new System.Windows.Forms.TextBox();
             this.tbxClientContactNr = new System.Windows.Forms.MaskedTextBox();
@@ -38,11 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.epCompanyName = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbClientInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epCompanyName)).BeginInit();
             this.SuspendLayout();
             // 
             // gbClientInfo
@@ -59,7 +61,7 @@
             this.gbClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gbClientInfo.Name = "gbClientInfo";
             this.gbClientInfo.Padding = new System.Windows.Forms.Padding(2);
-            this.gbClientInfo.Size = new System.Drawing.Size(378, 190);
+            this.gbClientInfo.Size = new System.Drawing.Size(393, 190);
             this.gbClientInfo.TabIndex = 3;
             this.gbClientInfo.TabStop = false;
             this.gbClientInfo.Text = "Client Info";
@@ -83,7 +85,7 @@
             // 
             // tbxClientSurname
             // 
-            this.tbxClientSurname.Location = new System.Drawing.Point(225, 67);
+            this.tbxClientSurname.Location = new System.Drawing.Point(232, 67);
             this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientSurname.Name = "tbxClientSurname";
             this.tbxClientSurname.Size = new System.Drawing.Size(140, 20);
@@ -110,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(172, 70);
+            this.label4.Location = new System.Drawing.Point(179, 70);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
@@ -147,16 +149,16 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
+            // btnApply
             // 
-            this.btnAdd.Location = new System.Drawing.Point(23, 260);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(68, 31);
-            this.btnAdd.TabIndex = 22;
-            this.btnAdd.Text = "Add new";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnApply.Location = new System.Drawing.Point(113, 260);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(68, 31);
+            this.btnApply.TabIndex = 22;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnCancel
             // 
@@ -178,33 +180,27 @@
             this.label22.TabIndex = 25;
             this.label22.Text = "Required fields are marked with *";
             // 
-            // btnUpdate
+            // epCompanyName
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(113, 260);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(68, 31);
-            this.btnUpdate.TabIndex = 26;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.epCompanyName.ContainerControl = this;
             // 
             // frmClientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 297);
-            this.Controls.Add(this.btnUpdate);
+            this.ClientSize = new System.Drawing.Size(409, 297);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbClientInfo);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClientDetails";
             this.Text = "Client Details";
+            this.Load += new System.EventHandler(this.frmClientDetails_Load);
             this.gbClientInfo.ResumeLayout(false);
             this.gbClientInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epCompanyName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,10 +217,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbxCompanyName;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ErrorProvider epCompanyName;
     }
 }

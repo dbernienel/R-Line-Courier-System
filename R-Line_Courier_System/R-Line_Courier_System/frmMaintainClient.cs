@@ -29,7 +29,7 @@ namespace R_Line_Courier_System
 
         private void btnAddNewParcel_Click(object sender, EventArgs e)
         {
-            client = new frmClientDetails(maintain);
+            client = new frmClientDetails(maintain, true);
             client.ShowDialog();
         }
 
@@ -89,7 +89,7 @@ namespace R_Line_Courier_System
 
         private void btnUpdateParcel_Click(object sender, EventArgs e)
         {
-            client = new frmClientDetails(maintain);
+            client = new frmClientDetails(maintain, false);
             client.setClientID(dgvClients.SelectedCells[0].Value.ToString());
             client.autoFillForm();
             client.Show();

@@ -39,7 +39,7 @@ namespace R_Line_Courier_System
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMaintainParcels parcels = new frmMaintainParcels();
-            frmParcelDetails details = new frmParcelDetails(parcels);
+            frmParcelDetails details = new frmParcelDetails(parcels, true);
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
@@ -175,5 +175,11 @@ namespace R_Line_Courier_System
             frmAssignParcels assign = new frmAssignParcels();
             assign.Show();
         }
+
+        private void frmParent_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace R_Line_Courier_System
 {
@@ -58,17 +59,32 @@ namespace R_Line_Courier_System
 
             lbPostalCodes.DisplayMember = "Postal_Code";
             lbPostalCodes.ValueMember = "Postal_Code_ID";
-            da.Fill(ds);
-            lbPostalCodes.DataSource = ds.Tables[0];
+            try {
+                da.Fill(ds);
+            } catch (SqlException m) {
+                Console.WriteLine(m.Message);
+            }
+
+            try {
+                lbPostalCodes.DataSource = ds.Tables[0];
+            } catch (IndexOutOfRangeException m) {
+                Console.WriteLine(m.Message);
+            }
+            
             con.Close();
         }
 
         private void addPostalCode_Click(object sender, EventArgs e)
         {
-            myQuery = "INSERT INTO POSTAL_CODE(Postal_Code, City_ID) VALUES ('" + tbxPostalCode.Text + "', " + cbCity.SelectedValue.ToString() + ")";
-            insertData();
+            try {
+                myQuery = "INSERT INTO POSTAL_CODE(Postal_Code, City_ID) VALUES ('" + tbxPostalCode.Text + "', " + cbCity.SelectedValue.ToString() + ")";
+                insertData();
+            } catch (NullReferenceException m) {
+                Console.WriteLine(m.Message);
+            }
             populateListbox();
             tbxPostalCode.Clear();
+            btnDeleteCity.Enabled = false;
         }
 
         private void insertData() {
@@ -84,6 +100,7 @@ namespace R_Line_Courier_System
             insertData();
             populateComboBox();
             tbxCity.Clear();
+            lbPostalCodes.DataSource = null;
         }
 
         private void btnDeleteCity_Click(object sender, EventArgs e)
@@ -105,6 +122,8 @@ namespace R_Line_Courier_System
             myQuery = "DELETE FROM POSTAL_CODE WHERE Postal_Code_ID=" + lbPostalCodes.SelectedValue.ToString();
             deleteData();
             populateListbox();
+            if (lbPostalCodes.Items.Count == 0 && cbCity.SelectedItem != null)
+                btnDeleteCity.Enabled = true;
         }
     }
 }
