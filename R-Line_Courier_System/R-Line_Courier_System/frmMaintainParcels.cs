@@ -27,16 +27,16 @@ namespace R_Line_Courier_System
 
             setQueryAjustment();
 
-            conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
+            conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True";
         }
 
         public void setQueryAjustment() { 
             queryAjustment = "SELECT a.Parcel_ID, c.Company_Name, a.Delivery_Due_Date, b.Status_Description, a.Parcel_Weight, a.Parcel_Length, a.Parcel_Width, a.Parcel_Height, a.Delivery_Street_Number, a.Delivery_Street_Name, a.Delivery_Complex_Building, d.Postal_Code, a.Contact_No, a.Alt_Contact_No, a.Delivered, a.Recipient_Name, e.User_Name, e.User_Surname, c.Client_ID, b.Status_ID, d.Postal_Code_ID " +
                         "FROM PARCELS a " +
                         "LEFT JOIN PARCEL_STATUS b ON a.Status_ID = b.Status_ID " +
-                        "left JOIN CLIENTS AS c ON a.Client_ID = c.Client_ID " +
-                        "left JOIN POSTAL_CODE AS d ON a.Postal_Code_ID = d.Postal_Code_ID " +
-                        "left JOIN USERS AS e ON a.User_ID = e.User_ID";
+                        "LEFT JOIN CLIENTS AS c ON a.Client_ID = c.Client_ID " +
+                        "LEFT JOIN POSTAL_CODE AS d ON a.Postal_Code_ID = d.Postal_Code_ID " +
+                        "LEFT JOIN USERS AS e ON a.User_ID = e.User_ID";
         }
 
         public String getQueryAjustment() {

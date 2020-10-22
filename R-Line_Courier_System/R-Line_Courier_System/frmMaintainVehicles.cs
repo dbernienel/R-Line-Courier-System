@@ -160,5 +160,10 @@ namespace R_Line_Courier_System
                 MessageBox.Show("Cannot clear while updating");
             }
         }
+
+        private void frmMaintainVehicles_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
