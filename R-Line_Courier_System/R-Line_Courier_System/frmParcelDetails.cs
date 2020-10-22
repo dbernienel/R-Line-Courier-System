@@ -20,7 +20,7 @@ namespace R_Line_Courier_System {
             btnState = state;
             flag = false;
             this.maintain = maintain;
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\RLine_Database.mdf;Integrated Security=True");
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True");
 
             populateControls("SELECT Status_ID,Status_Description FROM PARCEL_STATUS GROUP BY Status_Description,Status_ID", "Status_Description", "Status_ID", cbDeliveryStatus);
             populateControls("SELECT Client_ID,Company_Name FROM CLIENTS group by Company_Name,Client_ID", "Company_Name", "Client_ID", cbCompanyName);
