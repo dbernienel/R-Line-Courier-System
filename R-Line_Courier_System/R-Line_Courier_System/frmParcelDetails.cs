@@ -95,8 +95,10 @@ namespace R_Line_Courier_System {
         }
 
         private void btnApply_Click(object sender, EventArgs e) {
-            if (btnState)
+            if (btnState) {
                 dataAdd();
+                ClearForm();
+            }
             else
                 dataUpdate();
         }
@@ -232,7 +234,9 @@ namespace R_Line_Courier_System {
             con.Open();
 
             try { cmd.ExecuteNonQuery(); } catch (SqlException m) { 
-                Console.WriteLine(m.Message); }
+                Console.WriteLine(m.Message);
+                MessageBox.Show("Please ensure all fields are filled in correctly.");
+            }
 
             maintain.dateCheck();
             con.Close();

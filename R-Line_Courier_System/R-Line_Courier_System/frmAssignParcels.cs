@@ -182,7 +182,7 @@ namespace R_Line_Courier_System
         private void updateParcels(String parcelID, String deliveryID) {
             cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = " + deliveryID + " WHERE Parcel_ID = " + parcelID, con );
             con.Open();
-            cmd.ExecuteNonQuery();
+            try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); }
             con.Close();
         }
 

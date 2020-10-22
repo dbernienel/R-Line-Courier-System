@@ -44,51 +44,56 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 55);
+            this.label1.Location = new System.Drawing.Point(10, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 17);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "City";
             // 
             // cbCity
             // 
             this.cbCity.FormattingEnabled = true;
-            this.cbCity.Location = new System.Drawing.Point(51, 55);
+            this.cbCity.Location = new System.Drawing.Point(38, 45);
+            this.cbCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbCity.Name = "cbCity";
-            this.cbCity.Size = new System.Drawing.Size(121, 24);
+            this.cbCity.Size = new System.Drawing.Size(92, 21);
             this.cbCity.TabIndex = 1;
             this.cbCity.SelectedIndexChanged += new System.EventHandler(this.cbCity_SelectedIndexChanged);
             // 
             // lbPostalCodes
             // 
             this.lbPostalCodes.FormattingEnabled = true;
-            this.lbPostalCodes.ItemHeight = 16;
-            this.lbPostalCodes.Location = new System.Drawing.Point(16, 101);
+            this.lbPostalCodes.Location = new System.Drawing.Point(12, 82);
+            this.lbPostalCodes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbPostalCodes.Name = "lbPostalCodes";
-            this.lbPostalCodes.Size = new System.Drawing.Size(156, 276);
+            this.lbPostalCodes.Size = new System.Drawing.Size(118, 225);
             this.lbPostalCodes.TabIndex = 2;
             // 
             // tbxPostalCode
             // 
-            this.tbxPostalCode.Location = new System.Drawing.Point(307, 101);
+            this.tbxPostalCode.Location = new System.Drawing.Point(230, 82);
+            this.tbxPostalCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxPostalCode.Name = "tbxPostalCode";
-            this.tbxPostalCode.Size = new System.Drawing.Size(100, 22);
+            this.tbxPostalCode.Size = new System.Drawing.Size(76, 20);
             this.tbxPostalCode.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(217, 105);
+            this.label2.Location = new System.Drawing.Point(163, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 17);
+            this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Postal Code";
             // 
             // addPostalCode
             // 
-            this.addPostalCode.Location = new System.Drawing.Point(307, 129);
+            this.addPostalCode.Location = new System.Drawing.Point(230, 105);
+            this.addPostalCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addPostalCode.Name = "addPostalCode";
-            this.addPostalCode.Size = new System.Drawing.Size(75, 23);
+            this.addPostalCode.Size = new System.Drawing.Size(56, 19);
             this.addPostalCode.TabIndex = 5;
             this.addPostalCode.Text = "Add";
             this.addPostalCode.UseVisualStyleBackColor = true;
@@ -96,9 +101,10 @@
             // 
             // btnDeletePostalCodes
             // 
-            this.btnDeletePostalCodes.Location = new System.Drawing.Point(16, 384);
+            this.btnDeletePostalCodes.Location = new System.Drawing.Point(12, 312);
+            this.btnDeletePostalCodes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDeletePostalCodes.Name = "btnDeletePostalCodes";
-            this.btnDeletePostalCodes.Size = new System.Drawing.Size(103, 36);
+            this.btnDeletePostalCodes.Size = new System.Drawing.Size(77, 29);
             this.btnDeletePostalCodes.TabIndex = 6;
             this.btnDeletePostalCodes.Text = "Delete code";
             this.btnDeletePostalCodes.UseVisualStyleBackColor = true;
@@ -107,24 +113,27 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(270, 176);
+            this.label3.Location = new System.Drawing.Point(202, 143);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 17);
+            this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "City";
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(307, 173);
+            this.tbxCity.Location = new System.Drawing.Point(230, 141);
+            this.tbxCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxCity.Name = "tbxCity";
-            this.tbxCity.Size = new System.Drawing.Size(100, 22);
+            this.tbxCity.Size = new System.Drawing.Size(76, 20);
             this.tbxCity.TabIndex = 8;
             // 
             // addCity
             // 
-            this.addCity.Location = new System.Drawing.Point(307, 202);
+            this.addCity.Location = new System.Drawing.Point(230, 164);
+            this.addCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addCity.Name = "addCity";
-            this.addCity.Size = new System.Drawing.Size(75, 23);
+            this.addCity.Size = new System.Drawing.Size(56, 19);
             this.addCity.TabIndex = 9;
             this.addCity.Text = "Add";
             this.addCity.UseVisualStyleBackColor = true;
@@ -132,9 +141,10 @@
             // 
             // btnDeleteCity
             // 
-            this.btnDeleteCity.Location = new System.Drawing.Point(125, 383);
+            this.btnDeleteCity.Location = new System.Drawing.Point(94, 311);
+            this.btnDeleteCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDeleteCity.Name = "btnDeleteCity";
-            this.btnDeleteCity.Size = new System.Drawing.Size(103, 36);
+            this.btnDeleteCity.Size = new System.Drawing.Size(77, 29);
             this.btnDeleteCity.TabIndex = 10;
             this.btnDeleteCity.Text = "Delete city";
             this.btnDeleteCity.UseVisualStyleBackColor = true;
@@ -142,9 +152,9 @@
             // 
             // frmRegionDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 442);
+            this.ClientSize = new System.Drawing.Size(324, 359);
             this.Controls.Add(this.btnDeleteCity);
             this.Controls.Add(this.addCity);
             this.Controls.Add(this.tbxCity);
@@ -156,8 +166,9 @@
             this.Controls.Add(this.lbPostalCodes);
             this.Controls.Add(this.cbCity);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmRegionDetails";
-            this.Text = "Delete";
+            this.Text = "Maintain Region";
             this.Load += new System.EventHandler(this.frmRegionDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

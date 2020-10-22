@@ -192,6 +192,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClientDetails";
             this.Text = "Client Details";
+            this.Load += new System.EventHandler(this.frmClientDetails_Load);
             this.gbClientInfo.ResumeLayout(false);
             this.gbClientInfo.PerformLayout();
             this.ResumeLayout(false);

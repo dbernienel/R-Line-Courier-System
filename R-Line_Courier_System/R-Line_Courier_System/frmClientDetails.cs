@@ -104,5 +104,10 @@ namespace R_Line_Courier_System
         {
             ClearForm();
         }
+
+        private void frmClientDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
