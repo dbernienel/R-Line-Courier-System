@@ -32,13 +32,15 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.cbxRegNo = new System.Windows.Forms.ComboBox();
             this.dateTimeDeliver = new System.Windows.Forms.DateTimePicker();
+            this.lblSelectVehicle = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDeliveries
             // 
             this.dgvDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliveries.Location = new System.Drawing.Point(28, 120);
+            this.dgvDeliveries.Location = new System.Drawing.Point(38, 92);
             this.dgvDeliveries.Name = "dgvDeliveries";
             this.dgvDeliveries.Size = new System.Drawing.Size(743, 243);
             this.dgvDeliveries.TabIndex = 0;
@@ -56,7 +58,7 @@
             // cbxRegNo
             // 
             this.cbxRegNo.FormattingEnabled = true;
-            this.cbxRegNo.Location = new System.Drawing.Point(28, 76);
+            this.cbxRegNo.Location = new System.Drawing.Point(181, 30);
             this.cbxRegNo.Name = "cbxRegNo";
             this.cbxRegNo.Size = new System.Drawing.Size(121, 21);
             this.cbxRegNo.TabIndex = 2;
@@ -64,17 +66,37 @@
             // 
             // dateTimeDeliver
             // 
-            this.dateTimeDeliver.Location = new System.Drawing.Point(305, 76);
+            this.dateTimeDeliver.Location = new System.Drawing.Point(519, 30);
             this.dateTimeDeliver.Name = "dateTimeDeliver";
             this.dateTimeDeliver.Size = new System.Drawing.Size(200, 20);
             this.dateTimeDeliver.TabIndex = 3;
             this.dateTimeDeliver.ValueChanged += new System.EventHandler(this.DateTimeDeliver_ValueChanged);
             // 
+            // lblSelectVehicle
+            // 
+            this.lblSelectVehicle.AutoSize = true;
+            this.lblSelectVehicle.Location = new System.Drawing.Point(45, 33);
+            this.lblSelectVehicle.Name = "lblSelectVehicle";
+            this.lblSelectVehicle.Size = new System.Drawing.Size(77, 13);
+            this.lblSelectVehicle.TabIndex = 5;
+            this.lblSelectVehicle.Text = "Select vehicle:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(410, 33);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(103, 13);
+            this.lblDate.TabIndex = 6;
+            this.lblDate.Text = "Select delivery date:";
+            // 
             // frmDeliveryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 467);
+            this.ClientSize = new System.Drawing.Size(823, 467);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblSelectVehicle);
             this.Controls.Add(this.dateTimeDeliver);
             this.Controls.Add(this.cbxRegNo);
             this.Controls.Add(this.btnExport);
@@ -84,6 +106,7 @@
             this.Activated += new System.EventHandler(this.FrmDeliveryReport_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -93,5 +116,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ComboBox cbxRegNo;
         private System.Windows.Forms.DateTimePicker dateTimeDeliver;
+        private System.Windows.Forms.Label lblSelectVehicle;
+        private System.Windows.Forms.Label lblDate;
     }
 }

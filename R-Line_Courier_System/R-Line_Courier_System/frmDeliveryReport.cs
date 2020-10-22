@@ -43,17 +43,67 @@ namespace R_Line_Courier_System
             worksheet = workbook.ActiveSheet;
             // changing the name of active sheet  
             worksheet.Name = "Deliveries";
-            // storing header part in Excel  
+            // storing header part in Excel
+
+            Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
+            myStyle1.Font.Name = "Verdana";
+            myStyle1.Font.Size = 12;
+            myStyle1.Font.Bold = true;
+            myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+           // myStyle1.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DimGray);
+            myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+            Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
+            myStyle2.Font.Name = "Verdana";
+            myStyle2.Font.Size = 11;
+            myStyle2.Font.Bold = true;
+            myStyle2.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+            myStyle2.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
+            myStyle2.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+
+            worksheet.Cells[1, 1] = "R-Line Courier System";
+
+            worksheet.Cells[2, 1] = "Vehicle " + cbxRegNo.Text + " delivery information for " + (dateTimeDeliver.Value.ToString()).Substring(0,10);
+
+            worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();
+
+            Microsoft.Office.Interop.Excel.Range formatRange;
+            formatRange = worksheet.get_Range("a1", "c3");
+            formatRange.Style = "myStyle1";
+            
+            
+            formatRange = worksheet.get_Range("a5", "l5");
+            formatRange.Style = "myStyle2";
+            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+
+            //formatRange = worksheet.get_Range("a5", "h"+ dgvDeliveries.Columns.Count.ToString());
+
+            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+            worksheet.Columns[1].ColumnWidth = 20;
+            worksheet.Columns[2].ColumnWidth = 20;
+            worksheet.Columns[3].ColumnWidth = 20;
+            worksheet.Columns[4].ColumnWidth = 20;
+            worksheet.Columns[5].ColumnWidth = 25;
+            worksheet.Columns[6].ColumnWidth = 20;
+            worksheet.Columns[7].ColumnWidth = 20;
+
+            //columns will start at 4
+            int counter = 4;
+            
+
             for (int i = 1; i < dgvDeliveries.Columns.Count + 1; i++)
             {
-                worksheet.Cells[1, i] = dgvDeliveries.Columns[i - 1].HeaderText;
+                worksheet.Cells[1+counter, i] = dgvDeliveries.Columns[i - 1].HeaderText;
             }
             // storing Each row and column value to excel sheet  
             for (int i = 0; i < dgvDeliveries.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < dgvDeliveries.Columns.Count; j++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[i + 2+ counter, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
                 }
             }
             // save the application  

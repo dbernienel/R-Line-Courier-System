@@ -260,5 +260,9 @@ namespace R_Line_Courier_System
             setUser(1, true, "Bernie");
         }
 
+        private void AllocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

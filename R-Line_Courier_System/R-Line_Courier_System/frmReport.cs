@@ -45,16 +45,88 @@ namespace R_Line_Courier_System
             // changing the name of active sheet  
             worksheet.Name = "Deliveries";
             // storing header part in Excel  
+
+
+            Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
+            myStyle1.Font.Name = "Verdana";
+            myStyle1.Font.Size = 12;
+            myStyle1.Font.Bold = true;
+            myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+            // myStyle1.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DimGray);
+            myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+            Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
+            myStyle2.Font.Name = "Verdana";
+            myStyle2.Font.Size = 11;
+            myStyle2.Font.Bold = true;
+            myStyle2.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+            myStyle2.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
+            myStyle2.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+
+            worksheet.Cells[1, 1] = "R-Line Courier System";
+            String title = "";
+            if (rbDelivered.Checked)
+                title = "Delivered";
+
+            if (rbUndelivered.Checked)
+                title = "Undelivered";
+
+
+            worksheet.Cells[2, 1] =title+ " parcels during the period " + (dateTimeFrom.Value.ToString()).Substring(0, 10) + " to "+
+                (dateTimeTo.Value.ToString()).Substring(0, 10);
+
+            worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();
+
+            Microsoft.Office.Interop.Excel.Range formatRange;
+            formatRange = worksheet.get_Range("a1", "c3");
+            formatRange.Style = "myStyle1";
+
+
+            formatRange = worksheet.get_Range("a5", "l5");
+            formatRange.Style = "myStyle2";
+            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+
+            //formatRange = worksheet.get_Range("a5", "h"+ dgvDeliveries.Columns.Count.ToString());
+
+            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+            worksheet.Columns[1].ColumnWidth = 15;
+            worksheet.Columns[2].ColumnWidth = 15;
+            worksheet.Columns[3].ColumnWidth = 25;
+            worksheet.Columns[4].ColumnWidth = 20;
+            worksheet.Columns[5].ColumnWidth = 15;
+            worksheet.Columns[6].ColumnWidth = 20;
+            worksheet.Columns[7].ColumnWidth = 20;
+            worksheet.Columns[8].ColumnWidth = 20;
+            worksheet.Columns[9].ColumnWidth = 30;
+            worksheet.Columns[10].ColumnWidth = 30;
+            worksheet.Columns[11].ColumnWidth = 35;
+            worksheet.Columns[12].ColumnWidth = 20;
+
+
+
+            //columns will start at 4
+            int counter = 4;
+
+
+
+
+
+
+
+
             for (int i = 1; i < dvgReport.Columns.Count + 1; i++)
             {
-                worksheet.Cells[1, i] = dvgReport.Columns[i - 1].HeaderText;
+                worksheet.Cells[1 +counter, i] = dvgReport.Columns[i - 1].HeaderText;
             }
             // storing Each row and column value to excel sheet  
             for (int i = 0; i < dvgReport.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < dvgReport.Columns.Count; j++)
                 {
-                    worksheet.Cells[i + 2, j + 1] = dvgReport.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[i + 2 + counter, j + 1] = dvgReport.Rows[i].Cells[j].Value.ToString();
                 }
             }
             // save the application  
@@ -74,9 +146,10 @@ namespace R_Line_Courier_System
             if ((rbDelivered.Checked == false) && (rbDelivered.Checked == false))
                 isValid = false;
 
-            if (dateTimeFrom.Value > dateTimeTo.Value)
-            {
+            if ((dateTimeFrom.Value > dateTimeTo.Value) )
+            { 
                 MessageBox.Show("The date from can not be newer than the to date.");
+                dateTimeFrom.Value = dateTimeTo.Value.AddDays(-30);
                 isValid = false;
             }
 
@@ -97,7 +170,7 @@ namespace R_Line_Courier_System
 
                 cnn = new SqlConnection(connectionString);
                 var sql  = @"SELECT a.Delivery_ID, a.Vehicle_ID, b.Delivery_Due_Date, a.Delivery_Date, b.Parcel_ID, "
-                    +" b.Recipient_Name, b.Contact_No, b.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered, b.Delivery_Due_Date   FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE b.Delivered" +
+                    +" b.Recipient_Name, b.Contact_No, b.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered   FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE b.Delivered" +
                     " = " + delivered + " AND b.Delivery_Due_Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";
 
                 OpenConnection();
@@ -119,8 +192,9 @@ namespace R_Line_Courier_System
         {
             rbDelivered.Checked = false;
             rbUndelivered.Checked = false;
-            dateTimeTo.Value = DateTime.Today;
+            
             dateTimeFrom.Value = DateTime.Today.AddDays(-30);
+            dateTimeTo.Value = DateTime.Today;
 
         }
 
@@ -142,6 +216,11 @@ namespace R_Line_Courier_System
         private void DateTimeTo_ValueChanged(object sender, EventArgs e)
         {
             Filter();
+        }
+
+        private void FrmReport_Load(object sender, EventArgs e)
+        {
+            clearForm();
         }
     }
 }

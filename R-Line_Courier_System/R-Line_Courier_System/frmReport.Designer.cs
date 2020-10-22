@@ -35,6 +35,8 @@
             this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.dvgReport = new System.Windows.Forms.DataGridView();
+            this.lblDateFrom = new System.Windows.Forms.Label();
+            this.lblDateTo = new System.Windows.Forms.Label();
             this.gbDeliver.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgReport)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +79,7 @@
             // 
             this.gbDeliver.Controls.Add(this.rbDelivered);
             this.gbDeliver.Controls.Add(this.rbUndelivered);
-            this.gbDeliver.Location = new System.Drawing.Point(58, 52);
+            this.gbDeliver.Location = new System.Drawing.Point(58, 36);
             this.gbDeliver.Name = "gbDeliver";
             this.gbDeliver.Size = new System.Drawing.Size(200, 49);
             this.gbDeliver.TabIndex = 3;
@@ -86,7 +88,7 @@
             // 
             // dateTimeTo
             // 
-            this.dateTimeTo.Location = new System.Drawing.Point(308, 159);
+            this.dateTimeTo.Location = new System.Drawing.Point(161, 149);
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(200, 20);
             this.dateTimeTo.TabIndex = 4;
@@ -94,7 +96,7 @@
             // 
             // dateTimeFrom
             // 
-            this.dateTimeFrom.Location = new System.Drawing.Point(58, 159);
+            this.dateTimeFrom.Location = new System.Drawing.Point(161, 104);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(200, 20);
             this.dateTimeFrom.TabIndex = 5;
@@ -108,11 +110,31 @@
             this.dvgReport.Size = new System.Drawing.Size(485, 150);
             this.dvgReport.TabIndex = 6;
             // 
+            // lblDateFrom
+            // 
+            this.lblDateFrom.AutoSize = true;
+            this.lblDateFrom.Location = new System.Drawing.Point(58, 110);
+            this.lblDateFrom.Name = "lblDateFrom";
+            this.lblDateFrom.Size = new System.Drawing.Size(59, 13);
+            this.lblDateFrom.TabIndex = 7;
+            this.lblDateFrom.Text = "Date From:";
+            // 
+            // lblDateTo
+            // 
+            this.lblDateTo.AutoSize = true;
+            this.lblDateTo.Location = new System.Drawing.Point(58, 155);
+            this.lblDateTo.Name = "lblDateTo";
+            this.lblDateTo.Size = new System.Drawing.Size(49, 13);
+            this.lblDateTo.TabIndex = 8;
+            this.lblDateTo.Text = "Date To:";
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblDateTo);
+            this.Controls.Add(this.lblDateFrom);
             this.Controls.Add(this.dvgReport);
             this.Controls.Add(this.dateTimeFrom);
             this.Controls.Add(this.dateTimeTo);
@@ -120,10 +142,12 @@
             this.Controls.Add(this.btnExport);
             this.Name = "frmReport";
             this.Text = "frmReport";
+            this.Load += new System.EventHandler(this.FrmReport_Load);
             this.gbDeliver.ResumeLayout(false);
             this.gbDeliver.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgReport)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -136,5 +160,7 @@
         private System.Windows.Forms.DateTimePicker dateTimeTo;
         private System.Windows.Forms.DateTimePicker dateTimeFrom;
         private System.Windows.Forms.DataGridView dvgReport;
+        private System.Windows.Forms.Label lblDateFrom;
+        private System.Windows.Forms.Label lblDateTo;
     }
 }
