@@ -195,42 +195,38 @@ namespace R_Line_Courier_System
                 
 
            
-                if (txtUser_Name.Text == "")
+                if ((txtUser_Name.Text == "" ) && (validInput==true))
                 {
                     MessageBox.Show("Please enter a name!");
                     validInput = false;
                 }
 
-                if (txtUser_Surname.Text == "")
+                if ((txtUser_Surname.Text == "") && (validInput == true))
                 {
                     MessageBox.Show("Please enter a surname!");
                     validInput = false;
                 }
-                if (txtUserName.Text == "")
+                if ((txtUserName.Text == "") && (validInput == true))
                 {
                     MessageBox.Show("Please enter a username!");
                     validInput = false;
                 }
 
-                if (txtPassword.Text == "")
+                if ((txtPassword.Text == "")  && (validInput == true))
                 {
                     MessageBox.Show("Please enter a password!");
                     validInput = false;
                 }
-                if (cbUserAdmin.SelectedIndex<0)
+                if ((cbUserAdmin.SelectedIndex<0) &&  (validInput == true))
                 {
                     MessageBox.Show("Please select admin privileges!");
                     validInput = false;
                 }
 
 
-                if (ValidUsername(txtUserName.Text) == false)
-                {
-                MessageBox.Show("This username already exists!");
-                validInput = false;
-                }
 
-                if (ValidatePassword(txtPassword.Text) == false)
+
+                if ((ValidatePassword(txtPassword.Text) == false) && (validInput == true))
                 {
                 //sal hierop uitbrei om spesifieke errors te noem
                     MessageBox.Show("Your password is not valid!");
@@ -240,6 +236,12 @@ namespace R_Line_Courier_System
 
             if ((mode == "add") && (validInput== true))
             {
+
+                if ((ValidUsername(txtUserName.Text) == false) && (validInput == true))
+                {
+                    MessageBox.Show("This username already exists!");
+                    validInput = false;
+                }
                 int admin = 0;
                 if (cbUserAdmin.SelectedIndex != -1)
                     admin = cbUserAdmin.SelectedIndex;
@@ -273,7 +275,7 @@ namespace R_Line_Courier_System
                 {
                     int Id = Int32.Parse(txtUserID.Text);
                     string sql = "UPDATE USERS SET User_Name ='" + txtUser_Name.Text + "' , User_Surname = '" + txtUser_Surname.Text + "' , Username ='" + txtUserName.Text + "', Password ='" + txtPassword.Text + "', Admin_Privileges =" + admin + " WHERE User_ID= " + Id;
-                    MessageBox.Show(sql);
+                 
                     cnn = new SqlConnection(connectionString);
                     cnn.Open();
                     cmd = new SqlCommand(sql, cnn);

@@ -17,6 +17,7 @@ namespace R_Line_Courier_System
         private SqlConnection con;
         private SqlCommand cmd;
         private String myQuery;
+        public SqlDataReader dataReader;
 
         public frmRegionDetails()
         {
@@ -117,13 +118,52 @@ namespace R_Line_Courier_System
             con.Close();
         }
 
+        private void OpenConnection() //open sqlconnection
+        {
+            if (con != null && con.State == ConnectionState.Closed)
+                con.Open();
+        }
+        private bool postalExistsDeliveries(int idPostalCode)
+        {
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True");
+            var sql = @"Select * FROM PARCELS WHERE Postal_Code_ID = " + idPostalCode;
+            OpenConnection();
+            cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if (idPostalCode == int.Parse(dataReader.GetValue(10).ToString()))
+                {
+                    con.Close();
+                    
+                    return true;
+                }
+            }
+
+            con.Close();
+            //vehicle is not liked to deliveries
+            return false;
+
+        }
         private void btnDeletePostalCodes_Click(object sender, EventArgs e)
         {
-            myQuery = "DELETE FROM POSTAL_CODE WHERE Postal_Code_ID=" + lbPostalCodes.SelectedValue.ToString();
-            deleteData();
-            populateListbox();
-            if (lbPostalCodes.Items.Count == 0 && cbCity.SelectedItem != null)
-                btnDeleteCity.Enabled = true;
+            if (postalExistsDeliveries(int.Parse(lbPostalCodes.SelectedValue.ToString())))
+            {
+                MessageBox.Show("The vehicle can not be deleted (deletion is restricted).");
+            }
+            else
+            {
+
+                myQuery = "DELETE FROM POSTAL_CODE WHERE Postal_Code_ID=" + lbPostalCodes.SelectedValue.ToString();
+                deleteData();
+                populateListbox();
+                if (lbPostalCodes.Items.Count == 0 && cbCity.SelectedItem != null)
+                    btnDeleteCity.Enabled = true;
+            }
         }
+
     }
 }
