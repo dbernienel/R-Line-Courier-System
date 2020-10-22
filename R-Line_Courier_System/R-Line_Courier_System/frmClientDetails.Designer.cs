@@ -70,7 +70,7 @@
             this.tbxCompanyName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxCompanyName.Name = "tbxCompanyName";
             this.tbxCompanyName.Size = new System.Drawing.Size(129, 20);
-            this.tbxCompanyName.TabIndex = 10;
+            this.tbxCompanyName.TabIndex = 1;
             // 
             // tbxClientContactNr
             // 
@@ -79,7 +79,7 @@
             this.tbxClientContactNr.Mask = "(999) 000-0000";
             this.tbxClientContactNr.Name = "tbxClientContactNr";
             this.tbxClientContactNr.Size = new System.Drawing.Size(117, 20);
-            this.tbxClientContactNr.TabIndex = 9;
+            this.tbxClientContactNr.TabIndex = 4;
             // 
             // tbxClientSurname
             // 
@@ -87,7 +87,7 @@
             this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientSurname.Name = "tbxClientSurname";
             this.tbxClientSurname.Size = new System.Drawing.Size(140, 20);
-            this.tbxClientSurname.TabIndex = 8;
+            this.tbxClientSurname.TabIndex = 3;
             // 
             // tbxClientName
             // 
@@ -95,7 +95,7 @@
             this.tbxClientName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxClientName.Name = "tbxClientName";
             this.tbxClientName.Size = new System.Drawing.Size(76, 20);
-            this.tbxClientName.TabIndex = 7;
+            this.tbxClientName.TabIndex = 2;
             // 
             // label5
             // 
@@ -143,7 +143,7 @@
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(68, 31);
-            this.btnClear.TabIndex = 23;
+            this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
@@ -154,18 +154,19 @@
             this.btnApply.Margin = new System.Windows.Forms.Padding(2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(68, 31);
-            this.btnApply.TabIndex = 22;
+            this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(304, 260);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 31);
-            this.btnCancel.TabIndex = 24;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -183,6 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(409, 297);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnClear);
@@ -191,6 +193,7 @@
             this.Controls.Add(this.gbClientInfo);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClientDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client Details";
             this.Load += new System.EventHandler(this.frmClientDetails_Load);
             this.gbClientInfo.ResumeLayout(false);
