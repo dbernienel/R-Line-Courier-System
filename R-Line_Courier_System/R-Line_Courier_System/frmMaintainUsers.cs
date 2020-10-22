@@ -20,7 +20,6 @@ namespace R_Line_Courier_System
         public SqlCommand cmd;
         public SqlDataAdapter adapter;
         string mode;
-        string sql;
 
         frmSearchUser SearchUser = new frmSearchUser();
         public frmMaintainUsers()

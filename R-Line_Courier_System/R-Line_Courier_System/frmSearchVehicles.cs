@@ -29,24 +29,24 @@ namespace R_Line_Courier_System
         public frmSearchVehicles()
         {
             InitializeComponent();
-            TrySearch("", "");
+            TrySearch(-1,"");
         }
 
 
 
 
-        private void TrySearch(String field, String value)
+        private void TrySearch(int searchID, String searchRegNo)
         {
             cnn = new SqlConnection(connectionString);
             var sql = "";
-            if ((field == "") || (value == ""))
+            if (txtSearchVehicle.Text != "")
             {
-                sql = @"Select * FROM VEHICLES";
+                MessageBox.Show("SELECT * FROM VEHICLES WHERE (Vehicle_ID LIKE " + searchID.ToString() + "% OR Reg_No LIKE '" + searchRegNo + "%')");
+                sql = @"SELECT * FROM VEHICLES WHERE (Vehicle_ID LIKE '" + searchID.ToString() + "%' " +
+                    "OR Reg_No LIKE '" + searchRegNo + "%'";
             }
             else
-            {
-                sql = @"Select * FROM VEHICLES WHERE " + field + " LIKE '%" + value + "%'";
-            }
+                sql = @"SELECT * FROM VEHICLES";
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
 
@@ -69,22 +69,21 @@ namespace R_Line_Courier_System
                 cnn.Open();
         }
 
-
-        private String GetField()
-        {
-            if (rbVehicleID.Checked)
-                return "Vehicle_ID";
-            else if (rbVehicleRegNo.Checked)
-                return "Reg_No";
-            else
-                return "";
-        }
-
         private void TxtSearchVehicle_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchVehicle.Text != null && GetField() != "")
+            if (txtSearchVehicle.Text != null)
             {
-                TrySearch(GetField(), txtSearchVehicle.Text);
+                String stringSearch;
+                if (int.TryParse(txtSearchVehicle.Text, out int search))
+                {
+                    stringSearch = search.ToString();
+                }
+                else
+                {
+                    search = -1;
+                    stringSearch = txtSearchVehicle.Text;
+                }
+                TrySearch(search, stringSearch);
             }
         }
 
@@ -150,7 +149,7 @@ namespace R_Line_Courier_System
 
                         MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
                         gbSearchUser.Refresh();
-                        TrySearch("", "");
+                        TrySearch(-1,"");
                     }
                 }
             }
