@@ -69,8 +69,8 @@ namespace R_Line_Courier_System
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainParcels parcels = new frmMaintainParcels();
-            frmParcelDetails details = new frmParcelDetails(parcels, true);
+            frmMaintainParcels parcels = new frmMaintainParcels(getUserID());
+            frmParcelDetails details = new frmParcelDetails(parcels, true, getUserID());
             frmParent parent = this;
             details.MdiParent = parent;
             details.Show();
@@ -78,7 +78,7 @@ namespace R_Line_Courier_System
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainParcels parcel = new frmMaintainParcels();
+            frmMaintainParcels parcel = new frmMaintainParcels(getUserID());
             frmParent parent = this;
             parcel.MdiParent = parent;
             parcel.Show();

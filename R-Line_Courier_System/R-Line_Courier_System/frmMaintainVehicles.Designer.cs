@@ -112,7 +112,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.gbMaintainVehicles);
             this.Name = "frmMaintainVehicles";
-            this.Text = "frmMaintainVehicles";
+            this.Text = "-";
             this.Activated += new System.EventHandler(this.FrmMaintainVehicles_Activated);
             this.Load += new System.EventHandler(this.frmMaintainVehicles_Load);
             this.gbMaintainVehicles.ResumeLayout(false);

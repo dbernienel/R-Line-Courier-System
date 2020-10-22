@@ -114,6 +114,30 @@ namespace R_Line_Courier_System
             users.ShowDialog();
         }
 
+        private bool userExistsDeliveries(int id)
+        {
+            cnn = new SqlConnection(connectionString);
+            var sql = @"Select * FROM DELIVERIES WHERE User_ID = " + id;
+            OpenConnection();
+            cmd = new SqlCommand(sql, cnn);
+            cmd.ExecuteNonQuery();
+
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if (id == int.Parse(dataReader.GetValue(2).ToString()))
+                {
+                    cnn.Close();
+                    //user is linked to deliveries
+                    return true;
+                }
+            }
+            cnn.Close();
+            //user is not liked to deliveries
+            return false;
+    }
+
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             int userID = Int32.Parse(dgViewUsers.Rows[rowIndex].Cells[0].Value.ToString());
@@ -121,20 +145,29 @@ namespace R_Line_Courier_System
             {
                 if (userID > -1)
                 {
-                    string delete_query = "DELETE FROM USERS WHERE User_ID = '" + userID + "'";
-                    cnn.Open();
-                    cmd = new SqlCommand(delete_query, cnn);
+                    if (userExistsDeliveries(userID))
+                    {
+                        MessageBox.Show("The user can not be deleted (deletion is restricted).");
+                    }
+                    else
+                    {
+                        string delete_query = "DELETE FROM USERS WHERE User_ID = '" + userID + "'";
+                        cnn.Open();
+                        cmd = new SqlCommand(delete_query, cnn);
 
-                    //dialog are you sure
-                    cmd.ExecuteNonQuery();
-                    cnn.Close();
+                        //dialog are you sure
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
 
-                    MessageBox.Show(userID.ToString() + " has been successfully deleted!");
-                    gbSearchUser.Refresh();
+                        MessageBox.Show(userID.ToString() + " has been successfully deleted!");
+                        gbSearchUser.Refresh();
+                        TrySearch("", "");
+                    }
                 }
 
-                TrySearch("", "");
-            }
+                    TrySearch("", "");
+                }
+            
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);

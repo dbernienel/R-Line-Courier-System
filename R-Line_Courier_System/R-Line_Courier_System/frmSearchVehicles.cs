@@ -98,6 +98,32 @@ namespace R_Line_Courier_System
             vehicle.ShowDialog();
         }
 
+        private bool vehicleExistsDeliveries(int id)
+        {
+            cnn = new SqlConnection(connectionString);
+            var sql = @"Select * FROM DELIVERIES WHERE Vehicle_ID = " + id;
+            OpenConnection();
+            cmd = new SqlCommand(sql, cnn);
+            cmd.ExecuteNonQuery();
+
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if (id == int.Parse(dataReader.GetValue(1).ToString()))
+                {
+                    cnn.Close();
+                    //vehicle is linked to deliveries
+                    return true;
+                }
+            }
+
+            cnn.Close();
+            //vehicle is not liked to deliveries
+            return false;
+
+        }
+
         private void BtnDelete_Click(object sender, EventArgs e)
         {
 
@@ -106,16 +132,26 @@ namespace R_Line_Courier_System
             {
                 if (vehicleID > -1)
                 {
-                    string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
-                    cnn.Open();
-                    cmd = new SqlCommand(delete_query, cnn);
 
-                    //dialog are you sure
-                    cmd.ExecuteNonQuery();
-                    cnn.Close();
+                    if (vehicleExistsDeliveries(vehicleID))
+                    {
+                        MessageBox.Show("The vehicle can not be deleted (deletion is restricted).");
 
-                    MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
-                    gbSearchUser.Refresh();
+                    }
+                    else
+                    {
+                        string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
+                        cnn.Open();
+                        cmd = new SqlCommand(delete_query, cnn);
+
+                        //dialog are you sure
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
+
+                        MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
+                        gbSearchUser.Refresh();
+                        TrySearch("", "");
+                    }
                 }
             }
             catch (Exception err)
