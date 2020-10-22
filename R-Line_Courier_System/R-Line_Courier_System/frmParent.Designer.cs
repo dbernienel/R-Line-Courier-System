@@ -230,14 +230,12 @@
             this.allocateParcelsToVehiclesToolStripMenuItem.Name = "allocateParcelsToVehiclesToolStripMenuItem";
             this.allocateParcelsToVehiclesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.allocateParcelsToVehiclesToolStripMenuItem.Text = "Allocate parcels to vehicles";
-            this.allocateParcelsToVehiclesToolStripMenuItem.Click += new System.EventHandler(this.allocateParcelsToVehiclesToolStripMenuItem_Click);
             // 
             // deliverParcelsToolStripMenuItem
             // 
             this.deliverParcelsToolStripMenuItem.Name = "deliverParcelsToolStripMenuItem";
             this.deliverParcelsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.deliverParcelsToolStripMenuItem.Text = "Deliver parcels";
-            this.deliverParcelsToolStripMenuItem.Click += new System.EventHandler(this.deliverParcelsToolStripMenuItem_Click);
             // 
             // reportingToolStripMenuItem
             // 
