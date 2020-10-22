@@ -20,8 +20,7 @@ namespace R_Line_Courier_System
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
         public SqlDataAdapter adapter;
-        string mode;
-        string sql;
+
 
         public frmDeliveryReport()
         {
@@ -30,27 +29,19 @@ namespace R_Line_Courier_System
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            // creating new WorkBook within Excel application  
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            // creating new Excelsheet in workbook  
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            // see the excel sheet behind the program  
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application(); 
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);  
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;  
             app.Visible = true;
-            // get the reference of first sheet. By default its name is Sheet1.  
-            // store its reference to worksheet  
             worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;
-            // changing the name of active sheet  
+            worksheet = workbook.ActiveSheet;  
             worksheet.Name = "Deliveries";
-            // storing header part in Excel
 
             Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
             myStyle1.Font.Name = "Verdana";
             myStyle1.Font.Size = 12;
             myStyle1.Font.Bold = true;
             myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
-           // myStyle1.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DimGray);
             myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
 
             Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
@@ -63,22 +54,16 @@ namespace R_Line_Courier_System
 
 
             worksheet.Cells[1, 1] = "R-Line Courier System";
-
-            worksheet.Cells[2, 1] = "Vehicle " + cbxRegNo.Text + " delivery information for " + (dateTimeDeliver.Value.ToString()).Substring(0,10);
-
+            worksheet.Cells[2, 1] = "Vehicle " + cbxRegNo.Text + " delivery information for " + (dateTimeDeliver.Value.ToString()).Substring(0, 10);
             worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();
 
             Microsoft.Office.Interop.Excel.Range formatRange;
             formatRange = worksheet.get_Range("a1", "c3");
             formatRange.Style = "myStyle1";
-            
-            
+
             formatRange = worksheet.get_Range("a5", "l5");
             formatRange.Style = "myStyle2";
             formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
-
-
-            //formatRange = worksheet.get_Range("a5", "h"+ dgvDeliveries.Columns.Count.ToString());
 
             formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
 
@@ -92,34 +77,33 @@ namespace R_Line_Courier_System
 
             //columns will start at 4
             int counter = 4;
-            
+
 
             for (int i = 1; i < dgvDeliveries.Columns.Count + 1; i++)
             {
-                worksheet.Cells[1+counter, i] = dgvDeliveries.Columns[i - 1].HeaderText;
+                worksheet.Cells[1 + counter, i] = dgvDeliveries.Columns[i - 1].HeaderText;
             }
             // storing Each row and column value to excel sheet  
             for (int i = 0; i < dgvDeliveries.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < dgvDeliveries.Columns.Count; j++)
                 {
-                    worksheet.Cells[i + 2+ counter, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[i + 2 + counter, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
                 }
             }
-            // save the application  
-            workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            // Exit from the application  
+
+
             app.Quit();
         }
 
-        private void OpenConnection() //open sqlconnection
+            private void OpenConnection() //open sqlconnection
         {
             if (cnn != null && cnn.State == ConnectionState.Closed)
                 cnn.Open();
         }
         private void clearForm()
         {
-            //
+
         }
         private void populateComboBox()
         {
@@ -183,24 +167,18 @@ namespace R_Line_Courier_System
             String deliveryDate = dateTimeDeliver.Value.ToShortDateString();
             String vehicleRegNo = cbxRegNo.Text;
              int vehicleID = getVehicleID(cbxRegNo.Text);
-           // int vehicleID = 1;
+          
             cnn = new SqlConnection(connectionString);
             var sql = "";
             if (vehicleID == -1) 
             {
-                sql = @"Select * FROM DELIVERIES";
+                sql = @"SELECT a.Delivery_ID, a.Vehicle_ID, b.Delivery_Due_Date, a.Delivery_Date, b.Parcel_ID, b.Recipient_Name, b.Contact_No, B.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered   FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE  a.Delivery_Date = '" + deliveryDate + "' ";
             }
             else
             {
 
-                // Kobus - join sql
-
                 sql = @"SELECT a.Delivery_ID, a.Vehicle_ID, b.Delivery_Due_Date, a.Delivery_Date, b.Parcel_ID, b.Recipient_Name, b.Contact_No, B.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered   FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE a.Vehicle_ID" +
                     " LIKE '%" + vehicleID + "%' AND a.Delivery_Date = '" + deliveryDate + "' ";
-                //  sql = @"Select Delivery_ID, Vehicle_ID,  Delivery_Date FROM DELIVERIES WHERE Vehicle_ID " +
-                //     " LIKE '%" + vehicleID + "%' AND Delivery_Date = '" + deliveryDate + "' ";
-
-                //MessageBox.Show(sql);
             }
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
