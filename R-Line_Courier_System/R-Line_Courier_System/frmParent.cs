@@ -323,5 +323,26 @@ namespace R_Line_Courier_System
             rToolStripMenuItem.Enabled = true;
             reportingToolStripMenuItem.Enabled = true;
         }
+
+        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setUser(-1, false, "");
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "frmParent")
+                    Application.OpenForms[i].Close();
+            }
+            openLoginForm();
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
