@@ -19,6 +19,8 @@ namespace R_Line_Courier_System
         private String myQuery;
         private frmMaintainClient maintain;
         private frmClientDetails client;
+        public SqlDataReader dataReader;
+        public SqlCommand cmd;
 
         public frmMaintainClient()
         {
@@ -96,18 +98,59 @@ namespace R_Line_Courier_System
             client.Show();
         }
 
-        private void btnDeleteParcel_Click(object sender, EventArgs e)
+        private void OpenConnection() //open sqlconnection
         {
-            con = new SqlConnection(conString);
+            if (con != null && con.State == ConnectionState.Closed)
+                con.Open();
+        }
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
-            MessageBox.Show("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString());
+        private bool clientExists(int client_ID)
+        {
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True");
+            var sql = @"Select * FROM PARCELS WHERE Client_ID = " + client_ID;
+            OpenConnection();
+            cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 
-            dataChange();
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if (client_ID == int.Parse(dataReader.GetValue(17).ToString()))
+                {
+                    con.Close();
+
+                    return true;
+                }
+            }
 
             con.Close();
+            
+            return false;
+
+        
+    }
+
+        private void btnDeleteParcel_Click(object sender, EventArgs e)
+        {
+
+            if (clientExists(int.Parse(dgvClients.SelectedCells[0].Value.ToString())))
+            {
+                MessageBox.Show("The client can not be deleted (deletion is restricted).");
+            }
+            else
+            {
+                con = new SqlConnection(conString);
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
+                MessageBox.Show("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString());
+                cmd.ExecuteNonQuery();
+
+                dataChange();
+
+                con.Close();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)

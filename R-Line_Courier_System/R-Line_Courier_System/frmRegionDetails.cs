@@ -123,7 +123,7 @@ namespace R_Line_Courier_System
             if (con != null && con.State == ConnectionState.Closed)
                 con.Open();
         }
-        private bool postalExistsDeliveries(int idPostalCode)
+        private bool postalExists(int idPostalCode)
         {
             con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True");
             var sql = @"Select * FROM PARCELS WHERE Postal_Code_ID = " + idPostalCode;
@@ -150,9 +150,9 @@ namespace R_Line_Courier_System
         }
         private void btnDeletePostalCodes_Click(object sender, EventArgs e)
         {
-            if (postalExistsDeliveries(int.Parse(lbPostalCodes.SelectedValue.ToString())))
+            if (postalExists(int.Parse(lbPostalCodes.SelectedValue.ToString())))
             {
-                MessageBox.Show("The vehicle can not be deleted (deletion is restricted).");
+                MessageBox.Show("The postal code can not be deleted (deletion is restricted).");
             }
             else
             {

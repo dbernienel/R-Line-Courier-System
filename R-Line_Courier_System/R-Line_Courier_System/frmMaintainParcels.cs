@@ -64,6 +64,7 @@ namespace R_Line_Courier_System
 
         private void btnDeleteParcel_Click(object sender, EventArgs e)
         {
+            
 
             con = new SqlConnection(conString);
 

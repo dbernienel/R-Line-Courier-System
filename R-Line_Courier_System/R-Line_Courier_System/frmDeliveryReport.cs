@@ -213,5 +213,17 @@ namespace R_Line_Courier_System
             populateComboBox();
             dateTimeDeliver.Value = DateTime.Now;
         }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            cnn = new SqlConnection(connectionString);
+
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE PARCELS SET DELIVERED = 1 WHERE  Parcel_ID=" + dgvDeliveries.SelectedCells[1].Value.ToString(), cnn);
+            MessageBox.Show("Parcel ID " + dgvDeliveries.SelectedCells[1].Value.ToString() + " successfully delivered");
+            cmd.ExecuteNonQuery();
+
+
+        }
     }
 }

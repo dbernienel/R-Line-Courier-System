@@ -34,6 +34,7 @@
             this.dateTimeDeliver = new System.Windows.Forms.DateTimePicker();
             this.lblSelectVehicle = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnDeliver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(38, 394);
+            this.btnExport.Location = new System.Drawing.Point(38, 374);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 1;
@@ -90,11 +91,22 @@
             this.lblDate.TabIndex = 6;
             this.lblDate.Text = "Select delivery date:";
             // 
+            // btnDeliver
+            // 
+            this.btnDeliver.Location = new System.Drawing.Point(137, 374);
+            this.btnDeliver.Name = "btnDeliver";
+            this.btnDeliver.Size = new System.Drawing.Size(75, 23);
+            this.btnDeliver.TabIndex = 7;
+            this.btnDeliver.Text = "Deliver";
+            this.btnDeliver.UseVisualStyleBackColor = true;
+            this.btnDeliver.Click += new System.EventHandler(this.Button1_Click_1);
+            // 
             // frmDeliveryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 467);
+            this.ClientSize = new System.Drawing.Size(1039, 450);
+            this.Controls.Add(this.btnDeliver);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblSelectVehicle);
             this.Controls.Add(this.dateTimeDeliver);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.DateTimePicker dateTimeDeliver;
         private System.Windows.Forms.Label lblSelectVehicle;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Button btnDeliver;
     }
 }
