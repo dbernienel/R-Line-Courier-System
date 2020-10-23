@@ -12,15 +12,13 @@ namespace R_Line_Courier_System
 {
     public partial class frmParent : Form
     {
-        bool adminUser;
-        int userID;
+        private bool adminUser;
+        private int userID;
+        private String username;
+
         public frmParent()
         {
             InitializeComponent();
-            frmLogin Login = new frmLogin();
-            Login.MdiParent = this;
-            Login.StartPosition = FormStartPosition.CenterScreen;
-            Login.Show();
         }
 
         private void FrmParent_Activated(object sender, EventArgs e)
@@ -28,11 +26,25 @@ namespace R_Line_Courier_System
             
         }
 
+        private void openLoginForm() {
+            using (var login = new frmLogin()) {
+                var result = login.ShowDialog();
+                if (result == DialogResult.OK) {
+                    userID = login.userID;
+                    adminUser = login.adminP;
+                    username = login.username;
+
+                    setUser(userID, adminUser, username);
+                }
+            }
+        }
+
         public void setUser(int user_ID,bool admin, string user_Name)
         {
 
             if (user_Name != "")
                 {
+                enableMenu();
                 lblUserLogged.Text = "Logged in as " + user_Name;
                 userID = user_ID;
                 adminUser = admin;
@@ -40,6 +52,7 @@ namespace R_Line_Courier_System
                 }
             else
             {
+                disableMenu();
                 userID = -1;
                 adminUser = false;
                 lblUserLogged.Text = "Please log in";
@@ -238,16 +251,18 @@ namespace R_Line_Courier_System
         {
 
             setUser(-1, false, "");
-            frmLogin login = new frmLogin();
-            frmParent parent = this;
-            login.MdiParent = parent;
-            login.Show();
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "frmParent")
+                    Application.OpenForms[i].Close();
+            }
+            openLoginForm();
         }
 
 
         private void frmParent_Load(object sender, EventArgs e)
         {
-
+            disableMenu();
         }
 
 
@@ -255,9 +270,7 @@ namespace R_Line_Courier_System
         {
             //no user logged in on startup
             setUser(-1, false, "");
-
-            //remove this line of code
-            setUser(1, true, "Bernie");
+            openLoginForm();
         }
 
         private void AllocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -292,6 +305,21 @@ namespace R_Line_Courier_System
             frmParent parent = this;
             maintain.MdiParent = parent;
             maintain.Show();
+        }
+
+        private void disableMenu() {
+            maintainToolStripMenuItem.Enabled = false;
+            maintainToolStripMenuItem1.Enabled = false;
+            rToolStripMenuItem.Enabled = false;
+            reportingToolStripMenuItem.Enabled = false;
+        }
+
+        private void enableMenu()
+        {
+            maintainToolStripMenuItem.Enabled = true;
+            maintainToolStripMenuItem1.Enabled = true;
+            rToolStripMenuItem.Enabled = true;
+            reportingToolStripMenuItem.Enabled = true;
         }
     }
 }
