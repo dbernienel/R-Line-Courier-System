@@ -301,10 +301,10 @@ namespace R_Line_Courier_System
 
         private void DeliverParcelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainDeliveries maintain = new frmMaintainDeliveries(getUserID());
+            frmDeliveryReport deliveryReport = new frmDeliveryReport();
             frmParent parent = this;
-            maintain.MdiParent = parent;
-            maintain.Show();
+            deliveryReport.MdiParent = parent;
+            deliveryReport.Show();
         }
 
         private void disableMenu() {
