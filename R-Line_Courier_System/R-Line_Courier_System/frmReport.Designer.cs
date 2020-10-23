@@ -43,7 +43,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(44, 367);
+            this.btnExport.Location = new System.Drawing.Point(44, 376);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 0;
@@ -88,7 +88,7 @@
             // 
             // dateTimeTo
             // 
-            this.dateTimeTo.Location = new System.Drawing.Point(147, 135);
+            this.dateTimeTo.Location = new System.Drawing.Point(494, 90);
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(200, 20);
             this.dateTimeTo.TabIndex = 4;
@@ -105,9 +105,9 @@
             // dvgReport
             // 
             this.dvgReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgReport.Location = new System.Drawing.Point(44, 179);
+            this.dvgReport.Location = new System.Drawing.Point(44, 128);
             this.dvgReport.Name = "dvgReport";
-            this.dvgReport.Size = new System.Drawing.Size(485, 150);
+            this.dvgReport.Size = new System.Drawing.Size(691, 242);
             this.dvgReport.TabIndex = 6;
             // 
             // lblDateFrom
@@ -122,7 +122,7 @@
             // lblDateTo
             // 
             this.lblDateTo.AutoSize = true;
-            this.lblDateTo.Location = new System.Drawing.Point(44, 141);
+            this.lblDateTo.Location = new System.Drawing.Point(404, 96);
             this.lblDateTo.Name = "lblDateTo";
             this.lblDateTo.Size = new System.Drawing.Size(49, 13);
             this.lblDateTo.TabIndex = 8;
@@ -141,7 +141,7 @@
             this.Controls.Add(this.gbDeliver);
             this.Controls.Add(this.btnExport);
             this.Name = "frmReport";
-            this.Text = "frmReport";
+            this.Text = "Report";
             this.Load += new System.EventHandler(this.FrmReport_Load);
             this.gbDeliver.ResumeLayout(false);
             this.gbDeliver.PerformLayout();
