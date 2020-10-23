@@ -270,7 +270,9 @@ namespace R_Line_Courier_System
         {
             //no user logged in on startup
             setUser(-1, false, "");
+            disableMenu();
             openLoginForm();
+            
         }
 
         private void AllocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
