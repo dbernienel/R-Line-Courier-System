@@ -34,11 +34,24 @@ namespace R_Line_Courier_System
 
         private void btnDeleteDelivery_Click(object sender, EventArgs e)
         {
+            //updateParcelDeliveryID(dgvDelivery.SelectedCells[0].Value.ToString());
             con = new SqlConnection(conString);
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);
-            cmd.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand("DELETE FROM DELIVERIES WHERE Delivery_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);
+            try { cmd.ExecuteNonQuery(); } catch (InvalidConstraintException m) { MessageBox.Show("Delivery contains parcels"); } catch (SqlException m) { MessageBox.Show("Delivery contains parcels"); }
+            dataChange();
+            con.Close();
+            
+        }
+
+        private void updateParcelDeliveryID(string deliveryID) {
+            con = new SqlConnection(conString);
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = " + null +
+            " WHERE Delivery_ID = " + deliveryID, con);
+            try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); }
             dataChange();
             con.Close();
         }

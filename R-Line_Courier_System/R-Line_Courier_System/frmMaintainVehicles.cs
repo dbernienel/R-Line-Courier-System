@@ -89,7 +89,7 @@ namespace R_Line_Courier_System
                         MessageBox.Show(err.Message);
                     }
 
-                    cmd.Dispose();
+                    //cmd.Dispose();
                     cnn.Close();
                 }
 

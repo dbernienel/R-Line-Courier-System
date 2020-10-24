@@ -143,9 +143,19 @@ namespace R_Line_Courier_System
                 con = new SqlConnection(conString);
 
                 con.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
-                MessageBox.Show("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString());
-                cmd.ExecuteNonQuery();
+                
+                DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Client successfully deleted");
+                }
+                if (res == DialogResult.Cancel)
+                {
+                }
+
+                
 
                 dataChange();
 

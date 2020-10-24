@@ -165,7 +165,7 @@ namespace R_Line_Courier_System
             maintainVehicles.setMode("update");
             maintainVehicles.clearForm();
             maintainVehicles.setRegNo(dgVehicles.Rows[rowIndex].Cells[1].Value.ToString());
-            maintainVehicles.setVehicleID(dgVehicles.Rows[rowIndex].Cells[2].Value.ToString());
+            try { maintainVehicles.setVehicleID(dgVehicles.Rows[rowIndex].Cells[0].Value.ToString()); } catch (ArgumentOutOfRangeException m) { Console.WriteLine(m.Message); }
 
             maintainVehicles.Show();
         }
