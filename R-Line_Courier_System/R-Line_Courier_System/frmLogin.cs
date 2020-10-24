@@ -37,19 +37,19 @@ namespace R_Line_Courier_System
         private void TryLogin(string Username, string Password)
         {
             cnn = new SqlConnection(connectionString);
-            var sql = @"Select * FROM Users WHERE Username = '" + Username + "' AND Password = '" + Password + "'";
+            var sql = @"Select * FROM Users WHERE Username = '" + Username + "'";
             OpenConnection();
             cmd = new SqlCommand(sql, cnn);
             cmd.ExecuteNonQuery();
 
             dataReader = cmd.ExecuteReader();
 
-            while (dataReader.Read())
-            {
-                if ((Username == dataReader.GetValue(4).ToString()) && (Password == dataReader.GetValue(5).ToString()))
-                {
+            //if (!dataReader.Read()) { MessageBox.Show("No user by that name found."); }
+
+            while (dataReader.Read()) {
+                if ((Username == dataReader.GetValue(4).ToString()) && (Password == dataReader.GetValue(5).ToString())) {
                     MessageBox.Show("Welcome " + dataReader.GetValue(1).ToString() + "!");
-                    
+
                     frmParent parent = (frmParent)this.Owner;
                     this.userID = Int32.Parse(dataReader.GetValue(0).ToString());
                     this.adminP = Convert.ToBoolean(dataReader.GetValue(3));
@@ -57,8 +57,7 @@ namespace R_Line_Courier_System
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                else
-                {
+                else {
                     MessageBox.Show("Incorrect login credentials. Please try again.");
                     txtPassword.Clear();
                 }
@@ -74,14 +73,21 @@ namespace R_Line_Courier_System
             TryLogin(txtUsername.Text, txtPassword.Text);
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == Convert.ToChar(Keys.Enter)) {
+                BtnLogin_Click(sender, e);
+                e.Handled = true;
+            }
         }
-        
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
 
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtPassword.Focus();
+                e.Handled = true;
+            }
         }
     }
 }
