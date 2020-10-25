@@ -128,6 +128,7 @@
             this.tbxClientSurname.Name = "tbxClientSurname";
             this.tbxClientSurname.Size = new System.Drawing.Size(140, 20);
             this.tbxClientSurname.TabIndex = 8;
+            this.tbxClientSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxClientSurname_KeyPress);
             // 
             // tbxClientName
             // 
@@ -136,6 +137,7 @@
             this.tbxClientName.Name = "tbxClientName";
             this.tbxClientName.Size = new System.Drawing.Size(76, 20);
             this.tbxClientName.TabIndex = 7;
+            this.tbxClientName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxClientName_KeyPress);
             // 
             // label5
             // 
@@ -301,6 +303,7 @@
             this.tbxRecepientName.Name = "tbxRecepientName";
             this.tbxRecepientName.Size = new System.Drawing.Size(76, 20);
             this.tbxRecepientName.TabIndex = 2;
+            this.tbxRecepientName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxRecepientName_KeyPress);
             // 
             // label2
             // 
@@ -356,6 +359,7 @@
             this.tbxStreetName.Name = "tbxStreetName";
             this.tbxStreetName.Size = new System.Drawing.Size(76, 20);
             this.tbxStreetName.TabIndex = 11;
+            this.tbxStreetName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxStreetName_KeyPress);
             // 
             // tbxBuildingName
             // 

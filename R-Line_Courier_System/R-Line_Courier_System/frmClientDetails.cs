@@ -131,7 +131,6 @@ namespace R_Line_Courier_System
             
             if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
             {
-                // Stop the character from being entered into the control since it is illegal.
                 e.Handled = true;
             }
         }
@@ -140,7 +139,6 @@ namespace R_Line_Courier_System
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
             {
-                // Stop the character from being entered into the control since it is illegal.
                 e.Handled = true;
             }
         }

@@ -32,6 +32,7 @@ namespace R_Line_Courier_System
 
         private void frmAssignParcels_Load(object sender, EventArgs e)
         {
+            dgvParcels.ReadOnly = true;
             defaultQuery = "SELECT a.Parcel_ID, b.Postal_Code, c.City_Name, a.Delivery_Due_Date, d.Company_Name " +
                 "FROM PARCELS a " +
                 "LEFT JOIN POSTAL_CODE b ON a.Postal_Code_ID = b.Postal_Code_ID " +
