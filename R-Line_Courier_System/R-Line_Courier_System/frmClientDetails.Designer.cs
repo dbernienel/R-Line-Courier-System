@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.gbClientInfo = new System.Windows.Forms.GroupBox();
-            this.tbxCompanyName = new System.Windows.Forms.TextBox();
+            this.tbxCompanyName = new System.Windows.Forms.MaskedTextBox();
             this.tbxClientContactNr = new System.Windows.Forms.MaskedTextBox();
             this.tbxClientSurname = new System.Windows.Forms.TextBox();
-            this.tbxClientName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.tbxClientName = new System.Windows.Forms.TextBox();
             this.gbClientInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,11 +54,11 @@
             this.gbClientInfo.Controls.Add(this.label4);
             this.gbClientInfo.Controls.Add(this.label3);
             this.gbClientInfo.Controls.Add(this.label1);
-            this.gbClientInfo.Location = new System.Drawing.Point(9, 46);
-            this.gbClientInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.gbClientInfo.Location = new System.Drawing.Point(12, 57);
+            this.gbClientInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbClientInfo.Name = "gbClientInfo";
-            this.gbClientInfo.Padding = new System.Windows.Forms.Padding(2);
-            this.gbClientInfo.Size = new System.Drawing.Size(393, 190);
+            this.gbClientInfo.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbClientInfo.Size = new System.Drawing.Size(524, 234);
             this.gbClientInfo.TabIndex = 3;
             this.gbClientInfo.TabStop = false;
             this.gbClientInfo.Text = "Client Info";
@@ -66,83 +66,72 @@
             // 
             // tbxCompanyName
             // 
-            this.tbxCompanyName.Location = new System.Drawing.Point(104, 30);
-            this.tbxCompanyName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxCompanyName.Location = new System.Drawing.Point(139, 41);
             this.tbxCompanyName.Name = "tbxCompanyName";
-            this.tbxCompanyName.Size = new System.Drawing.Size(129, 20);
-            this.tbxCompanyName.TabIndex = 1;
+            this.tbxCompanyName.Size = new System.Drawing.Size(196, 22);
+            this.tbxCompanyName.TabIndex = 6;
+            this.tbxCompanyName.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.tbxCompanyName_MaskInputRejected);
             // 
             // tbxClientContactNr
             // 
-            this.tbxClientContactNr.Location = new System.Drawing.Point(124, 99);
-            this.tbxClientContactNr.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxClientContactNr.Location = new System.Drawing.Point(165, 122);
+            this.tbxClientContactNr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxClientContactNr.Mask = "(999) 000-0000";
             this.tbxClientContactNr.Name = "tbxClientContactNr";
-            this.tbxClientContactNr.Size = new System.Drawing.Size(117, 20);
+            this.tbxClientContactNr.Size = new System.Drawing.Size(155, 22);
             this.tbxClientContactNr.TabIndex = 4;
             // 
             // tbxClientSurname
             // 
-            this.tbxClientSurname.Location = new System.Drawing.Point(232, 67);
-            this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxClientSurname.Location = new System.Drawing.Point(309, 82);
+            this.tbxClientSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxClientSurname.Name = "tbxClientSurname";
-            this.tbxClientSurname.Size = new System.Drawing.Size(140, 20);
+            this.tbxClientSurname.Size = new System.Drawing.Size(185, 22);
             this.tbxClientSurname.TabIndex = 3;
-            // 
-            // tbxClientName
-            // 
-            this.tbxClientName.Location = new System.Drawing.Point(82, 67);
-            this.tbxClientName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxClientName.Name = "tbxClientName";
-            this.tbxClientName.Size = new System.Drawing.Size(76, 20);
-            this.tbxClientName.TabIndex = 2;
+            this.tbxClientSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxClientSurname_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 99);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(19, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 13);
+            this.label5.Size = new System.Drawing.Size(140, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Client contact number*";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(179, 70);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(239, 86);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Surname*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 67);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(19, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(86, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Client Name*";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(19, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.Size = new System.Drawing.Size(111, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Company Name*";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(209, 260);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClear.Location = new System.Drawing.Point(279, 320);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(68, 31);
+            this.btnClear.Size = new System.Drawing.Size(91, 38);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -150,10 +139,10 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(113, 260);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApply.Location = new System.Drawing.Point(151, 320);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(68, 31);
+            this.btnApply.Size = new System.Drawing.Size(91, 38);
             this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -162,10 +151,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(304, 260);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(405, 320);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(68, 31);
+            this.btnCancel.Size = new System.Drawing.Size(91, 38);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -174,24 +163,35 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 20);
+            this.label22.Location = new System.Drawing.Point(13, 25);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(162, 13);
+            this.label22.Size = new System.Drawing.Size(204, 16);
             this.label22.TabIndex = 25;
             this.label22.Text = "Required fields are marked with *";
             // 
+            // tbxClientName
+            // 
+            this.tbxClientName.Location = new System.Drawing.Point(109, 82);
+            this.tbxClientName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbxClientName.Name = "tbxClientName";
+            this.tbxClientName.Size = new System.Drawing.Size(100, 22);
+            this.tbxClientName.TabIndex = 2;
+            this.tbxClientName.TextChanged += new System.EventHandler(this.tbxClientName_TextChanged);
+            this.tbxClientName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxClientName_KeyPress);
+            // 
             // frmClientDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(409, 297);
+            this.ClientSize = new System.Drawing.Size(545, 366);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbClientInfo);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmClientDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client Details";
@@ -208,7 +208,6 @@
         private System.Windows.Forms.GroupBox gbClientInfo;
         private System.Windows.Forms.MaskedTextBox tbxClientContactNr;
         private System.Windows.Forms.TextBox tbxClientSurname;
-        private System.Windows.Forms.TextBox tbxClientName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -217,6 +216,7 @@
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox tbxCompanyName;
+        private System.Windows.Forms.MaskedTextBox tbxCompanyName;
+        private System.Windows.Forms.TextBox tbxClientName;
     }
 }

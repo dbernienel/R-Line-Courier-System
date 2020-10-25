@@ -115,5 +115,34 @@ namespace R_Line_Courier_System
         {
 
         }
+
+        private void tbxCompanyName_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void tbxClientName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbxClientName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            {
+                // Stop the character from being entered into the control since it is illegal.
+                e.Handled = true;
+            }
+        }
+
+        private void tbxClientSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            {
+                // Stop the character from being entered into the control since it is illegal.
+                e.Handled = true;
+            }
+        }
     }
 }
