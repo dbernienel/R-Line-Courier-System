@@ -21,9 +21,10 @@ namespace R_Line_Courier_System
         private DataSet ds;
         private SqlCommand cmd;
         private int userID;
+        public SqlDataReader dataReader;
 
         public frmAssignParcels(int iD)
-        {   
+        {
             userID = iD;
             InitializeComponent();
             conString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
@@ -56,7 +57,7 @@ namespace R_Line_Courier_System
 
         public void dataChange()
         {
-            myQuery = defaultQuery+ "WHERE a.Delivered = 'False' AND a.Delivery_ID IS NULL";
+            myQuery = defaultQuery + "WHERE a.Delivered = 'False' AND a.Delivery_ID IS NULL";
             RefreshDGV();
         }
 
@@ -134,7 +135,7 @@ namespace R_Line_Courier_System
         {
             if (con.State == ConnectionState.Closed && cbDeliveryVehicle.SelectedItem != null) {
                 populateListbox();
-                if (dateDeliveryDate.Value >= DateTime.Now.AddDays(-1)){
+                if (dateDeliveryDate.Value >= DateTime.Now.AddDays(-1)) {
                     btnAddParcel.Enabled = true;
                 }
                 else { btnAddParcel.Enabled = false; }
@@ -153,8 +154,15 @@ namespace R_Line_Courier_System
         {
             if (lbxParcels.Items.Count == 0 && !compareRecords(cbDeliveryVehicle.SelectedValue.ToString(), dateDeliveryDate.Value.ToShortDateString()))
             {
-                addDelivery("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date,User_ID) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "',1)");
-                updateParcels(dgvParcels.SelectedCells[0].Value.ToString(), getDeliveryID());
+                if (isDeliveryNull(int.Parse(dgvParcels.SelectedCells[0].Value.ToString())) == -1)//parcelID
+                {
+                    addDelivery("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date,User_ID) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "',1)");
+                    updateParcels(dgvParcels.SelectedCells[0].Value.ToString(), getDeliveryID());
+                }
+                else
+                {
+                    updateDelivery(int.Parse(dgvParcels.SelectedCells[0].Value.ToString()));
+                }
             }
             else {
                 updateParcels(dgvParcels.SelectedCells[0].Value.ToString(), getDeliveryID());
@@ -180,7 +188,7 @@ namespace R_Line_Courier_System
         }
 
         private void updateParcels(String parcelID, String deliveryID) {
-            cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = " + deliveryID + " WHERE Parcel_ID = " + parcelID, con );
+            cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = " + deliveryID + " WHERE Parcel_ID = " + parcelID, con);
             con.Open();
             try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); }
             con.Close();
@@ -188,6 +196,53 @@ namespace R_Line_Courier_System
 
         private void addDelivery(String query) {
             SqlCommand cmd = new SqlCommand("INSERT INTO DELIVERIES(Vehicle_ID,Delivery_Date) VALUES(" + cbDeliveryVehicle.SelectedValue.ToString() + ",'" + dateDeliveryDate.Value.ToShortDateString() + "')", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+
+        private void OpenConnection() //open sqlconnection
+        {
+            if (con != null && con.State == ConnectionState.Closed)
+                con.Open();
+        }
+        private int isDeliveryNull(int parcelID)
+            {
+    
+                con = new SqlConnection(conString);
+                var sql = @"Select * FROM PARCELS WHERE Parcel_ID = " + parcelID;
+                OpenConnection();
+                cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+
+                dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    if (parcelID == int.Parse(dataReader.GetValue(1).ToString()))
+                    {
+                        if (dataReader.GetValue(17).ToString() == null)
+                        {
+                        con.Close();
+                        //Delivery is null - new delivery
+                        return int.Parse(dataReader.GetValue(17).ToString());
+                    }
+ 
+                    }
+                }
+
+                con.Close();
+            //Delivery is not null - update delivery
+            return -1;
+
+            
+        }
+
+
+        private void updateDelivery(int id)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE DELIVERIES SET Vehicle_ID = " + cbDeliveryVehicle.SelectedValue.ToString() + ", Delivery_Date '" + dateDeliveryDate.Value.ToShortDateString() + "' WHERE Delivery_ID = " +id, con);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();

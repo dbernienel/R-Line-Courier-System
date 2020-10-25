@@ -76,7 +76,7 @@ namespace R_Line_Courier_System
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Send a request to an admin user to create a new user.");
         }
         
         private void frmLogin_Load(object sender, EventArgs e)

@@ -142,6 +142,7 @@
             this.Controls.Add(this.btnExport);
             this.Name = "frmReport";
             this.Text = "Report";
+            this.Activated += new System.EventHandler(this.FrmReport_Activated);
             this.Load += new System.EventHandler(this.FrmReport_Load);
             this.gbDeliver.ResumeLayout(false);
             this.gbDeliver.PerformLayout();

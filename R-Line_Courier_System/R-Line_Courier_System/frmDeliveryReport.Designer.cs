@@ -44,6 +44,7 @@
             this.dgvDeliveries.Name = "dgvDeliveries";
             this.dgvDeliveries.Size = new System.Drawing.Size(743, 243);
             this.dgvDeliveries.TabIndex = 0;
+            this.dgvDeliveries.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDeliveries_CellContentClick);
             // 
             // btnExport
             // 

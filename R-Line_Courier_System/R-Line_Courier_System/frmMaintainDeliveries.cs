@@ -39,7 +39,8 @@ namespace R_Line_Courier_System
 
             con.Open();
             SqlCommand cmd = new SqlCommand("DELETE FROM DELIVERIES WHERE Delivery_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);
-            try { cmd.ExecuteNonQuery(); } catch (InvalidConstraintException m) { MessageBox.Show("Delivery contains parcels"); } catch (SqlException m) { MessageBox.Show("Delivery contains parcels"); }
+            //        try { cmd.ExecuteNonQuery(); } catch (InvalidConstraintException m) { MessageBox.Show("Delivery contains parcels"); } catch (SqlException m) { MessageBox.Show("Delivery contains parcels"); }
+            cmd.ExecuteNonQuery();
             dataChange();
             con.Close();
             

@@ -29,71 +29,84 @@ namespace R_Line_Courier_System
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application(); 
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);  
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;  
-            app.Visible = true;
-            worksheet = workbook.Sheets["Sheet1"];
-            worksheet = workbook.ActiveSheet;  
-            worksheet.Name = "Deliveries";
-
-            Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
-            myStyle1.Font.Name = "Verdana";
-            myStyle1.Font.Size = 12;
-            myStyle1.Font.Bold = true;
-            myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
-            myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
-
-            Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
-            myStyle2.Font.Name = "Verdana";
-            myStyle2.Font.Size = 11;
-            myStyle2.Font.Bold = true;
-            myStyle2.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
-            myStyle2.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
-            myStyle2.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
-
-
-            worksheet.Cells[1, 1] = "R-Line Courier System";
-            worksheet.Cells[2, 1] = "Vehicle " + cbxRegNo.Text + " delivery information for " + (dateTimeDeliver.Value.ToString()).Substring(0, 10);
-            worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();
-
-            Microsoft.Office.Interop.Excel.Range formatRange;
-            formatRange = worksheet.get_Range("a1", "c3");
-            formatRange.Style = "myStyle1";
-
-            formatRange = worksheet.get_Range("a5", "l5");
-            formatRange.Style = "myStyle2";
-            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
-
-            formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
-
-            worksheet.Columns[1].ColumnWidth = 20;
-            worksheet.Columns[2].ColumnWidth = 20;
-            worksheet.Columns[3].ColumnWidth = 20;
-            worksheet.Columns[4].ColumnWidth = 20;
-            worksheet.Columns[5].ColumnWidth = 25;
-            worksheet.Columns[6].ColumnWidth = 20;
-            worksheet.Columns[7].ColumnWidth = 20;
-
-            //columns will start at 4
-            int counter = 4;
-
-
-            for (int i = 1; i < dgvDeliveries.Columns.Count + 1; i++)
+            if (cbxRegNo.SelectedIndex == -1)
             {
-                worksheet.Cells[1 + counter, i] = dgvDeliveries.Columns[i - 1].HeaderText;
+                MessageBox.Show("Please select a vehicle first.");
             }
-            // storing Each row and column value to excel sheet  
-            for (int i = 0; i < dgvDeliveries.Rows.Count - 1; i++)
+            else
             {
-                for (int j = 0; j < dgvDeliveries.Columns.Count; j++)
+
+                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                app.Visible = true;
+                worksheet = workbook.Sheets["Sheet1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Deliveries";
+
+                Microsoft.Office.Interop.Excel.Style myStyle1 = workbook.Styles.Add("myStyle1");
+                myStyle1.Font.Name = "Verdana";
+                myStyle1.Font.Size = 12;
+                myStyle1.Font.Bold = true;
+                myStyle1.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+                myStyle1.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+                Microsoft.Office.Interop.Excel.Style myStyle2 = workbook.Styles.Add("myStyle2");
+                myStyle2.Font.Name = "Verdana";
+                myStyle2.Font.Size = 11;
+                myStyle2.Font.Bold = true;
+                myStyle2.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Black);
+                myStyle2.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
+                myStyle2.Interior.Pattern = Microsoft.Office.Interop.Excel.XlPattern.xlPatternSolid;
+
+
+                worksheet.Cells[1, 1] = "R-Line Courier System";
+                worksheet.Cells[2, 1] = "Vehicle " + cbxRegNo.Text + " delivery information for " + (dateTimeDeliver.Value.ToString()).Substring(0, 10);
+                worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();
+
+                Microsoft.Office.Interop.Excel.Range formatRange;
+                formatRange = worksheet.get_Range("a1", "c3");
+                formatRange.Style = "myStyle1";
+
+                formatRange = worksheet.get_Range("a5", "l5");
+                formatRange.Style = "myStyle2";
+                formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlHairline, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+                formatRange.BorderAround(Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous, Microsoft.Office.Interop.Excel.XlBorderWeight.xlThick, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic, Microsoft.Office.Interop.Excel.XlColorIndex.xlColorIndexAutomatic);
+
+                worksheet.Columns[1].ColumnWidth = 20;
+                worksheet.Columns[2].ColumnWidth = 20;
+                worksheet.Columns[3].ColumnWidth = 25;
+                worksheet.Columns[4].ColumnWidth = 20;
+                worksheet.Columns[5].ColumnWidth = 25;
+                worksheet.Columns[6].ColumnWidth = 20;
+                worksheet.Columns[7].ColumnWidth = 20;
+                worksheet.Columns[8].ColumnWidth = 20;
+                worksheet.Columns[9].ColumnWidth = 35;
+                worksheet.Columns[10].ColumnWidth = 35;
+                worksheet.Columns[11].ColumnWidth = 35;
+                worksheet.Columns[12].ColumnWidth = 20;
+
+                //columns will start at 4
+                int counter = 4;
+
+
+                for (int i = 1; i < dgvDeliveries.Columns.Count + 1; i++)
                 {
-                    worksheet.Cells[i + 2 + counter, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[1 + counter, i] = dgvDeliveries.Columns[i - 1].HeaderText;
                 }
+                // storing Each row and column value to excel sheet  
+                for (int i = 0; i < dgvDeliveries.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgvDeliveries.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2 + counter, j + 1] = dgvDeliveries.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+
+                app.Quit();
             }
-
-
-            app.Quit();
         }
 
             private void OpenConnection() //open sqlconnection
@@ -127,6 +140,7 @@ namespace R_Line_Courier_System
             cbxRegNo.DataSource = ds.Tables[0];
             cnn.Close();
             cbxRegNo.SelectedItem = null;
+
             cbxRegNo.Text = "Select Vehicle";
         }
     
@@ -164,6 +178,7 @@ namespace R_Line_Courier_System
 
     private void FillGrid()
         {
+            
             String deliveryDate = dateTimeDeliver.Value.ToShortDateString();
             String vehicleRegNo = cbxRegNo.Text;
              int vehicleID = getVehicleID(cbxRegNo.Text);
@@ -209,6 +224,7 @@ namespace R_Line_Courier_System
 
         private void FrmDeliveryReport_Activated(object sender, EventArgs e)
         {
+            dgvDeliveries.ReadOnly = true;
             clearForm();
             populateComboBox();
             dateTimeDeliver.Value = DateTime.Now;
@@ -223,6 +239,11 @@ namespace R_Line_Courier_System
 
             try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); } catch (InvalidOperationException m) { Console.WriteLine(m.Message); }
 
+
+        }
+
+        private void DgvDeliveries_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
