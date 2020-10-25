@@ -250,5 +250,37 @@ namespace R_Line_Courier_System {
         private void validationCheck() { 
             
         }
+
+        private void tbxRecepientName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxStreetName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[+\-\/\*\(\)!@#$%^&*()_+]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxClientName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxClientSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

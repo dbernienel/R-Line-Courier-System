@@ -31,7 +31,7 @@ namespace R_Line_Courier_System
         }
 
         public void setQueryAjustment() { 
-            queryAjustment = "SELECT a.Parcel_ID, c.Company_Name, a.Delivery_Due_Date, b.Status_Description, a.Parcel_Weight, a.Parcel_Length, a.Parcel_Width, a.Parcel_Height, a.Delivery_Street_Number, a.Delivery_Street_Name, a.Delivery_Complex_Building, d.Postal_Code, a.Contact_No, a.Alt_Contact_No, a.Delivered, a.Recipient_Name, e.User_Name, e.User_Surname, c.Client_ID, b.Status_ID, d.Postal_Code_ID " +
+            queryAjustment = "SELECT a.Parcel_ID, c.Company_Name, a.Delivery_Due_Date, b.Status_Description, a.Parcel_Weight, a.Parcel_Length, a.Parcel_Width, a.Parcel_Height, a.Delivery_Street_Number, a.Delivery_Street_Name, a.Delivery_Complex_Building, d.Postal_Code, a.Contact_No, a.Alt_Contact_No, a.Delivered, a.Recipient_Name, e.User_Name, e.User_Surname, c.Client_ID, b.Status_ID, d.Postal_Code_ID, a.Delivery_ID " +
                         "FROM PARCELS a " +
                         "LEFT JOIN PARCEL_STATUS b ON a.Status_ID = b.Status_ID " +
                         "LEFT JOIN CLIENTS AS c ON a.Client_ID = c.Client_ID " +
@@ -87,6 +87,7 @@ namespace R_Line_Courier_System
 
         private void frmMaintainParcels_Load(object sender, EventArgs e)
         {
+            dgvParcels.ReadOnly = true;
             dateCheck();
         }
 

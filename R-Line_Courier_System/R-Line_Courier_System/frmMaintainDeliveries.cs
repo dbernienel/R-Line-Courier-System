@@ -34,7 +34,8 @@ namespace R_Line_Courier_System
 
         private void btnDeleteDelivery_Click(object sender, EventArgs e)
         {
-            //updateParcelDeliveryID(dgvDelivery.SelectedCells[0].Value.ToString());
+            if (dgvDelivery.Rows.Count == 2) { btnDeleteDelivery.Enabled = false; }
+            updateParcelDeliveryID(dgvDelivery.SelectedCells[0].Value.ToString());
             con = new SqlConnection(conString);
 
             con.Open();
@@ -42,14 +43,13 @@ namespace R_Line_Courier_System
             try { cmd.ExecuteNonQuery(); } catch (InvalidConstraintException m) { MessageBox.Show("Delivery contains parcels"); } catch (SqlException m) { MessageBox.Show("Delivery contains parcels"); }
             dataChange();
             con.Close();
-            
         }
 
         private void updateParcelDeliveryID(string deliveryID) {
             con = new SqlConnection(conString);
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = " + null +
+            SqlCommand cmd = new SqlCommand("UPDATE PARCELS SET Delivery_ID = null" +
             " WHERE Delivery_ID = " + deliveryID, con);
             try { cmd.ExecuteNonQuery(); } catch (SqlException m) { Console.WriteLine(m.Message); }
             dataChange();
@@ -78,12 +78,24 @@ namespace R_Line_Courier_System
 
         private void frmMaintainDeliveries_Load(object sender, EventArgs e)
         {
+            dgvDelivery.ReadOnly = true;
             dataChange();
+            if (dgvDelivery.SelectedCells[0].Value.ToString() == null) { btnDeleteDelivery.Enabled = false; }
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvDelivery.Rows.Count == 2) { btnDeleteDelivery.Enabled = false; } else { btnDeleteDelivery.Enabled = true; }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dataChange();
         }
     }
 }
