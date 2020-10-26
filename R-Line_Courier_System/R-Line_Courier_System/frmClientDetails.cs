@@ -70,10 +70,13 @@ namespace R_Line_Courier_System
             con.Close();
             ClearForm();
             this.Close();
+            MessageBox.Show("Client successfully updated.");
         }
 
         private void dataAdd() {
-            if ((tbxCompanyName.Text != "")&&(tbxClientContactNr.Text != "(   )    -")) {
+            // if ((tbxCompanyName.Text != "")&&(tbxClientContactNr.Text != "(   )    -")) {
+            if ((tbxCompanyName.Text != "") && (tbxClientSurname.Text != "") && (tbxClientName.Text != "") && (tbxClientContactNr.Text != ""))
+            { 
                 con = new SqlConnection(conString);
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO CLIENTS(Company_Name,Contact_Name,Contact_Surname,Contact_No) VALUES('" + tbxCompanyName.Text + "','" + tbxClientName.Text + "','" + tbxClientSurname.Text + "','" + tbxClientContactNr.Text + "')", con);
@@ -84,8 +87,13 @@ namespace R_Line_Courier_System
                 }
                 maintain.dataChange();
                 con.Close();
+                MessageBox.Show("Client successfully added.");
                 ClearForm();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please ensure all fields are filled in corectly.");
             }
         }
 
@@ -113,7 +121,7 @@ namespace R_Line_Courier_System
 
         private void frmClientDetails_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void tbxCompanyName_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)

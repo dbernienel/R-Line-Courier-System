@@ -45,6 +45,7 @@
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.RowHeadersWidth = 51;
             this.dgvClients.RowTemplate.Height = 24;
+            this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClients.Size = new System.Drawing.Size(429, 280);
             this.dgvClients.TabIndex = 0;
             // 

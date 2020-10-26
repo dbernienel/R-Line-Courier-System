@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnDeleteDelivery = new System.Windows.Forms.Button();
@@ -37,16 +36,6 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelivery)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(310, 321);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 19;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // label1
             // 
@@ -118,14 +107,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 362);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnDeleteDelivery);
             this.Controls.Add(this.btnUpdateDelivery);
             this.Controls.Add(this.dgvDelivery);
             this.Name = "frmMaintainDeliveries";
-            this.Text = "frmMaintainDeliveries";
+            this.Text = "Maintain Deliveries";
             this.Load += new System.EventHandler(this.frmMaintainDeliveries_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelivery)).EndInit();
             this.ResumeLayout(false);
@@ -134,8 +122,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Button btnDeleteDelivery;

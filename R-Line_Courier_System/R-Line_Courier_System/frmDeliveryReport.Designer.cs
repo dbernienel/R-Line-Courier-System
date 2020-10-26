@@ -42,6 +42,7 @@
             this.dgvDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeliveries.Location = new System.Drawing.Point(38, 92);
             this.dgvDeliveries.Name = "dgvDeliveries";
+            this.dgvDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeliveries.Size = new System.Drawing.Size(743, 243);
             this.dgvDeliveries.TabIndex = 0;
             this.dgvDeliveries.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDeliveries_CellContentClick);

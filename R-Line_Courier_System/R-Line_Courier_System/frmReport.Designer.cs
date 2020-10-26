@@ -107,6 +107,7 @@
             this.dvgReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgReport.Location = new System.Drawing.Point(44, 128);
             this.dvgReport.Name = "dvgReport";
+            this.dvgReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgReport.Size = new System.Drawing.Size(691, 242);
             this.dvgReport.TabIndex = 6;
             // 

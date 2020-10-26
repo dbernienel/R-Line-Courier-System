@@ -251,20 +251,23 @@ namespace R_Line_Courier_System
                 if (cbUserAdmin.SelectedIndex != -1)
                     admin = cbUserAdmin.SelectedIndex;
 
-                try
+                if ((mode == "add") && (validInput == true))
                 {
-                    string sql = "INSERT INTO USERS ( User_Name, User_Surname, Username, Password, Admin_Privileges) VALUES ('" + txtUser_Name.Text + "', '" + txtUser_Surname.Text + "', '" + txtUserName.Text + "', '" + txtUser_Surname.Text + "', " + admin + ")";
-                    cnn = new SqlConnection(connectionString);
-                    cnn.Open();
-                    cmd = new SqlCommand(sql, cnn);
-                    cmd.ExecuteNonQuery();
-                    cnn.Close();
-                    MessageBox.Show("User successfully added");
-                    clearForm();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
+                    try
+                    {
+                        string sql = "INSERT INTO USERS ( User_Name, User_Surname, Username, Password, Admin_Privileges) VALUES ('" + txtUser_Name.Text + "', '" + txtUser_Surname.Text + "', '" + txtUserName.Text + "', '" + txtUser_Surname.Text + "', " + admin + ")";
+                        cnn = new SqlConnection(connectionString);
+                        cnn.Open();
+                        cmd = new SqlCommand(sql, cnn);
+                        cmd.ExecuteNonQuery();
+                        cnn.Close();
+                        MessageBox.Show("User successfully added");
+                        clearForm();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
                 }
 
                 cmd.Dispose();

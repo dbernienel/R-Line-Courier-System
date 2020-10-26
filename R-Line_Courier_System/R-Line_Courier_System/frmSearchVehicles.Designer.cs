@@ -72,6 +72,7 @@
             this.dgVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgVehicles.Location = new System.Drawing.Point(12, 34);
             this.dgVehicles.Name = "dgVehicles";
+            this.dgVehicles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgVehicles.Size = new System.Drawing.Size(341, 150);
             this.dgVehicles.TabIndex = 14;
             this.dgVehicles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVehicles_CellClick);
@@ -107,7 +108,8 @@
             this.Controls.Add(this.lblSearchUser);
             this.Controls.Add(this.txtSearchVehicle);
             this.Name = "frmSearchVehicles";
-            this.Text = "frmSearchVehicles";
+            this.Text = "Search Vehicles";
+            this.Load += new System.EventHandler(this.FrmSearchVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgVehicles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

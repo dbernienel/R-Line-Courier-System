@@ -504,9 +504,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(174, 25);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 13);
+            this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 7;
-            this.label17.Text = "Oracel width";
+            this.label17.Text = "Parcel width";
             // 
             // label16
             // 

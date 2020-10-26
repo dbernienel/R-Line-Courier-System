@@ -38,6 +38,7 @@ namespace R_Line_Courier_System
 
         private void frmMaintainClient_Load(object sender, EventArgs e)
         {
+            dgvClients.ReadOnly = true;
             dataChange();
         }
 
@@ -70,7 +71,7 @@ namespace R_Line_Courier_System
                 contactNumber = contactNumber + "__________";
                 contactNumber = contactNumber.Substring(0, 9);
             }
-
+            
             if (int.TryParse(tbxSearch.Text, out search))
             {
                 stringSearch = search.ToString();
@@ -81,7 +82,7 @@ namespace R_Line_Courier_System
                 stringSearch = tbxSearch.Text;
             }
 
-            myQuery = "SELECT Client_ID, Company_Name, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE (Client_ID LIKE '"+search.ToString()+"%' " +
+            myQuery = "SELECT Client_ID, Company_Name--, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE (Client_ID LIKE '"+search.ToString()+"%' " +
                 "OR Company_Name LIKE '"+stringSearch+"%' " +
                 "OR Contact_Name LIKE '"+stringSearch+"%' " +
                 "OR Contact_Surname LIKE '"+stringSearch+"%' " +
@@ -144,7 +145,7 @@ namespace R_Line_Courier_System
 
                 con.Open();
                 
-                DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult res = MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (res == DialogResult.OK)
                 {
                     SqlCommand cmd = new SqlCommand("DELETE FROM CLIENTS WHERE Client_ID=" + dgvClients.SelectedCells[0].Value.ToString(), con);

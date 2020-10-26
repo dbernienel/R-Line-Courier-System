@@ -59,6 +59,7 @@
             this.dgViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgViewUsers.Location = new System.Drawing.Point(12, 33);
             this.dgViewUsers.Name = "dgViewUsers";
+            this.dgViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgViewUsers.Size = new System.Drawing.Size(477, 150);
             this.dgViewUsers.TabIndex = 7;
             this.dgViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgViewUsers_CellClick);
@@ -107,7 +108,7 @@
             this.Controls.Add(this.lblSearchUser);
             this.Controls.Add(this.txtSearchUser);
             this.Name = "frmSearchUser";
-            this.Text = "frmSearchUser";
+            this.Text = "Search User";
             this.Load += new System.EventHandler(this.FrmSearchUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
             this.ResumeLayout(false);
