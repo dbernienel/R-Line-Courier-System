@@ -108,6 +108,7 @@
             this.Controls.Add(this.txtSearchUser);
             this.Name = "frmSearchUser";
             this.Text = "frmSearchUser";
+            this.Load += new System.EventHandler(this.FrmSearchUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgViewUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

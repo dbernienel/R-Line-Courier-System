@@ -48,7 +48,7 @@
             // 
             // txtUser_Name
             // 
-            this.txtUser_Name.Location = new System.Drawing.Point(114, 64);
+            this.txtUser_Name.Location = new System.Drawing.Point(114, 23);
             this.txtUser_Name.Name = "txtUser_Name";
             this.txtUser_Name.Size = new System.Drawing.Size(100, 20);
             this.txtUser_Name.TabIndex = 19;
@@ -56,7 +56,7 @@
             // lblUser_Name
             // 
             this.lblUser_Name.AutoSize = true;
-            this.lblUser_Name.Location = new System.Drawing.Point(21, 64);
+            this.lblUser_Name.Location = new System.Drawing.Point(21, 23);
             this.lblUser_Name.Name = "lblUser_Name";
             this.lblUser_Name.Size = new System.Drawing.Size(38, 13);
             this.lblUser_Name.TabIndex = 18;
@@ -64,7 +64,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(114, 177);
+            this.txtPassword.Location = new System.Drawing.Point(114, 136);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 17;
@@ -72,7 +72,7 @@
             // lblUser_Password
             // 
             this.lblUser_Password.AutoSize = true;
-            this.lblUser_Password.Location = new System.Drawing.Point(21, 184);
+            this.lblUser_Password.Location = new System.Drawing.Point(21, 143);
             this.lblUser_Password.Name = "lblUser_Password";
             this.lblUser_Password.Size = new System.Drawing.Size(56, 13);
             this.lblUser_Password.TabIndex = 16;
@@ -80,7 +80,7 @@
             // 
             // txtUser_Surname
             // 
-            this.txtUser_Surname.Location = new System.Drawing.Point(114, 99);
+            this.txtUser_Surname.Location = new System.Drawing.Point(114, 58);
             this.txtUser_Surname.Name = "txtUser_Surname";
             this.txtUser_Surname.Size = new System.Drawing.Size(100, 20);
             this.txtUser_Surname.TabIndex = 15;
@@ -88,7 +88,7 @@
             // lblUser_Surname
             // 
             this.lblUser_Surname.AutoSize = true;
-            this.lblUser_Surname.Location = new System.Drawing.Point(21, 109);
+            this.lblUser_Surname.Location = new System.Drawing.Point(21, 68);
             this.lblUser_Surname.Name = "lblUser_Surname";
             this.lblUser_Surname.Size = new System.Drawing.Size(52, 13);
             this.lblUser_Surname.TabIndex = 14;
@@ -112,7 +112,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(114, 136);
+            this.txtUserName.Location = new System.Drawing.Point(114, 95);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(100, 20);
             this.txtUserName.TabIndex = 27;
@@ -120,7 +120,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(21, 146);
+            this.lblUsername.Location = new System.Drawing.Point(21, 105);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(58, 13);
             this.lblUsername.TabIndex = 26;
@@ -132,7 +132,7 @@
             this.cbUserAdmin.Items.AddRange(new object[] {
             "No",
             "Yes"});
-            this.cbUserAdmin.Location = new System.Drawing.Point(114, 212);
+            this.cbUserAdmin.Location = new System.Drawing.Point(114, 171);
             this.cbUserAdmin.Name = "cbUserAdmin";
             this.cbUserAdmin.Size = new System.Drawing.Size(121, 21);
             this.cbUserAdmin.TabIndex = 28;
@@ -141,7 +141,7 @@
             // lblUserAdmin
             // 
             this.lblUserAdmin.AutoSize = true;
-            this.lblUserAdmin.Location = new System.Drawing.Point(21, 220);
+            this.lblUserAdmin.Location = new System.Drawing.Point(21, 179);
             this.lblUserAdmin.Name = "lblUserAdmin";
             this.lblUserAdmin.Size = new System.Drawing.Size(87, 13);
             this.lblUserAdmin.TabIndex = 29;
@@ -149,7 +149,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(50, 304);
+            this.btnSubmit.Location = new System.Drawing.Point(50, 260);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 30;
@@ -159,7 +159,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(165, 304);
+            this.btnClear.Location = new System.Drawing.Point(165, 260);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 31;
@@ -183,7 +183,7 @@
             this.gbMaintainUsers.Controls.Add(this.txtUser_Name);
             this.gbMaintainUsers.Location = new System.Drawing.Point(26, 24);
             this.gbMaintainUsers.Name = "gbMaintainUsers";
-            this.gbMaintainUsers.Size = new System.Drawing.Size(298, 259);
+            this.gbMaintainUsers.Size = new System.Drawing.Size(298, 211);
             this.gbMaintainUsers.TabIndex = 32;
             this.gbMaintainUsers.TabStop = false;
             this.gbMaintainUsers.Text = "Maintain Users";
@@ -192,7 +192,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 357);
+            this.ClientSize = new System.Drawing.Size(370, 320);
             this.Controls.Add(this.gbMaintainUsers);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSubmit);

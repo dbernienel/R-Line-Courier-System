@@ -76,6 +76,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "B123456e!";
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // lblUsername
@@ -93,6 +94,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.Text = "Bernie";
             this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // frmLogin
