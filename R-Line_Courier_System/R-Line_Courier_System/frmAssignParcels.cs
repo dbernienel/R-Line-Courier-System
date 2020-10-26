@@ -146,9 +146,15 @@ namespace R_Line_Courier_System
                 }
                 else { btnRemoveParcel.Enabled = true; }
             }
-            //if (lbxParcels.Items.Count == 0 && cbDeliveryVehicle.SelectedItem != null)
-            //    btnDeleteCity.Enabled = true;
-            //else { btnDeleteCity.Enabled = false; }
+            try
+            {
+                if (isDelivered(lbxParcels.SelectedValue.ToString()))
+                {
+                    btnRemoveParcel.Enabled = false;
+                }
+                else { btnRemoveParcel.Enabled = true; }
+            }
+            catch (NullReferenceException m) { Console.WriteLine(m.Message); }
         }
 
         private void btnAddParcel_Click(object sender, EventArgs e)
@@ -283,6 +289,43 @@ namespace R_Line_Courier_System
             {
                 btnRemoveParcel.Enabled = false;
             }
+        }
+
+        private void lbxParcels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isDelivered(lbxParcels.SelectedValue.ToString()))
+            {
+                btnRemoveParcel.Enabled = false;
+            }
+            else { btnRemoveParcel.Enabled = true; }
+        }
+
+        private bool isDelivered(String ParcelID) {
+            bool delivered = false;
+            con = new SqlConnection(conString);
+            var sql = @"Select Delivered FROM PARCELS WHERE Parcel_ID = " + ParcelID + "";
+            OpenConnection();
+            cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if ((bool)dataReader.GetValue(0))
+                {
+                    delivered = true;
+                }
+                else
+                {
+                    delivered = false;
+                }
+
+            }
+
+            con.Close();
+
+            return delivered;
         }
     }
 }

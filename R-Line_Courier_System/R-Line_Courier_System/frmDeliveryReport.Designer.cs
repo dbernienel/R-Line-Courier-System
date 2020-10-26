@@ -105,7 +105,6 @@
             this.Name = "frmDeliveryReport";
             this.Text = "frmDeliveryReport";
             this.Activated += new System.EventHandler(this.FrmDeliveryReport_Activated);
-            this.Load += new System.EventHandler(this.frmDeliveryReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

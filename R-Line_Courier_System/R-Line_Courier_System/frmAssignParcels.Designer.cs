@@ -57,6 +57,7 @@
             this.lbxParcels.Name = "lbxParcels";
             this.lbxParcels.Size = new System.Drawing.Size(219, 316);
             this.lbxParcels.TabIndex = 1;
+            this.lbxParcels.SelectedIndexChanged += new System.EventHandler(this.lbxParcels_SelectedIndexChanged);
             // 
             // tbxSearchParcels
             // 
