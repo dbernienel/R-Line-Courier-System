@@ -42,7 +42,7 @@ namespace R_Line_Courier_System
 
             con.Open();
 
-            DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
                 SqlCommand cmd = new SqlCommand("DELETE FROM DELIVERIES WHERE Delivery_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);

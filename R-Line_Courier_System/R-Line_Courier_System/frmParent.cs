@@ -29,13 +29,17 @@ namespace R_Line_Courier_System
 
         private void FrmParent_Activated(object sender, EventArgs e)
         {
-            
+
+
         }
 
-        private void openLoginForm() {
-            using (var login = new frmLogin()) {
+        private void openLoginForm()
+        {
+            using (var login = new frmLogin())
+            {
                 var result = login.ShowDialog();
-                if (result == DialogResult.OK) {
+                if (result == DialogResult.OK)
+                {
                     userID = login.userID;
                     adminUser = login.adminP;
                     username = login.username;
@@ -45,17 +49,17 @@ namespace R_Line_Courier_System
             }
         }
 
-        public void setUser(int user_ID,bool admin, string user_Name)
+        public void setUser(int user_ID, bool admin, string user_Name)
         {
 
             if (user_Name != "")
-                {
+            {
                 enableMenu();
                 lblUserLogged.Text = "Logged in as " + user_Name;
                 userID = user_ID;
                 adminUser = admin;
                 btnSignOut.Text = "Log out";
-                }
+            }
             else
             {
                 disableMenu();
@@ -64,7 +68,7 @@ namespace R_Line_Courier_System
                 lblUserLogged.Text = "Please log in";
                 btnSignOut.Text = "Log in";
             }
-            }
+        }
 
         public int getUserID()
         {
@@ -83,7 +87,7 @@ namespace R_Line_Courier_System
 
         private void parcelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,7 +193,7 @@ namespace R_Line_Courier_System
 
         private void MaintainVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                        //maintain vehicle
+            //maintain vehicle
             frmSearchVehicles searchVehicle = new frmSearchVehicles();
             frmParent parent = this;
             searchVehicle.MdiParent = parent;
@@ -280,7 +284,7 @@ namespace R_Line_Courier_System
             setUser(-1, false, "");
             disableMenu();
             openLoginForm();
-            
+
         }
 
         private void AllocateParcelsToVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,7 +321,8 @@ namespace R_Line_Courier_System
             deliver.Show();
         }
 
-        private void disableMenu() {
+        private void disableMenu()
+        {
             maintainToolStripMenuItem.Enabled = false;
             maintainToolStripMenuItem1.Enabled = false;
             rToolStripMenuItem.Enabled = false;

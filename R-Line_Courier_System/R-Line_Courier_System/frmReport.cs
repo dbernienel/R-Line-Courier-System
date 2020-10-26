@@ -114,7 +114,7 @@ namespace R_Line_Courier_System
         private void Filter()
         {
             bool isValid = true;
-            if ((rbDelivered.Checked == false) && (rbDelivered.Checked == false))
+            if ((rbDelivered.Checked == false) && (rbUndelivered.Checked == false))
                 isValid = false;
 
             if ((dateTimeFrom.Value > dateTimeTo.Value) )
@@ -124,14 +124,14 @@ namespace R_Line_Courier_System
                 isValid = false;
             }
 
-            int delivered = 0;
+            bool delivered = true;
             if (rbDelivered.Checked == true)
             {
-                delivered = 0;
+                delivered = true;
             }
             if (rbUndelivered.Checked == true)
             {
-                delivered = 1;
+                delivered = false;
             }
 
             if (isValid == true)
@@ -142,9 +142,9 @@ namespace R_Line_Courier_System
                 cnn = new SqlConnection(connectionString);
                 var sql = @"SELECT a.Delivery_ID, a.Vehicle_ID, b.Delivery_Due_Date, a.Delivery_Date, b.Parcel_ID, "
                     + " b.Recipient_Name, b.Contact_No, b.Alt_Contact_No, b.Delivery_Street_Number, b.Delivery_Street_Name, b.Delivery_Complex_Building, b.Delivered FROM DELIVERIES a LEFT JOIN PARCELS b ON a.Delivery_ID = b.Delivery_ID  WHERE b.Delivered" +
-                    " = '" + delivered.ToString() + "'";
+                    " = '" + delivered + "'" + " AND b.Delivery_Due_Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";
 
-                    //+ " AND b.Delivery_Due_Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";
+                //
 
                 OpenConnection();
                 cmd = new SqlCommand(sql, cnn);
