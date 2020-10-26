@@ -149,7 +149,7 @@
             this.Controls.Add(this.dgvParcels);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAssignParcels";
-            this.Text = "frmAssignParcels";
+            this.Text = "Assign Parcels";
             this.Load += new System.EventHandler(this.frmAssignParcels_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcels)).EndInit();
             this.ResumeLayout(false);

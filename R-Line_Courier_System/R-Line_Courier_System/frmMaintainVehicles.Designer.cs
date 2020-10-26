@@ -114,7 +114,7 @@
             this.Controls.Add(this.gbMaintainVehicles);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainVehicles";
-            this.Text = "-";
+            this.Text = "Vehicles";
             this.Activated += new System.EventHandler(this.FrmMaintainVehicles_Activated);
             this.Load += new System.EventHandler(this.frmMaintainVehicles_Load);
             this.gbMaintainVehicles.ResumeLayout(false);
