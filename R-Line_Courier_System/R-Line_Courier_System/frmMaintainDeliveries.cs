@@ -30,7 +30,7 @@ namespace R_Line_Courier_System
         {
             try {
                 frmAssignParcels assign = new frmAssignParcels(userID);
-                assign.Show(); } catch (NullReferenceException m) { MessageBox.Show("No entry selected."); }
+                assign.Show(); } catch (NullReferenceException m) { MessageBox.Show("No entry selected." + m.Message); }
             
         }
 

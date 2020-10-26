@@ -203,5 +203,10 @@ namespace R_Line_Courier_System
         {
             rowIndex = e.RowIndex;
         }
+
+        private void FrmSearchVehicles_Load(object sender, EventArgs e)
+        {
+            dgVehicles.ReadOnly = true;
+        }
     }
 }

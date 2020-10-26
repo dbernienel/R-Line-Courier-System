@@ -158,7 +158,7 @@
             this.Controls.Add(this.btnUpdateParcel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMaintainParcels";
-            this.Text = " ";
+            this.Text = " Maintain Vehicles";
             this.Load += new System.EventHandler(this.frmMaintainParcels_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcels)).EndInit();
             this.ResumeLayout(false);

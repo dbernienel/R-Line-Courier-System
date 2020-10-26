@@ -125,7 +125,7 @@
             this.Controls.Add(this.btnUpdateDelivery);
             this.Controls.Add(this.dgvDelivery);
             this.Name = "frmMaintainDeliveries";
-            this.Text = "frmMaintainDeliveries";
+            this.Text = "Maintain Deliveries";
             this.Load += new System.EventHandler(this.frmMaintainDeliveries_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDelivery)).EndInit();
             this.ResumeLayout(false);
