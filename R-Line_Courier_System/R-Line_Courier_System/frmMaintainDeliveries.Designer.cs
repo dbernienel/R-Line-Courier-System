@@ -97,6 +97,7 @@
             this.dgvDelivery.Name = "dgvDelivery";
             this.dgvDelivery.RowHeadersWidth = 51;
             this.dgvDelivery.RowTemplate.Height = 24;
+            this.dgvDelivery.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDelivery.Size = new System.Drawing.Size(429, 280);
             this.dgvDelivery.TabIndex = 13;
             // 

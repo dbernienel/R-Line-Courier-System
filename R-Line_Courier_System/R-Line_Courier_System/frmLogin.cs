@@ -89,5 +89,10 @@ namespace R_Line_Courier_System
                 e.Handled = true;
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

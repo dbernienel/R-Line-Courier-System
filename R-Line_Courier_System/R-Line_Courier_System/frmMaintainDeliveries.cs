@@ -28,22 +28,34 @@ namespace R_Line_Courier_System
 
         private void btnUpdateDelivery_Click(object sender, EventArgs e)
         {
-            frmAssignParcels assign = new frmAssignParcels(userID);
-            assign.Show();
+            try {
+                frmAssignParcels assign = new frmAssignParcels(userID);
+                assign.Show(); } catch (NullReferenceException m) { MessageBox.Show("No entry selected."); }
+            
         }
 
         private void btnDeleteDelivery_Click(object sender, EventArgs e)
         {
-            if (dgvDelivery.Rows.Count == 2) { btnDeleteDelivery.Enabled = false; }
+            
             updateParcelDeliveryID(dgvDelivery.SelectedCells[0].Value.ToString());
             con = new SqlConnection(conString);
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM DELIVERIES WHERE Delivery_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);
-            //        try { cmd.ExecuteNonQuery(); } catch (InvalidConstraintException m) { MessageBox.Show("Delivery contains parcels"); } catch (SqlException m) { MessageBox.Show("Delivery contains parcels"); }
-            cmd.ExecuteNonQuery();
+
+            DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM DELIVERIES WHERE Delivery_ID=" + dgvDelivery.SelectedCells[0].Value.ToString(), con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Delivery successfully deleted");
+            }
+            if (res == DialogResult.Cancel)
+            {
+            }
+            
             dataChange();
             con.Close();
+            if (dgvDelivery.Rows.Count < 2) { btnDeleteDelivery.Enabled = false; btnUpdateDelivery.Enabled = false; }
         }
 
         private void updateParcelDeliveryID(string deliveryID) {
@@ -64,7 +76,7 @@ namespace R_Line_Courier_System
             con.Open();
             sd = new SqlDataAdapter(myQuery, con);
             DataTable dt = new DataTable();
-            sd.Fill(dt);
+            try { sd.Fill(dt); } catch (SqlException m) { Console.WriteLine(m.Message); }
             dgvDelivery.DataSource = dt;
             con.Close();
         }
@@ -81,7 +93,7 @@ namespace R_Line_Courier_System
         {
             dgvDelivery.ReadOnly = true;
             dataChange();
-            if (dgvDelivery.SelectedCells[0].Value.ToString() == null) { btnDeleteDelivery.Enabled = false; }
+            if (dgvDelivery.Rows.Count < 2) { btnDeleteDelivery.Enabled = false; btnUpdateDelivery.Enabled = false; }
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -91,12 +103,36 @@ namespace R_Line_Courier_System
 
         private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
-            if (dgvDelivery.Rows.Count == 2) { btnDeleteDelivery.Enabled = false; } else { btnDeleteDelivery.Enabled = true; }
+            int search;
+            String stringSearch;
+            myQuery = "";
+
+            if (tbxSearch.Text != "") {
+
+                if (int.TryParse(tbxSearch.Text, out search)) {
+                    stringSearch = search.ToString();
+                }
+                else {
+                    search = -1;
+                    stringSearch = tbxSearch.Text;
+                }
+
+                myQuery = "SELECT a.Delivery_ID, b.Reg_No, c.User_Name, c.User_Surname, a.Delivery_Date FROM DELIVERIES a " +
+                    "LEFT JOIN VEHICLES b ON a.Vehicle_ID = b.Vehicle_ID " +
+                    "LEFT JOIN USERS c ON a.User_ID = c.User_ID " +
+                    "WHERE a.Delivery_ID LIKE '" + search.ToString() + "%' " +
+                    "OR b.Reg_No LIKE '" + stringSearch + "%' " +
+                    "OR c.User_Name LIKE '" + stringSearch + "%' " +
+                    "OR c.User_Surname LIKE '" + stringSearch + "%'";
+            } else { dataChange(); }
+
+            RefreshDGV();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             dataChange();
+            if (dgvDelivery.Rows.Count < 2) { btnDeleteDelivery.Enabled = false; btnUpdateDelivery.Enabled = false; } else { btnDeleteDelivery.Enabled = true; btnUpdateDelivery.Enabled = true; }
         }
     }
 }

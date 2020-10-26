@@ -246,5 +246,10 @@ namespace R_Line_Courier_System
         {
 
         }
+
+        private void frmDeliveryReport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

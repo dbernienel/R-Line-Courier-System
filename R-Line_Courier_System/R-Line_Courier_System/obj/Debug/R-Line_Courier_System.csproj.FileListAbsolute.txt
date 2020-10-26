@@ -82,3 +82,4 @@ C:\Users\kobus\Desktop\R-Line-Courier-System-V1.0\R-Line_Courier_System\R-Line_C
 C:\Users\kobus\Desktop\R-Line-Courier-System-V1.0\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.csproj.CoreCompileInputs.cache
 C:\Users\kobus\Desktop\R-Line-Courier-System-V1.0\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.exe
 C:\Users\kobus\Desktop\R-Line-Courier-System-V1.0\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R-Line_Courier_System.pdb
+C:\Users\kobus\Documents\GitHub\R-Line-Courier-System\R-Line_Courier_System\R-Line_Courier_System\obj\Debug\R_Line_Courier_System.frmDeliverParcels.resources

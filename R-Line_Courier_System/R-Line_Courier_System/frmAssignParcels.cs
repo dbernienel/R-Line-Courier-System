@@ -123,7 +123,7 @@ namespace R_Line_Courier_System
             }
 
             myQuery = defaultQuery + "WHERE a.Delivered LIKE 'False' " +
-                    "OR a.Parcel_ID LIKE '" + stringSearch + "%' " +
+                    "OR a.Parcel_ID LIKE '" + search.ToString() + "%' " +
                     "OR b.Postal_Code LIKE '" + stringSearch + "%' " +
                     "OR c.City_Name LIKE '" + stringSearch + "%' " +
                     "OR d.Company_Name LIKE '" + stringSearch + "%'";
@@ -153,6 +153,7 @@ namespace R_Line_Courier_System
 
         private void btnAddParcel_Click(object sender, EventArgs e)
         {
+            if (dgvParcels.Rows.Count < 3) { btnAddParcel.Enabled = false; }
             if (lbxParcels.Items.Count == 0 && !compareRecords(cbDeliveryVehicle.SelectedValue.ToString(), dateDeliveryDate.Value.ToShortDateString()))
             {
                 if (isDeliveryNull(int.Parse(dgvParcels.SelectedCells[0].Value.ToString())) == -1)//parcelID
@@ -274,6 +275,7 @@ namespace R_Line_Courier_System
 
         private void btnRemoveParcel_Click(object sender, EventArgs e)
         {
+            btnAddParcel.Enabled = true;
             updateParcels(lbxParcels.SelectedValue.ToString(), "NULL");
             dataChange();
             populateListbox();

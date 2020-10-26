@@ -77,15 +77,23 @@ namespace R_Line_Courier_System
 
         private void addPostalCode_Click(object sender, EventArgs e)
         {
-            try {
-                myQuery = "INSERT INTO POSTAL_CODE(Postal_Code, City_ID) VALUES ('" + tbxPostalCode.Text + "', " + cbCity.SelectedValue.ToString() + ")";
-                insertData();
-            } catch (NullReferenceException m) {
-                Console.WriteLine(m.Message);
+            if (cbCity.SelectedValue == null) {
+                MessageBox.Show("Please select city first.");
             }
-            populateListbox();
-            tbxPostalCode.Clear();
-            btnDeleteCity.Enabled = false;
+            else if (tbxPostalCode.Text.Length == 4) {
+                try {
+                    myQuery = "INSERT INTO POSTAL_CODE(Postal_Code, City_ID) VALUES ('" + tbxPostalCode.Text + "', " + cbCity.SelectedValue.ToString() + ")";
+                    insertData();
+                }
+                catch (NullReferenceException m) {
+                    Console.WriteLine(m.Message);
+                }
+                populateListbox();
+                tbxPostalCode.Clear();
+                btnDeleteCity.Enabled = true;
+                tbxPostalCode.Focus();
+            }
+            else { MessageBox.Show("Please enter valid postal code."); }
         }
 
         private void insertData() {
@@ -97,11 +105,13 @@ namespace R_Line_Courier_System
 
         private void addCity_Click(object sender, EventArgs e)
         {
-            myQuery = "INSERT INTO CITY(City_Name) VALUES ('" + tbxCity.Text + "')";
-            insertData();
-            populateComboBox();
-            tbxCity.Clear();
-            lbPostalCodes.DataSource = null;
+            if (tbxCity.Text.Length > 3) {
+                myQuery = "INSERT INTO CITY(City_Name) VALUES ('" + tbxCity.Text + "')";
+                insertData();
+                populateComboBox();
+                tbxCity.Clear();
+                lbPostalCodes.DataSource = null;
+            } else { MessageBox.Show("Please enter valid city name."); }
         }
 
         private void btnDeleteCity_Click(object sender, EventArgs e)
@@ -165,5 +175,13 @@ namespace R_Line_Courier_System
             }
         }
 
+        private void tbxPostalCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                addPostalCode_Click(sender, e);
+                e.Handled = true;
+            }
+        }
     }
 }

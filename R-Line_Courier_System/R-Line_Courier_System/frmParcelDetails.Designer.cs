@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCompanyName = new System.Windows.Forms.ComboBox();
             this.gbDeliveryInfo = new System.Windows.Forms.GroupBox();
-            this.tbDelivered = new System.Windows.Forms.CheckBox();
             this.cbDeliveryStatus = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbxRecipientAltContactNr = new System.Windows.Forms.MaskedTextBox();
@@ -195,7 +194,6 @@
             // 
             // gbDeliveryInfo
             // 
-            this.gbDeliveryInfo.Controls.Add(this.tbDelivered);
             this.gbDeliveryInfo.Controls.Add(this.cbDeliveryStatus);
             this.gbDeliveryInfo.Controls.Add(this.label13);
             this.gbDeliveryInfo.Controls.Add(this.tbxRecipientAltContactNr);
@@ -214,17 +212,6 @@
             this.gbDeliveryInfo.TabIndex = 1;
             this.gbDeliveryInfo.TabStop = false;
             this.gbDeliveryInfo.Text = "Delivery info";
-            // 
-            // tbDelivered
-            // 
-            this.tbDelivered.AutoSize = true;
-            this.tbDelivered.Location = new System.Drawing.Point(213, 165);
-            this.tbDelivered.Name = "tbDelivered";
-            this.tbDelivered.Size = new System.Drawing.Size(71, 17);
-            this.tbDelivered.TabIndex = 18;
-            this.tbDelivered.Text = "Delivered";
-            this.ttDelivered.SetToolTip(this.tbDelivered, "Indicate wether the parcel has been delivered to the recipient");
-            this.tbDelivered.UseVisualStyleBackColor = true;
             // 
             // cbDeliveryStatus
             // 
@@ -303,6 +290,7 @@
             this.tbxRecepientName.Name = "tbxRecepientName";
             this.tbxRecepientName.Size = new System.Drawing.Size(76, 20);
             this.tbxRecepientName.TabIndex = 2;
+            this.tbxRecepientName.TextChanged += new System.EventHandler(this.tbxRecepientName_TextChanged);
             this.tbxRecepientName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxRecepientName_KeyPress);
             // 
             // label2
@@ -759,7 +747,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox tbDelivered;
         private System.Windows.Forms.ToolTip ttDelivered;
         private System.Windows.Forms.ToolTip ttDeliveryStatus;
         private System.Windows.Forms.ToolTip ttContactNum;

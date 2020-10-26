@@ -13,6 +13,8 @@ namespace R_Line_Courier_System {
         private bool flag;
         private bool btnState;
         private int userID;
+        private string error;
+        private bool delivered;
 
         public frmParcelDetails(frmMaintainParcels maintain, bool state, int userID) {
             InitializeComponent();
@@ -97,10 +99,10 @@ namespace R_Line_Courier_System {
         private void btnApply_Click(object sender, EventArgs e) {
             if (btnState) {
                 dataAdd();
-                ClearForm();
             }
             else
                 dataUpdate();
+
         }
 
         public void setParcelID(String pID) {
@@ -133,8 +135,6 @@ namespace R_Line_Courier_System {
                     tbxRecipientContactNr.Text = dr.GetValue(12).ToString();
                     tbxRecipientAltContactNr.Text = dr.GetValue(13).ToString();
                     tbxRecepientName.Text = dr.GetValue(15).ToString();
-                    if ((bool)dr.GetValue(14))
-                        tbDelivered.CheckState = CheckState.Checked;
                 }
             }
             catch (SqlException m) { Console.WriteLine(m.Message); }
@@ -202,7 +202,7 @@ namespace R_Line_Courier_System {
             "Contact_No = '" + tbxRecipientContactNr.Text + "', " +
             "Alt_Contact_No = '" + tbxRecipientAltContactNr.Text + "', " +
             "Delivery_Due_Date = '" + dateDueDelivery.Value.ToShortDateString().ToString() + "', " +
-            "Delivered = '" + tbDelivered.Checked.ToString() + "', " +
+            "Delivered = '" + delivered.ToString() + "', " +
             "Recipient_Name = '" + tbxRecepientName.Text + "', " +
             "Client_ID = " + cbCompanyName.SelectedValue.ToString() +
             "WHERE Parcel_ID = " +parcelID, con);
@@ -228,15 +228,20 @@ namespace R_Line_Courier_System {
                 "Contact_No, Alt_Contact_No, Delivery_Due_Date, Delivered, Recipient_Name, User_ID) " +
                 "VALUES(" + cbDeliveryStatus.SelectedValue + "," + cbPostalCode.SelectedValue + "," + cbCompanyName.SelectedValue + "," + nudWeight.Value + "," + nudLenght.Value + "," +
                 nudWidth.Value + "," + nudHeight.Value + ",'" + tbxStreetNumber.Text + "','" + tbxStreetName.Text + "','" + tbxBuildingName.Text + "','" + 
-                tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + tbDelivered.Checked.ToString() + "','" + 
+                tbxRecipientContactNr.Text + "','" + tbxRecipientAltContactNr.Text + "','" + dateDueDelivery.Value.ToShortDateString() + "','" + delivered.ToString() + "','" + 
                 tbxRecepientName.Text + "'," + userID.ToString() + ")", con);
 
             con.Open();
-
-            try { cmd.ExecuteNonQuery(); } catch (SqlException m) { 
-                Console.WriteLine(m.Message);
-                MessageBox.Show("Please ensure all fields are filled in correctly.");
-            }
+            if (validation()) {
+                try { cmd.ExecuteNonQuery(); }
+                catch (SqlException m)
+                {
+                    Console.WriteLine(m.Message);
+                    MessageBox.Show("Please ensure all fields are filled in correctly.");
+                }
+                ClearForm();
+            } else
+                MessageBox.Show(error);
 
             maintain.dateCheck();
             con.Close();
@@ -244,7 +249,8 @@ namespace R_Line_Courier_System {
 
         private void cbDeliveryStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (cbDeliveryStatus.SelectedValue != null)
+                if ((int)cbDeliveryStatus.SelectedValue == 4) { delivered = true; } else { delivered = false; }
         }
 
         private void validationCheck() { 
@@ -253,7 +259,7 @@ namespace R_Line_Courier_System {
 
         private void tbxRecepientName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)!@#$%^&*()_=]"))
             {
                 e.Handled = true;
             }
@@ -269,7 +275,7 @@ namespace R_Line_Courier_System {
 
         private void tbxClientName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)!@#$%^&*()_=]"))
             {
                 e.Handled = true;
             }
@@ -277,10 +283,54 @@ namespace R_Line_Courier_System {
 
         private void tbxClientSurname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[0-9+\-\/\*\(\)!@#$%^&*()_=]"))
             {
                 e.Handled = true;
             }
+        }
+
+        private void tbxRecepientName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool validation() {
+            bool valid = true;
+            if (tbxRecepientName.Text.Length < 2) {
+                valid = false;
+                error = "Name Cannot be less than 2 characters.";
+            }
+            else if (tbxRecipientContactNr.Text.Length < 13) {
+                valid = false;
+                error = "Please enter a valid phone number.";
+            }
+            else if (cbDeliveryStatus.SelectedValue == null) {
+                valid = false;
+                error = "Please select a delivery status.";
+            }
+            else if (tbxStreetNumber.Text.Length < 2) {
+                valid = false;
+                error = "Please enter a valid street number.";
+            }
+            else if (tbxStreetName.Text.Length < 3) {
+                valid = false;
+                error = "Street name cannot be less than 3 characters.";
+            }
+            
+            else if (cbPostalCode.SelectedValue == null) {
+                valid = false;
+                error = "Please select a postal code.";
+            }
+            else if (cbCompanyName.SelectedValue == null) {
+                valid = false;
+                error = "Please select a company.";
+            }
+            return valid;
+        }
+
+        private void tbDelivered_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

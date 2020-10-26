@@ -91,6 +91,7 @@
             this.dgvParcels.Margin = new System.Windows.Forms.Padding(2);
             this.dgvParcels.Name = "dgvParcels";
             this.dgvParcels.RowTemplate.Height = 24;
+            this.dgvParcels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvParcels.Size = new System.Drawing.Size(763, 412);
             this.dgvParcels.TabIndex = 5;
             this.dgvParcels.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParcels_CellContentClick);

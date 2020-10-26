@@ -309,10 +309,10 @@ namespace R_Line_Courier_System
 
         private void DeliverParcelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDeliveryReport deliveryReport = new frmDeliveryReport();
+            frmDeliverParcels deliver = new frmDeliverParcels();
             frmParent parent = this;
-            deliveryReport.MdiParent = parent;
-            deliveryReport.Show();
+            deliver.MdiParent = parent;
+            deliver.Show();
         }
 
         private void disableMenu() {

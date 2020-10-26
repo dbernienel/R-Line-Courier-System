@@ -69,9 +69,17 @@ namespace R_Line_Courier_System
             con = new SqlConnection(conString);
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID="+ dgvParcels.SelectedCells[0].Value.ToString(), con);
-            cmd.ExecuteNonQuery();
 
+            DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                SqlCommand cmd = new SqlCommand("DELETE FROM PARCELS WHERE Parcel_ID="+ dgvParcels.SelectedCells[0].Value.ToString(), con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Parcel successfully deleted");
+            }
+            if (res == DialogResult.Cancel)
+            {
+            }
             RefreshDGV();
 
             con.Close();
@@ -108,6 +116,7 @@ namespace R_Line_Courier_System
             dgvParcels.Columns["Client_ID"].Visible = false;
             dgvParcels.Columns["Postal_Code_ID"].Visible = false;
             dgvParcels.Columns["Status_ID"].Visible = false;
+            if (dgvParcels.Rows.Count < 2) { btnDeleteParcel.Enabled = false; btnUpdateParcel.Enabled = false; } else { btnDeleteParcel.Enabled = true; btnUpdateParcel.Enabled = true; }
         }
 
         private void tbxSearch_TextChanged(object sender, EventArgs e)
