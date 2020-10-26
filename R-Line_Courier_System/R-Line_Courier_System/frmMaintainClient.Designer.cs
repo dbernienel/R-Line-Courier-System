@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainClient));
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.btnAddNewParcel = new System.Windows.Forms.Button();
             this.btnDeleteParcel = new System.Windows.Forms.Button();
@@ -112,6 +113,7 @@
             this.Controls.Add(this.btnDeleteParcel);
             this.Controls.Add(this.btnUpdateParcel);
             this.Controls.Add(this.dgvClients);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMaintainClient";
             this.Text = "Maintain Clients";

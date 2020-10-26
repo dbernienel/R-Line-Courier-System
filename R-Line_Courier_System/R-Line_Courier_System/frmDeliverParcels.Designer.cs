@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeliverParcels));
             this.dgvParcels = new System.Windows.Forms.DataGridView();
             this.btnApply = new System.Windows.Forms.Button();
             this.tbxSearch = new System.Windows.Forms.TextBox();
@@ -112,6 +113,7 @@
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.dgvParcels);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDeliverParcels";
             this.Text = "Deliver Parcels";
             this.Load += new System.EventHandler(this.frmDeliverParcels_Load);

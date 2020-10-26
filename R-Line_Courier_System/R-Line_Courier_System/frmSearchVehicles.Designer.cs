@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearchVehicles));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.dgVehicles);
             this.Controls.Add(this.lblSearchUser);
             this.Controls.Add(this.txtSearchVehicle);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSearchVehicles";
             this.Text = "Search Vehicles";
             this.Load += new System.EventHandler(this.FrmSearchVehicles_Load);

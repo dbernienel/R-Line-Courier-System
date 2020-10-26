@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegionDetails));
             this.label1 = new System.Windows.Forms.Label();
             this.cbCity = new System.Windows.Forms.ComboBox();
             this.lbPostalCodes = new System.Windows.Forms.ListBox();
@@ -167,6 +168,7 @@
             this.Controls.Add(this.lbPostalCodes);
             this.Controls.Add(this.cbCity);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRegionDetails";
             this.Text = "Maintain Region";

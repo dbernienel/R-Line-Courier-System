@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParcelDetails));
             this.gbClientInfo = new System.Windows.Forms.GroupBox();
             this.tbxClientContactNr = new System.Windows.Forms.MaskedTextBox();
             this.tbxClientSurname = new System.Windows.Forms.TextBox();
@@ -677,6 +678,7 @@
             this.Controls.Add(this.gbDeliveryInfo);
             this.Controls.Add(this.gbClientInfo);
             this.Controls.Add(this.gbDeliveryAdress);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmParcelDetails";
             this.Text = "Parcel Details";

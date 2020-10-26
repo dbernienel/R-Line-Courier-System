@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainUsers));
             this.txtUser_Name = new System.Windows.Forms.TextBox();
             this.lblUser_Name = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -196,6 +197,7 @@
             this.Controls.Add(this.gbMaintainUsers);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSubmit);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainUsers";
             this.Text = "Maintain Users";
             this.Load += new System.EventHandler(this.FrmMaintainUsers_Load);

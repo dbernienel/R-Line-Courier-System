@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainParcels));
             this.btnUpdateParcel = new System.Windows.Forms.Button();
             this.btnDeleteParcel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -156,6 +157,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteParcel);
             this.Controls.Add(this.btnUpdateParcel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMaintainParcels";
             this.Text = " Maintain Vehicles";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             this.btnExport = new System.Windows.Forms.Button();
             this.rbDelivered = new System.Windows.Forms.RadioButton();
             this.rbUndelivered = new System.Windows.Forms.RadioButton();
@@ -141,6 +142,7 @@
             this.Controls.Add(this.dateTimeTo);
             this.Controls.Add(this.gbDeliver);
             this.Controls.Add(this.btnExport);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReport";
             this.Text = "Report";
             this.Activated += new System.EventHandler(this.FrmReport_Activated);

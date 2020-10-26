@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainVehicles));
             this.lblVehicleID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtRegNo = new System.Windows.Forms.TextBox();
@@ -111,6 +112,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.gbMaintainVehicles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainVehicles";
             this.Text = "-";
             this.Activated += new System.EventHandler(this.FrmMaintainVehicles_Activated);

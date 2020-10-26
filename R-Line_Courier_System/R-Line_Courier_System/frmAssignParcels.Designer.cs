@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAssignParcels));
             this.dgvParcels = new System.Windows.Forms.DataGridView();
             this.lbxParcels = new System.Windows.Forms.ListBox();
             this.tbxSearchParcels = new System.Windows.Forms.TextBox();
@@ -146,6 +147,7 @@
             this.Controls.Add(this.tbxSearchParcels);
             this.Controls.Add(this.lbxParcels);
             this.Controls.Add(this.dgvParcels);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAssignParcels";
             this.Text = "frmAssignParcels";
             this.Load += new System.EventHandler(this.frmAssignParcels_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainRegions));
             this.label1 = new System.Windows.Forms.Label();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -52,7 +53,7 @@
             // tbxSearch
             // 
             this.tbxSearch.Location = new System.Drawing.Point(54, 28);
-            this.tbxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.tbxSearch.Name = "tbxSearch";
             this.tbxSearch.Size = new System.Drawing.Size(76, 20);
             this.tbxSearch.TabIndex = 16;
@@ -61,7 +62,7 @@
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(11, 336);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(88, 22);
             this.btnAdd.TabIndex = 15;
@@ -71,7 +72,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(197, 335);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 24);
             this.btnDelete.TabIndex = 14;
@@ -82,7 +83,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(104, 335);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(88, 24);
             this.btnUpdate.TabIndex = 13;
@@ -93,7 +94,7 @@
             // 
             this.dgvRegion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegion.Location = new System.Drawing.Point(11, 50);
-            this.dgvRegion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvRegion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvRegion.Name = "dgvRegion";
             this.dgvRegion.RowHeadersWidth = 51;
             this.dgvRegion.RowTemplate.Height = 24;
@@ -130,6 +131,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvRegion);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainRegions";
             this.Text = "Maintain Regions";
             this.Load += new System.EventHandler(this.frmMaintainRegions_Load);

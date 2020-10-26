@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeliveryReport));
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.btnExport = new System.Windows.Forms.Button();
             this.cbxRegNo = new System.Windows.Forms.ComboBox();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.cbxRegNo);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dgvDeliveries);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDeliveryReport";
             this.Text = "frmDeliveryReport";
             this.Activated += new System.EventHandler(this.FrmDeliveryReport_Activated);

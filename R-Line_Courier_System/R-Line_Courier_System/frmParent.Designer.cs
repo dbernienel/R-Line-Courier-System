@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParent));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +71,8 @@
             this.reportingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1479, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
@@ -273,18 +274,16 @@
             this.pnlUser.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlUser.Controls.Add(this.btnSignOut);
             this.pnlUser.Controls.Add(this.lblUserLogged);
-            this.pnlUser.Location = new System.Drawing.Point(1131, 0);
-            this.pnlUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUser.Location = new System.Drawing.Point(848, 0);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(348, 30);
+            this.pnlUser.Size = new System.Drawing.Size(261, 24);
             this.pnlUser.TabIndex = 4;
             // 
             // btnSignOut
             // 
-            this.btnSignOut.Location = new System.Drawing.Point(244, 0);
-            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignOut.Location = new System.Drawing.Point(183, 0);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(100, 28);
+            this.btnSignOut.Size = new System.Drawing.Size(75, 23);
             this.btnSignOut.TabIndex = 1;
             this.btnSignOut.Text = "Sign out";
             this.btnSignOut.UseVisualStyleBackColor = true;
@@ -293,24 +292,23 @@
             // lblUserLogged
             // 
             this.lblUserLogged.AutoSize = true;
-            this.lblUserLogged.Location = new System.Drawing.Point(8, 6);
-            this.lblUserLogged.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserLogged.Location = new System.Drawing.Point(6, 5);
             this.lblUserLogged.Name = "lblUserLogged";
-            this.lblUserLogged.Size = new System.Drawing.Size(89, 16);
+            this.lblUserLogged.Size = new System.Drawing.Size(71, 13);
             this.lblUserLogged.TabIndex = 0;
             this.lblUserLogged.Text = "Logged in as:";
             this.lblUserLogged.Click += new System.EventHandler(this.Label1_Click);
             // 
             // frmParent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1479, 727);
+            this.ClientSize = new System.Drawing.Size(1109, 591);
             this.Controls.Add(this.pnlUser);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmParent";
             this.Text = "R-Line Courier System - Scaled Symmetry";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

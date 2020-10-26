@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainDeliveries));
             this.label1 = new System.Windows.Forms.Label();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnDeleteDelivery = new System.Windows.Forms.Button();
@@ -112,6 +113,7 @@
             this.Controls.Add(this.btnDeleteDelivery);
             this.Controls.Add(this.btnUpdateDelivery);
             this.Controls.Add(this.dgvDelivery);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainDeliveries";
             this.Text = "Maintain Deliveries";
             this.Load += new System.EventHandler(this.frmMaintainDeliveries_Load);

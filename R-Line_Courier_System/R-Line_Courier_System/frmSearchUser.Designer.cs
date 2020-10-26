@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearchUser));
             this.txtSearchUser = new System.Windows.Forms.TextBox();
             this.lblSearchUser = new System.Windows.Forms.Label();
             this.dgViewUsers = new System.Windows.Forms.DataGridView();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.dgViewUsers);
             this.Controls.Add(this.lblSearchUser);
             this.Controls.Add(this.txtSearchUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSearchUser";
             this.Text = "Search User";
             this.Load += new System.EventHandler(this.FrmSearchUser_Load);
