@@ -123,7 +123,8 @@ namespace R_Line_Courier_System
 
         private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMaintainUsers users = new frmMaintainUsers();
+            frmSearchUser user = new frmSearchUser();
+            frmMaintainUsers users = new frmMaintainUsers(user);
             frmParent parent = this;
             users.setMode("add");
             users.clearForm();
@@ -148,7 +149,8 @@ namespace R_Line_Courier_System
             }
             else
             {
-                frmMaintainUsers users = new frmMaintainUsers();
+                frmSearchUser user = new frmSearchUser();
+                frmMaintainUsers users = new frmMaintainUsers(user);
                 frmParent parent = this;
                 users.setMode("add");
                 users.clearForm();

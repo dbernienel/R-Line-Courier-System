@@ -14,8 +14,10 @@ namespace R_Line_Courier_System
     public partial class frmSearchUser : Form
     {
         //public variables
+        
         public SqlConnection cnn;
         public SqlDataReader dataReader;
+        frmSearchUser users;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
         public SqlCommand cmd;
         int rowIndex;
@@ -24,12 +26,13 @@ namespace R_Line_Courier_System
         {
             InitializeComponent();
             TrySearch("", -1);
+            users = this;
 
         }
 
 
 
-        private void TrySearch(String stringSearch, int search)
+        public void TrySearch(String stringSearch, int search)
         {
             cnn = new SqlConnection(connectionString);
             var sql = "";
@@ -44,6 +47,7 @@ namespace R_Line_Courier_System
                 sql = @"Select * FROM USERS";
             }
             OpenConnection();
+            //MessageBox.Show("Searched");
             cmd = new SqlCommand(sql, cnn);
 
 
@@ -68,7 +72,7 @@ namespace R_Line_Courier_System
 
         private void BtnSelectUser_Click(object sender, EventArgs e)
         {
-            frmMaintainUsers maintainUsers = new frmMaintainUsers();
+            frmMaintainUsers maintainUsers = new frmMaintainUsers(users);
 
             maintainUsers.setUserID(dgViewUsers.Rows[rowIndex].Cells[0].Value.ToString());
             maintainUsers.setMode("update");
@@ -106,7 +110,7 @@ namespace R_Line_Courier_System
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            frmMaintainUsers users = new frmMaintainUsers();
+            frmMaintainUsers users = new frmMaintainUsers(this);
             users.setMode("add");
             //  frmParent frmParent = Users;
             // Users.MdiParent = frmParent;
@@ -150,16 +154,27 @@ namespace R_Line_Courier_System
                     }
                     else
                     {
-                        string delete_query = "DELETE FROM USERS WHERE User_ID = '" + userID + "'";
-                        cnn.Open();
-                        cmd = new SqlCommand(delete_query, cnn);
 
-                        //dialog are you sure
-                        cmd.ExecuteNonQuery();
-                        cnn.Close();
+                        DialogResult res = MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        if (res == DialogResult.OK)
+                        {
+                            string delete_query = "DELETE FROM USERS WHERE User_ID = '" + userID + "'";
+                            cnn.Open();
+                            cmd = new SqlCommand(delete_query, cnn);
 
-                        MessageBox.Show(userID.ToString() + " has been successfully deleted!");
-                        TrySearch("", -1);
+                            //dialog are you sure
+                            cmd.ExecuteNonQuery();
+                            cnn.Close();
+
+                            MessageBox.Show(userID.ToString() + " has been successfully deleted!");
+                            TrySearch("", -1);
+                        }
+                        if (res == DialogResult.Cancel)
+                        {
+                          
+                        }
+
+
                     }
                 }
 
@@ -191,6 +206,11 @@ namespace R_Line_Courier_System
         private void DgViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void FrmSearchUser_Load(object sender, EventArgs e)
+        {
+            dgViewUsers.ReadOnly = true;
         }
     }
 }

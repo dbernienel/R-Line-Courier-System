@@ -14,6 +14,7 @@ namespace R_Line_Courier_System
     public partial class frmMaintainUsers : Form
     {
         //public variables
+        private frmSearchUser user;
         public SqlConnection cnn;
         public SqlDataReader dataReader;
         public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\RLine_Database.mdf;Integrated Security=True";
@@ -22,9 +23,11 @@ namespace R_Line_Courier_System
         string mode;
 
         frmSearchUser SearchUser = new frmSearchUser();
-        public frmMaintainUsers()
+        public frmMaintainUsers(frmSearchUser user)
         {
             InitializeComponent();
+            this.user = user;
+
         }
         private void OpenConnection() //open sqlconnection
         {
@@ -189,6 +192,8 @@ namespace R_Line_Courier_System
 
         }
 
+
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             bool validInput = true;
@@ -264,6 +269,7 @@ namespace R_Line_Courier_System
 
                 cmd.Dispose();
                 cnn.Close();
+                user.TrySearch("", -1);
             }
             else if ((mode == "update") && (validInput == true))
             {
@@ -281,7 +287,7 @@ namespace R_Line_Courier_System
                     cmd = new SqlCommand(sql, cnn);
                     cmd.ExecuteNonQuery();
                     cnn.Close();
-                    MessageBox.Show("User Successfully updated");
+                    MessageBox.Show("User successfully updated");
                     clearForm();
                 }
                 catch (Exception err)

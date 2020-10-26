@@ -60,7 +60,7 @@ namespace R_Line_Courier_System
                 title = "Undelivered";
 
 
-            worksheet.Cells[2, 1] =title+ " parcels during the period " + (dateTimeFrom.Value.ToString()).Substring(0, 10) + " to "+
+            worksheet.Cells[2, 1] =title+ " parcels during the period " + (dateTimeFrom.Value.ToString()).Substring(0, 10) + "    to    "+
                 (dateTimeTo.Value.ToString()).Substring(0, 10);
 
             worksheet.Cells[3, 1] = "Report dated " + DateTime.Now.ToString();

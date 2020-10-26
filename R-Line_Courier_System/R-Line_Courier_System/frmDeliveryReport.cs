@@ -120,6 +120,10 @@ namespace R_Line_Courier_System
         }
         private void populateComboBox()
         {
+            OpenConnection();
+
+
+            cbxRegNo.DataSource = null;
             cbxRegNo.Items.Clear();
             cnn = new SqlConnection(connectionString);
 
@@ -130,18 +134,20 @@ namespace R_Line_Courier_System
             adapter.SelectCommand = cmd;
             adapter.Fill(ds, "Deliveries");
 
-         
+
 
             cbxRegNo.DisplayMember = "Reg_No";
             cbxRegNo.ValueMember = "Vehicle_ID";
-           // da.Fill(ds);
+            // da.Fill(ds);
             adapter.SelectCommand = cmd;
-            adapter.Fill(ds, "Deliveries");
+            adapter.Fill(ds, "Vehicles");
             cbxRegNo.DataSource = ds.Tables[0];
             cnn.Close();
             cbxRegNo.SelectedItem = null;
-
             cbxRegNo.Text = "Select Vehicle";
+
+
+
         }
     
 
@@ -243,6 +249,11 @@ namespace R_Line_Courier_System
         }
 
         private void DgvDeliveries_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

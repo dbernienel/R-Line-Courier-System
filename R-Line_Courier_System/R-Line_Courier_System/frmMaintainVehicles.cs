@@ -74,15 +74,16 @@ namespace R_Line_Courier_System
                     try
                     {
                         int Id = Int32.Parse(txtID.Text);
-                        string sql = "UPDATE VEHICLES SET Reg_No ='" + txtRegNo.Text + " WHERE Vehicle_ID= " + Id;
-                        MessageBox.Show(sql);
+                        string sql = "UPDATE VEHICLES SET Reg_No ='" + txtRegNo.Text + "' WHERE Vehicle_ID= " + Id;
+                       // MessageBox.Show(sql);
                         cnn = new SqlConnection(connectionString);
                         cnn.Open();
                         cmd = new SqlCommand(sql, cnn);
                         cmd.ExecuteNonQuery();
                         cnn.Close();
-                        MessageBox.Show("Vehicle Successfully updated");
+                        MessageBox.Show("Vehicle ID "+ Id+ " successfully updated");
                         clearForm();
+                        this.Close();
                     }
                     catch (Exception err)
                     {

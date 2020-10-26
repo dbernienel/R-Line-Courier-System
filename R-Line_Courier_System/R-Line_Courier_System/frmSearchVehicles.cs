@@ -138,16 +138,23 @@ namespace R_Line_Courier_System
                     }
                     else
                     {
-                        string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
-                        cnn.Open();
-                        cmd = new SqlCommand(delete_query, cnn);
+                        DialogResult res = MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        if (res == DialogResult.OK)
+                        {
+                            string delete_query = "DELETE FROM VEHICLES WHERE Vehicle_ID = '" + vehicleID + "'";
+                            cnn.Open();
+                            cmd = new SqlCommand(delete_query, cnn);
 
-                        //dialog are you sure
-                        cmd.ExecuteNonQuery();
-                        cnn.Close();
+                            //dialog are you sure
+                            cmd.ExecuteNonQuery();
+                            cnn.Close();
 
-                        MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
-                        TrySearch(-1,"");
+                            MessageBox.Show(vehicleID.ToString() + " has been successfully deleted!");
+                            TrySearch(-1, "");
+                        }
+          
+
+                        
                     }
                 }
             }
