@@ -147,7 +147,7 @@
             this.Controls.Add(this.lbxParcels);
             this.Controls.Add(this.dgvParcels);
             this.Name = "frmAssignParcels";
-            this.Text = "frmAssignParcels";
+            this.Text = "Assign Parcels";
             this.Load += new System.EventHandler(this.frmAssignParcels_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcels)).EndInit();
             this.ResumeLayout(false);

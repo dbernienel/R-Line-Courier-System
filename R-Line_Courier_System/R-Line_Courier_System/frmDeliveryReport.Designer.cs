@@ -104,7 +104,7 @@
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dgvDeliveries);
             this.Name = "frmDeliveryReport";
-            this.Text = "frmDeliveryReport";
+            this.Text = "Delivery Report";
             this.Activated += new System.EventHandler(this.FrmDeliveryReport_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
