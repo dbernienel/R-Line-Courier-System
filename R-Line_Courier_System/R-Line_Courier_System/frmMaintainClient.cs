@@ -82,7 +82,7 @@ namespace R_Line_Courier_System
                 stringSearch = tbxSearch.Text;
             }
 
-            myQuery = "SELECT Client_ID, Company_Name--, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE (Client_ID LIKE '"+search.ToString()+"%' " +
+            myQuery = "SELECT Client_ID, Company_Name, Contact_Name, Contact_Surname, Contact_No FROM CLIENTS WHERE (Client_ID LIKE '"+search.ToString()+"%' " +
                 "OR Company_Name LIKE '"+stringSearch+"%' " +
                 "OR Contact_Name LIKE '"+stringSearch+"%' " +
                 "OR Contact_Surname LIKE '"+stringSearch+"%' " +
